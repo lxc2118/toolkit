@@ -1,0 +1,4 @@
+first run build.bat
+then import maven project
+
+CollectionUtils.join(oids, ",")
