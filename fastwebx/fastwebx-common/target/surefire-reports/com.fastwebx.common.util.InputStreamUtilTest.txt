@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.fastwebx.common.util.InputStreamUtilTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.032 sec <<< FAILURE!
+testGetBytes2(com.fastwebx.common.util.InputStreamUtilTest)  Time elapsed: 0.024 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.fastwebx.common.util.InputStreamUtil.getBytes(InputStreamUtil.java:80)
+	at com.fastwebx.common.util.InputStreamUtilTest.testGetBytes2(InputStreamUtilTest.java:32)
+

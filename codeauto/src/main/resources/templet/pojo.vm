@@ -1,0 +1,32 @@
+package $pkg;
+import com.fastwebx.common.dao.inf.IPk;
+import java.io.Serializable;
+#if($table.hasDate)
+
+import java.util.Date;
+
+#end
+public class ${nameUtil.firstUpperPasical($table.name)} implements IPk,Serializable{
+	private static final long serialVersionUID = -871092257120622327L;
+#foreach($col in $table.columns)
+	public void set${nameUtil.firstUpperPasical($col.name)}($col.javaType.name ${nameUtil.pasical($col.name)}){
+		this.${nameUtil.pasical($col.name)}=${nameUtil.pasical($col.name)};
+	}
+
+	public $col.javaType.name get${nameUtil.firstUpperPasical($col.name)}(){
+		return this.${nameUtil.pasical($col.name)};
+	}
+#end
+#foreach($col in $table.columns)
+
+	private $col.javaType.name ${nameUtil.pasical($col.name)};
+#end
+
+	public  Object acqPk(){
+#if($table.singlePk == true)
+		return ${nameUtil.pasical($table.firstPk.name)};
+#else
+		return this;
+#end
+	}
+}

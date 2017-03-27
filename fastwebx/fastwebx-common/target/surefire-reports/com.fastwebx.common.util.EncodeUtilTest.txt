@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.fastwebx.common.util.EncodeUtilTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+testGet(com.fastwebx.common.util.EncodeUtilTest)  Time elapsed: 0 sec  <<< ERROR!
+java.io.FileNotFoundException: d:\3.txt (系统找不到指定的文件。)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at com.fastwebx.common.util.EncodeUtilTest.testGet(EncodeUtilTest.java:20)
+

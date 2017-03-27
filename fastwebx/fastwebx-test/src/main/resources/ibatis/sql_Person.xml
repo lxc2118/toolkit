@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.fastwebx.test.person.pojo.Person">
+<resultMap class="com.fastwebx.test.person.pojo.Person" id="BaseResultMap">
+	<result property="pid" column="pid" jdbcType="int"/>
+	<result property="pname" column="pname" jdbcType="varchar"/>
+	<result property="did" column="did" jdbcType="int"/>
+</resultMap>
+<select id="find" resultMap="BaseResultMap" parameterClass="com.fastwebx.db.query.Query" >
+	select 
+	t.pid,
+	t.pname,
+	t.did	from person t
+	<isParameterPresent >
+	<include refid="Example_Where_Clause" />
+	</isParameterPresent>
+	<isNotNull property="orderCol" >
+		order by $orderCol$
+	</isNotNull>
+	<isNull property="orderCol" >
+		order by t.pid desc 
+	</isNull>
+	<isNotEqual property="rp" compareValue="0" >
+	 LIMIT  #firstResult:INTEGER# , #rp:INTEGER#
+	</isNotEqual>
+</select>
+<insert id="insert" parameterClass="com.fastwebx.test.person.pojo.Person" >
+	insert into person (
+		pname,
+		did	)values(
+		#pname:varchar#,
+		#did:int#	)
+	<selectKey resultClass="java.lang.Integer" keyProperty="pid" >
+	select LAST_INSERT_ID()
+	</selectKey>
+</insert>
+<update id="update" parameterClass="com.fastwebx.test.person.pojo.Person" >
+	update person set
+		pname=#pname:varchar#,
+		did=#did:int# where pid = #pid:int#
+</update>
+<delete id="delete" parameterClass="com.fastwebx.test.person.pojo.Person" >
+	delete from person where pid=#pid:int#
+</delete>
+<select id="get" resultMap="BaseResultMap" parameterClass="Integer">
+	select
+	pid,
+	pname,
+	did	from person
+	where pid = #value#
+</select>
+<select id="findCnt" parameterClass="com.fastwebx.db.query.Query" resultClass="java.lang.Integer" >
+	select count(*) from person t
+	<include refid="Example_Where_Clause" />
+</select>
+</sqlMap>

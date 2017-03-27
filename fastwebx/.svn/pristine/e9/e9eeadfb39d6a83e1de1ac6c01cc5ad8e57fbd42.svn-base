@@ -1,0 +1,116 @@
+package com.fastwebx.db.keyCnt.server;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fastwebx.common.inf.pojo.imp.KeyCnt;
+import com.fastwebx.db.dao.BaseDao;
+import com.fastwebx.db.keyCnt.domain.Kc;
+import com.fastwebx.db.keyCnt.inf.IAcqCnt;
+import com.fastwebx.db.keyCnt.inf.IKc;
+
+/**
+ * key cnt的公共类
+ * @author mj
+ */
+public abstract class KcServer<Owner,Key,Pojo extends IAcqCnt> {
+	
+	
+	
+	public int getCnt(Owner owner,Key key){
+		Pojo pojo = get(owner,key);
+		if(pojo==null) {
+			return 0;
+		}
+		return pojo.acqCnt();
+	}
+	
+	@SafeVarargs
+	public final void add(Owner owner,IKc<Key> ... kcs){
+		for(IKc<Key> kc:kcs){
+			addOne(owner,kc);
+		}
+	}
+	
+	public Pojo addOne(Owner owner, IKc<Key> kc) {
+		Pojo pojo = this.get(owner, kc.getKey());
+		if(pojo!=null){
+			pojo.add(kc.getCnt());
+			
+		}
+		return pojo;
+		
+	}
+	@SafeVarargs
+	public final void sub(Owner owner,IKc<Key> ... kcs){
+		
+		for(IKc<Key> kc:kcs){
+			subOne(owner,kc);
+		}
+	}
+	
+	public Pojo subOne(Owner owner, IKc<Key> kc) {
+		Pojo pojo = this.get(owner, kc.getKey());
+		if(pojo!=null)
+			pojo.sub(kc.getCnt());
+		return pojo;
+	}
+
+	/**
+	 * 根据owner和key查询
+	 * @param owner
+	 * @param key
+	 * @return
+	 */
+	
+	protected boolean needAdd = true;
+	public Pojo get(Owner owner,Key key){
+		Pojo pojo = this.create(owner, key);
+		Pojo ret = getFromDb(pojo);
+		if(ret==null && needAdd){
+			ret = addDefault(pojo);
+		}
+		return ret;
+	}
+	/**
+	 * 增加默认
+	 * @param pojo
+	 * @return
+	 */
+	protected Pojo addDefault(Pojo pojo) {
+		//pojo.fitCnt(0);
+		try{
+			this.acqDao().add(pojo);
+		}catch(Exception e){
+			e.printStackTrace();
+			pojo = getFromDb(pojo);
+		}
+		return pojo;
+	}
+
+	protected Pojo getFromDb(Pojo pojo){
+		return (Pojo)this.acqDao().get(pojo);
+	}
+	
+	public void checkAndSub(Owner owner, IKc<Key> ... ks) {
+		if(owner==null || ks==null || ks.length==0) return;
+		List<Pojo> pojos = new ArrayList<>();
+		for(IKc<Key> k:ks){
+			Pojo pojo = this.get(owner, k.getKey());
+			pojos.add(pojo);
+			if(pojo!=null){
+				pojo.check(k.getCnt());
+			} 
+		}
+		for(int i=0;i<pojos.size();i++){
+			Pojo pojo = pojos.get(i);
+			if(pojo!=null){
+				pojo.sub(ks[i].getCnt());
+			}
+		}
+		
+	}
+	
+	abstract protected BaseDao acqDao();
+	abstract protected Pojo create(Owner owner,Key key); 
+}

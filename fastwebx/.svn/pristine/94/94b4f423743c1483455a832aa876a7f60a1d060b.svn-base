@@ -1,0 +1,306 @@
+package com.fastwebx.web.util.entry;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+
+import com.fastwebx.common.exp.imp.FastExp;
+import com.fastwebx.common.util.InputStreamUtil;
+
+
+/**
+ * @author mj
+ */
+public class HttpEntry {
+	final public static String get = "GET";
+	final public static String post = "POST";
+	
+	private String method=post;
+	
+	private String url;
+	private Map<String, String> params = new HashMap<>();
+	private Map<String, String> cookies  = new HashMap<>();
+	private List<Consumer<String>> cookieCsm = new ArrayList<>();
+	
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	/**
+	 * 增加cookie
+	 * @param c
+	 * @return
+	 */
+	public HttpEntry addCookieCsm(Consumer<String>  c){
+		if(c!=null)
+			cookieCsm.add(c);
+		return this;
+	}
+	
+	public HttpEntry setUrl(String val){
+		url = val;
+		return this;
+	}
+	
+	public HttpEntry putParam(String key,String value){
+		if(key==null) return this;
+		this.params.put(key, value);
+		return this;
+	}
+	
+	public HttpEntry setCookie(String key,String value){
+		if(key==null) return this;
+		this.cookies.put(key, value);
+		return this;
+	}
+	
+	public HttpEntry setCookie(Map<String, String> map){
+		if(map==null) return this;
+		this.cookies = map;
+		return this;
+	}
+	protected HttpURLConnection buildConnection(){
+		URL url;
+		try {
+			url = new URL(this.url);
+			return (HttpURLConnection) url.openConnection();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+			return null;
+		}
+	
+	}
+	
+	public String upload(String key
+			,File f
+			){
+		int blockSize = 1024;
+		URL url = null;
+		OutputStream os;
+		try {
+			
+			HttpURLConnection conn = this.buildConnection();
+			this.setConnCookie(conn);
+			conn.setDoOutput(true);  
+			conn.setDoInput(true);  
+			conn.setRequestMethod("POST");  
+			String BOUNDARY = "---------------------------41184676334";  
+			 
+			conn.setRequestProperty("connection", "Keep-Alive");  
+			conn.setRequestProperty("Charsert", "UTF-8");  
+			conn.setRequestProperty("Content-Type",  
+			                    "multipart/form-data; boundary=" + BOUNDARY);  
+			
+			              
+			conn.setAllowUserInteraction(false);    //无需用户交互，即弹出https等的对话框。  
+			conn.setChunkedStreamingMode(blockSize);   //告诉HttpUrlConnection,我们需要采用流方式上传数据，无需本地缓存数据。HttpUrlConnection默认是将所有数据读到本地缓存，然后再发送给服务器，这样上传大文件时就会导致内存溢出。  
+			  
+			byte[] end_data = ("\r\n--" + BOUNDARY + "--\r\n").getBytes();  
+			StringBuffer sb = new StringBuffer();  
+			
+			
+			if(params!=null){
+				for(String mapKey:params.keySet()){
+					sb.append("\r\n--").append(BOUNDARY).append("\r\n");
+					sb.append("Content-Disposition: form-data; name=\""+mapKey+"\"\r\n\r\n");  
+					sb.append(params.get(mapKey));  
+					
+				}
+			}
+			
+			sb.append("--").append(BOUNDARY).append("\r\n");  
+			
+			
+			sb.append("Content-Disposition: form-data; name=\""+key+"\"; filename=\""+f.getName()+"\"\r\n");  
+			sb.append("Content-Type: application/octet-stream\r\n\r\n");  
+			  
+			byte[] data = sb.toString().getBytes();  
+			long fLen = f.length();
+			long contentLen = data.length + fLen + end_data.length;  
+
+			conn.setRequestProperty("Content-Length",  
+					String.valueOf(contentLen));
+
+
+			os = conn.getOutputStream();
+			os.write(data);  //发送非文件数据  
+            
+			FileInputStream fis = new FileInputStream(f);  //读取文件内容，发送数据，数据要一点点发送，不能一下全部读取发送，否则会内存溢出。  
+			int rn;  
+			byte[] buf = new byte[blockSize];    
+			while ((rn = fis.read(buf, 0, blockSize)) > 0) {  
+			    os.write(buf, 0, rn);  
+			}  
+			os.write(end_data);  
+			os.flush();  
+			os.close();  
+			fis.close();
+			conn.connect();
+			InputStream is = conn.getInputStream();
+	        String result = InputStreamUtil.stream2String( is );
+	       
+  
+	        return result;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+
+
+
+	}
+	
+	
+	/**
+	 * 提交
+	 * @return
+	 */
+	public String submit() {
+		
+		try {
+	        HttpURLConnection conn = buildConnection();
+	        setConnCookie(conn);
+	        
+			conn.setReadTimeout(5000);
+	        conn.setConnectTimeout(5000);
+	       
+	        if(!method.equals(get)){
+	        	conn.setRequestMethod(method);
+		
+		        conn.setDoInput(true);
+		        conn.setDoOutput(true);
+		        OutputStream os = conn.getOutputStream();
+	 	        BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(os, "UTF-8") );
+		        if(params!=null){
+		        	writer.write(toParam(params) );
+		        }
+		        writer.flush();
+		        writer.close();
+		        os.close();
+	        }
+	        conn.connect();
+		
+	        InputStream is = conn.getInputStream();
+	        String result = InputStreamUtil.stream2String( is );
+	        processCookie(conn);
+	        return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new FastExp(e);
+		}
+		
+       
+	}
+	
+	
+	/**
+	 * 设置提交的cookie
+	 * @param conn
+	 */
+	protected void setConnCookie(HttpURLConnection conn) {
+		if(this.cookies.size()>0)
+			conn.setRequestProperty("Cookie",toCookie(cookies));  
+		
+	}
+	/**
+	 * 处理返回的cookie
+	 * @param conn
+	 */
+	protected void processCookie(HttpURLConnection conn) {
+		String key = null;
+		String cookieVal = "";
+		for(int i = 1; (key = conn.getHeaderFieldKey(i)) != null; i++){  
+            if(key.equalsIgnoreCase("set-cookie")){  
+                cookieVal = conn.getHeaderField(i); 
+                if(cookieVal!=null){
+                	String[] cookies = cookieVal.split(";");
+                	for(String cookie:cookies){
+                		if(cookie!=null) {
+                			final String val = cookie.trim();
+                			cookieCsm.forEach(csm->csm.accept(val));
+                		}
+                	}
+                }
+                
+            }  
+        }
+		
+	}
+
+	protected String toParam(Map<String, String> map) {
+		StringBuffer sb = new StringBuffer();
+		boolean first = true;
+		if(map!=null){
+			Set<String> keys = map.keySet();
+			for(String key:keys){
+				if(!first)
+					sb.append("&");
+				else
+					first=false;
+				try {
+					sb.append(key)
+						.append("=")
+						.append(URLEncoder.encode(map.get(key),"utf-8"));
+				} catch (UnsupportedEncodingException e) {
+				
+					e.printStackTrace();
+				}
+			}
+		}
+		return sb.toString();
+	}
+	/**
+	 * 拼cookie字符串
+	 * @param map
+	 * @return
+	 */
+	protected String toCookie(Map<String, String> map) {
+		StringBuffer sb = new StringBuffer();
+		boolean first = true;
+		if(map!=null){
+			Set<String> keys = map.keySet();
+			for(String key:keys){
+				if(!first)
+					sb.append(";");
+				else
+					first=false;
+				
+					sb.append(key)
+						.append("=")
+						.append(map.get(key));
+				
+			}
+		}
+		return sb.toString();
+	}
+
+	public void setParams(Map<String, String> map) {
+		if(map!=null)
+			this.params = map;
+		
+	}
+}

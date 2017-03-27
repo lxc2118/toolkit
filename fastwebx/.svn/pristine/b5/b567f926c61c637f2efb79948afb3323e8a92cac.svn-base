@@ -1,0 +1,21 @@
+package com.fastwebx.common.util;
+
+import java.io.File;
+
+import junit.framework.TestCase;
+
+public class Md5UtilTest extends TestCase {
+	public void testEncode(){
+		
+		String v="abc";
+		System.out.println(Md5Util.encode(v));
+		
+		System.out.println(Md5Util.encode("2015060508522816007335100121001210011000006277760元宝1600600@DF88C6BC4A3F1E9CB561104E152B83BE"));
+	}
+	
+	public void testEncodeFile(){
+		System.out.println(Md5Util.encodeFile(new File("f:/cocos/sanguo.rar")));
+	}
+	
+	
+}

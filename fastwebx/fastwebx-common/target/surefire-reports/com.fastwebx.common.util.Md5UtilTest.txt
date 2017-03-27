@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.fastwebx.common.util.Md5UtilTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.026 sec <<< FAILURE!
+testEncodeFile(com.fastwebx.common.util.Md5UtilTest)  Time elapsed: 0.023 sec  <<< ERROR!
+java.lang.NullPointerException
+	at java.security.MessageDigest.update(MessageDigest.java:335)
+	at com.fastwebx.common.util.Md5Util.encode(Md5Util.java:25)
+	at com.fastwebx.common.util.Md5Util.encodeFile(Md5Util.java:15)
+	at com.fastwebx.common.util.Md5UtilTest.testEncodeFile(Md5UtilTest.java:17)
+

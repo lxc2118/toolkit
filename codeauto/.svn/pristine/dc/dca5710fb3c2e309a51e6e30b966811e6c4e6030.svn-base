@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"  
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.1.xsd
+	">
+	<bean id="configurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list><value>classpath:/server.properties</value></list>
+		</property>
+	</bean>
+	
+
+	
+
+	<bean id="dataSource" 	class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="maxActive" value="${jdbc.maxActive}"></property>
+		<property name="validationQuery" value="SELECT 1"></property>
+		<property name="testOnBorrow" value="true"></property>
+		<property name="testOnReturn" value="false"></property>
+		<property name="testWhileIdle" value="true"></property>
+		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
+		<property name="defaultAutoCommit" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="60" />
+		<property name="logAbandoned" value="false" />
+	</bean>
+
+	  
+	<bean class="com.fastwebx.common.context.SpringContext"></bean>
+	
+	<context:component-scan base-package="com.fastwebx.codeAuto"></context:component-scan>
+	
+	<bean class="com.fastwebx.codeAuto.context.Context">
+		<property name="useTddl" value="true"></property>
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 文件输出路径 -->
+		<property name="outPath" value="d:/4/"></property>
+		<!--  项目主包名 -->
+		<property name="pkgName" value="com.sanguo"></property>
+	</bean>
+	
+	<bean id="pojo" class="com.fastwebx.codeAuto.codeCreater.JavaCode">
+		<!--  领域类包名 -->
+		<property name="pkgName" value="domain"></property>
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>$!{table}</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/pojo.vm">
+		</property>
+		
+	</bean>
+	
+	<bean id="dao" class="com.fastwebx.codeAuto.codeCreater.JavaCode">
+		<!--  领域类包名 -->
+		<property name="pkgName" value="dao"></property>
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>$!{table}Dao</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/dao.vm">
+		</property>
+		
+	</bean>
+	
+	<bean id="schAction" class="com.fastwebx.codeAuto.codeCreater.ActionJavaCode">
+		
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>List$!{table}</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/schAction.vm">
+		</property>
+		
+	</bean>
+	
+	<bean id="updateAction" class="com.fastwebx.codeAuto.codeCreater.ActionJavaCode">
+		
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>Update$!{table}</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/updateAction.vm">
+		</property>
+		
+	</bean>
+	<bean id="delAction" class="com.fastwebx.codeAuto.codeCreater.ActionJavaCode">
+		
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>Del$!{table}</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/DelAction.vm">
+		</property>
+		
+	</bean>
+	
+	<bean id="addAction" class="com.fastwebx.codeAuto.codeCreater.ActionJavaCode">
+		
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>Add$!{table}</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/AddAction.vm">
+		</property>
+		
+	</bean>
+	
+	<bean id="ibatisCode" class="com.fastwebx.codeAuto.codeCreater.IbatisCode">
+		
+		
+		<!--  ibatis模板路径 -->
+		<property name="templetPath" value="templet/IbatisCode.vm"/>
+		<!-- 运行ibatisCodeTest 和 javaCodeTest可以分别生成ibatis文件和java文件		 -->
+	</bean>
+</beans>
+
+

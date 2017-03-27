@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap  >
+
+  <sql id="Example_Where_Clause">
+	 	<iterate property="tables">
+	 		$tables[].sql$
+	 	</iterate>
+		<dynamic prepend="where">
+		 	<iterate property="list" conjunction="and">
+		 		 
+		 		<isEqual property="list[].simple" compareValue="true">
+		 			
+		 			$list[].sql$
+					<isEqual property="list[].hasValue" compareValue="true">
+						
+						<isEqual property="list[].singleValue" compareValue="true">
+							#list[].value#
+						</isEqual>
+						<isNotEqual property="list[].singleValue" compareValue="true">
+							<iterate property="list[].values"   conjunction="," open="(" close=")">
+								#list[].values[]#
+							
+							</iterate>
+						</isNotEqual>
+			 		</isEqual>
+			 			
+			 		
+			 		
+		 		</isEqual>
+		 		
+		 		<isNotEqual property="list[].simple" compareValue="true">
+		 		(
+		 			$list[].sql$
+		 			<iterate property="list[].cdts"  >
+		 				
+		 				<isGreaterThan property="list[].cdts[].num" compareValue="0">
+		 					$list[].separator$
+		 				</isGreaterThan>
+		 				
+		 				$list[].cdts[].sql$
+				 		<isEqual property="list[].cdts[].hasValue" compareValue="true">
+				 			<isEqual property="list[].cdts[].singleValue" compareValue="true">
+								#list[].cdts[].value#
+							</isEqual>
+							<isNotEqual property="list[].cdts[].singleValue" compareValue="true">
+								<iterate property="list[].cdts[].values"   conjunction="," open="(" close=")">
+									#list[].cdts[].values[]#
+								
+								</iterate>
+							</isNotEqual>
+				 			
+				 		</isEqual>
+		 			</iterate>
+		 			$list[].suffixSql$
+		 		)
+		 		</isNotEqual>
+		 		 
+		 	</iterate>
+		</dynamic>
+	</sql>
+	<sql id="simpleCdt">
+	 	
+	</sql>
+	<sql id="cdt">
+	 	
+	</sql>
+ </sqlMap>

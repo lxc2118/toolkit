@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.fastwebx.test.menpai.pojo.Menpai">
+<resultMap class="com.fastwebx.test.menpai.pojo.Menpai" id="BaseResultMap">
+	<result property="mid" column="mid" jdbcType="int"/>
+	<result property="mname" column="mname" jdbcType="varchar"/>
+</resultMap>
+<select id="find" resultMap="BaseResultMap" parameterClass="com.fastwebx.db.query.Query" >
+	select 
+	t.mid,
+	t.mname	from menpai t
+	<isParameterPresent >
+	<include refid="Example_Where_Clause" />
+	</isParameterPresent>
+	<isNotNull property="orderCol" >
+		order by $orderCol$
+	</isNotNull>
+	<isNull property="orderCol" >
+		order by t.mid desc 
+	</isNull>
+	<isNotEqual property="rp" compareValue="0" >
+	 LIMIT  #firstResult:INTEGER# , #rp:INTEGER#
+	</isNotEqual>
+</select>
+<insert id="insert" parameterClass="com.fastwebx.test.menpai.pojo.Menpai" >
+	insert into menpai (
+		mname	)values(
+		#mname:varchar#	)
+	<selectKey resultClass="java.lang.Integer" keyProperty="mid" >
+	select LAST_INSERT_ID()
+	</selectKey>
+</insert>
+<update id="update" parameterClass="com.fastwebx.test.menpai.pojo.Menpai" >
+	update menpai set
+		mname=#mname:varchar# where mid = #mid:int#
+</update>
+<delete id="delete" parameterClass="com.fastwebx.test.menpai.pojo.Menpai" >
+	delete from menpai where mid=#mid:int#
+</delete>
+<select id="get" resultMap="BaseResultMap" parameterClass="Integer">
+	select
+	mid,
+	mname	from menpai
+	where mid = #value#
+</select>
+<select id="findCnt" parameterClass="com.fastwebx.db.query.Query" resultClass="java.lang.Integer" >
+	select count(*) from menpai t
+	<include refid="Example_Where_Clause" />
+</select>
+</sqlMap>

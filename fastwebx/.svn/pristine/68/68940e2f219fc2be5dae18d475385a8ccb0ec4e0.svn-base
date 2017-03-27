@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.fastwebx.test.depart1.pojo.Depart1">
+<resultMap class="com.fastwebx.test.depart1.pojo.Depart1" id="BaseResultMap">
+	<result property="did1" column="did1" jdbcType="int"/>
+	<result property="dname" column="dname" jdbcType="varchar"/>
+</resultMap>
+<select id="find" resultMap="BaseResultMap" parameterClass="com.shunwang.framework.ibatis.query.ConditionQuery" >
+	select 
+	t.did1,
+	t.dname	from depart1 t
+	<isParameterPresent >
+	<include refid="Example_Where_Clause" />
+	</isParameterPresent>
+	<isNotNull property="orderCol" >
+		order by $orderCol$
+	</isNotNull>
+	<isNull property="orderCol" >
+		order by t.did1 desc 
+	</isNull>
+	<isNotEqual property="rp" compareValue="0" >
+	 LIMIT  #firstResult:INTEGER# , #rp:INTEGER#
+	</isNotEqual>
+</select>
+<insert id="insert" parameterClass="com.fastwebx.test.depart1.pojo.Depart1" >
+	insert into depart1 (
+		dname	)values(
+		#dname:varchar#	)
+	<selectKey resultClass="java.lang.Integer" keyProperty="did1" >
+	select LAST_INSERT_ID()
+	</selectKey>
+</insert>
+<update id="update" parameterClass="com.fastwebx.test.depart1.pojo.Depart1" >
+	update depart1 set
+		dname=#dname:varchar# where did1 = #did1:int#
+</update>
+<delete id="delete" parameterClass="com.fastwebx.test.depart1.pojo.Depart1" >
+	delete from depart1 where did1=#did1:int#
+</delete>
+<select id="get" resultMap="BaseResultMap" parameterClass="Integer">
+	select
+	did1,
+	dname	from depart1
+	where did1 = #value#
+</select>
+<select id="findCnt" parameterClass="com.shunwang.framework.ibatis.query.ConditionQuery" resultClass="java.lang.Integer" >
+	select count(*) from depart1 t
+	<include refid="Example_Where_Clause" />
+</select>
+</sqlMap>

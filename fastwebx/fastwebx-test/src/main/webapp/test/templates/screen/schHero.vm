@@ -1,0 +1,70 @@
+#macro (message $field)
+    #if (!$field.valid) $field.message #end
+#end
+
+#set ($group = $form.hero.defaultInstance)
+<body>
+	<form method="post">
+		schHero
+	<hr>
+		$csrfToken.hiddenField
+    
+    <input type="hidden" name="action" value="addHero"/>
+			
+  
+
+    <p>
+    	<table>
+	    	<tr>
+	    		<td>
+	    			name
+	    		</td>
+	    		<td >
+	        		<input type="text" name="$group.hname.key" />
+	        	</td>
+				<td>
+					#message($group.hname)
+				</td>
+			</tr>
+			<tr>
+	    		<td>
+	    			age
+	    		</td>
+	    		<td >
+	        		<input type="text" name="$group.mid.key" />
+	        	</td>
+				<td>
+					#message($group.mid)
+				</td>
+			</tr>
+		</table>
+        <input type="submit" name="event_submit_execute"/>
+   
+		<hr>
+		
+			hid <input name="hid" >
+			hname <input name="hname" >
+			mname <input name="mname" >
+			<input type="submit">
+		
+		<hr>
+		<table>
+			<tr>
+				<td>英雄id</td>
+				<td>英雄名称</td>
+				<td>门派名称</td>
+			</tr>
+		#foreach ($item in $result.list)
+			<tr>
+				<td>$item.hid </td>
+				<td>$item.hname </td>
+				<td>$item.mname </td>
+			</tr>
+		#end
+		</table>
+		<div>
+			共 $result.total 条记录，第 $result.pageth 页，每页 $result.pageSize 条记录，
+			<input id="pageth"><input type="submit" value="go"> 
+		</div>
+	</form>
+</body>

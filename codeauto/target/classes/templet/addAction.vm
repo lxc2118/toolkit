@@ -1,0 +1,28 @@
+package $pkg;
+#set($pojoName=${nameUtil.firstUpperPasical($table.name)})
+#set($littleName=${nameUtil.pasical($table.name)})
+
+import ${basePkg}.biz.${nameUtil.pasical($table.name)}.domain.${pojoName};
+import ${basePkg}.biz.${nameUtil.pasical($table.name)}.dao.${pojoName}Dao;
+import javax.annotation.Resource;
+
+import com.fastwebx.common.dao.ICrud;
+import com.fastwebx.web.AddCtrl;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/add${pojoName}")
+public class Add${pojoName} extends AddCtrl<${pojoName}>{
+	public Add${pojoName}(){
+		
+	}
+
+	@Resource
+	private ${pojoName}Dao ${nameUtil.pasical($table.name)}Dao; 
+	
+	@Override
+	public ICrud<${pojoName}> acqDao() {
+		return ${nameUtil.pasical($table.name)}Dao;
+	}
+}

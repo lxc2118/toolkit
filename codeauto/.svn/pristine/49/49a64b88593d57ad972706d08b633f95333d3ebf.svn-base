@@ -1,0 +1,8 @@
+
+var menuList=[
+	{id:'1',name:'全体菜单'}
+#foreach($table in $tables)
+	#set($name=${nameUtil.pasical($table.name)})
+	,{id:'${name}',name:'${name}',pid:'1',url:'../${name}/${name}.jsp'}
+#end	
+];

@@ -1,0 +1,740 @@
+2015-10-23 15:36:43,592 - Initializing Velocity, Calling init()...
+2015-10-23 15:36:43,592 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-23 15:36:43,592 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-23 15:36:43,592 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-23 15:36:43,592 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-23 15:36:43,592 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-23 15:36:43,592 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-23 15:36:43,592 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:43,623 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-23 15:36:43,623 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-23 15:36:43,623 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-23 15:36:43,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-23 15:36:43,654 - Created '20' parsers.
+2015-10-23 15:36:43,654 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-23 15:36:43,654 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-10-23 15:36:43,670 - Velocimacro : Default library not found.
+2015-10-23 15:36:43,670 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-23 15:36:43,670 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-23 15:36:43,670 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-23 15:36:43,670 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-23 15:36:43,997 - ResourceManager : found templet/IbatisCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,029 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2015-10-23 15:36:44,029 - ResourceManager : found templet/WhereClause.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 8, column 26] : ${item.sql} cannot be resolved.
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 15, column 42] : ${item.sql} cannot be resolved.
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 35, column 42] : ${item.sql} cannot be resolved.
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 39, column 58] : ${item.separator} cannot be resolved.
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 42, column 50] : ${cdt.sql} cannot be resolved.
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 56, column 42] : ${item.suffixSql} cannot be resolved.
+2015-10-23 15:36:44,029 - Null reference [template 'templet/WhereClause.vm', line 65, column 34] : ${orderCol} cannot be resolved.
+2015-10-23 15:36:44,044 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-23 15:36:44,044 - Initializing Velocity, Calling init()...
+2015-10-23 15:36:44,044 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-23 15:36:44,044 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-23 15:36:44,044 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-23 15:36:44,044 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-23 15:36:44,044 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-23 15:36:44,044 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-23 15:36:44,044 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-10-23 15:36:44,044 - Do unicode file recognition:  false
+2015-10-23 15:36:44,044 - FileResourceLoader : adding path '.'
+2015-10-23 15:36:44,044 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-23 15:36:44,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-23 15:36:44,044 - Created '20' parsers.
+2015-10-23 15:36:44,044 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-23 15:36:44,044 - Velocimacro : Default library not found.
+2015-10-23 15:36:44,044 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-23 15:36:44,044 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-23 15:36:44,044 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-23 15:36:44,044 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-23 15:36:44,060 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,060 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,060 - ResourceManager : found templet/schAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,075 - ResourceManager : found templet/updateAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,075 - ResourceManager : found templet/DelAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,075 - ResourceManager : found templet/AddAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,075 - ResourceManager : found templet/ApplicationXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,075 - Null reference [template 'templet/ApplicationXmlCode.vm', line 38, column 49] : ${appname} cannot be resolved.
+2015-10-23 15:36:44,075 - Null reference [template 'templet/ApplicationXmlCode.vm', line 39, column 52] : ${dbGroupKey} cannot be resolved.
+2015-10-23 15:36:44,075 - ResourceManager : found templet/ServerCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,075 - Null reference [template 'templet/ServerCode.vm', line 10, column 9] : ${appname} cannot be resolved.
+2015-10-23 15:36:44,075 - Null reference [template 'templet/ServerCode.vm', line 11, column 12] : ${dbGroupKey} cannot be resolved.
+2015-10-23 15:36:44,075 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,091 - ResourceManager : found templet/JsViewCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2015-10-23 15:36:44,091 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,091 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2015-10-23 15:36:44,091 - ResourceManager : found templet/LocalJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - ResourceManager : found templet/MainJspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 10, column 20] : ${ctx} cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 14, column 44] : ${staticPath} cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 16, column 44] : ${staticPath} cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 18, column 44] : ${staticPath} cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 21, column 45] : ${ctx} cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 23, column 45] : ${ctx} cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/MainJspCode.vm', line 25, column 21] : ${staticPath} cannot be resolved.
+2015-10-23 15:36:44,138 - ResourceManager : found templet/MenuCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - ResourceManager : found templet/PageJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-23 15:36:44,138 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2015-10-23 15:36:44,138 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - ResourceManager : found templet/TaglibsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - Null reference [template 'templet/TaglibsCode.vm', line 3, column 25] : ${pageContext.request.contextPath} cannot be resolved.
+che.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-23 15:36:44,138 - Null reference [template 'templet/TaglibsCode.vm', line 3, column 25] : ${pageContext.request.contextPath} cannot be resolved.
+2015-10-26 14:37:00,189 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-26 14:37:00,190 - Initializing Velocity, Calling init()...
+2015-10-26 14:37:00,190 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-26 14:37:00,190 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-26 14:37:00,190 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-26 14:37:00,190 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-26 14:37:00,190 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:37:00,190 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:37:00,194 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,214 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-26 14:37:00,215 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-26 14:37:00,216 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-26 14:37:00,217 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-26 14:37:00,218 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-26 14:37:00,218 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-26 14:37:00,219 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-26 14:37:00,221 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-26 14:37:00,223 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-26 14:37:00,224 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-26 14:37:00,251 - Created '20' parsers.
+2015-10-26 14:37:00,255 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-26 14:37:00,256 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-10-26 14:37:00,256 - Velocimacro : Default library not found.
+2015-10-26 14:37:00,256 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-26 14:37:00,256 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-26 14:37:00,256 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-26 14:37:00,256 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-26 14:37:00,710 - ResourceManager : found templet/IbatisCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,760 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2015-10-26 14:37:00,770 - ResourceManager : found templet/WhereClause.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,770 - Null reference [template 'templet/WhereClause.vm', line 8, column 26] : ${item.sql} cannot be resolved.
+2015-10-26 14:37:00,770 - Null reference [template 'templet/WhereClause.vm', line 15, column 42] : ${item.sql} cannot be resolved.
+2015-10-26 14:37:00,771 - Null reference [template 'templet/WhereClause.vm', line 35, column 42] : ${item.sql} cannot be resolved.
+2015-10-26 14:37:00,771 - Null reference [template 'templet/WhereClause.vm', line 39, column 58] : ${item.separator} cannot be resolved.
+2015-10-26 14:37:00,771 - Null reference [template 'templet/WhereClause.vm', line 42, column 50] : ${cdt.sql} cannot be resolved.
+2015-10-26 14:37:00,771 - Null reference [template 'templet/WhereClause.vm', line 56, column 42] : ${item.suffixSql} cannot be resolved.
+2015-10-26 14:37:00,771 - Null reference [template 'templet/WhereClause.vm', line 65, column 34] : ${orderCol} cannot be resolved.
+2015-10-26 14:37:00,775 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-26 14:37:00,775 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-26 14:37:00,775 - Initializing Velocity, Calling init()...
+2015-10-26 14:37:00,775 - Initializing Velocity, Calling init()...
+2015-10-26 14:37:00,775 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-26 14:37:00,775 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-26 14:37:00,775 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-26 14:37:00,775 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-26 14:37:00,775 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-26 14:37:00,775 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-26 14:37:00,775 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-26 14:37:00,775 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-26 14:37:00,775 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:37:00,775 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:37:00,775 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:37:00,775 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:37:00,776 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-10-26 14:37:00,776 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-10-26 14:37:00,777 - Do unicode file recognition:  false
+2015-10-26 14:37:00,777 - Do unicode file recognition:  false
+2015-10-26 14:37:00,777 - FileResourceLoader : adding path '.'
+2015-10-26 14:37:00,777 - FileResourceLoader : adding path '.'
+2015-10-26 14:37:00,777 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-26 14:37:00,777 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-26 14:37:00,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-26 14:37:00,778 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-26 14:37:00,778 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-26 14:37:00,778 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-26 14:37:00,778 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-26 14:37:00,779 - Created '20' parsers.
+2015-10-26 14:37:00,779 - Created '20' parsers.
+2015-10-26 14:37:00,779 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-26 14:37:00,779 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-26 14:37:00,779 - Velocimacro : Default library not found.
+2015-10-26 14:37:00,779 - Velocimacro : Default library not found.
+2015-10-26 14:37:00,779 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-26 14:37:00,779 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-26 14:37:00,779 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-26 14:37:00,779 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-26 14:37:00,779 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-26 14:37:00,779 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-26 14:37:00,779 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-26 14:37:00,779 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-26 14:37:00,789 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,789 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,813 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,813 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,818 - ResourceManager : found templet/schAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,818 - ResourceManager : found templet/schAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,824 - ResourceManager : found templet/updateAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,824 - ResourceManager : found templet/updateAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,836 - ResourceManager : found templet/DelAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,836 - ResourceManager : found templet/DelAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,840 - ResourceManager : found templet/AddAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,840 - ResourceManager : found templet/AddAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,842 - ResourceManager : found templet/ApplicationXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,842 - ResourceManager : found templet/ApplicationXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,842 - Null reference [template 'templet/ApplicationXmlCode.vm', line 38, column 49] : ${appname} cannot be resolved.
+2015-10-26 14:37:00,842 - Null reference [template 'templet/ApplicationXmlCode.vm', line 38, column 49] : ${appname} cannot be resolved.
+2015-10-26 14:37:00,842 - Null reference [template 'templet/ApplicationXmlCode.vm', line 39, column 52] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:37:00,842 - Null reference [template 'templet/ApplicationXmlCode.vm', line 39, column 52] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:37:00,843 - ResourceManager : found templet/ServerCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,843 - ResourceManager : found templet/ServerCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,844 - Null reference [template 'templet/ServerCode.vm', line 10, column 9] : ${appname} cannot be resolved.
+2015-10-26 14:37:00,844 - Null reference [template 'templet/ServerCode.vm', line 10, column 9] : ${appname} cannot be resolved.
+2015-10-26 14:37:00,844 - Null reference [template 'templet/ServerCode.vm', line 11, column 12] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:37:00,844 - Null reference [template 'templet/ServerCode.vm', line 11, column 12] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:37:00,845 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,845 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,874 - ResourceManager : found templet/JsViewCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,874 - ResourceManager : found templet/JsViewCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,874 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,875 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,875 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,875 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,875 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,875 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2015-10-26 14:37:00,875 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2015-10-26 14:37:00,880 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,880 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,880 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,880 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,880 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2015-10-26 14:37:00,880 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2015-10-26 14:37:00,882 - ResourceManager : found templet/LocalJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,882 - ResourceManager : found templet/LocalJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,883 - ResourceManager : found templet/MainJspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,883 - ResourceManager : found templet/MainJspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 10, column 20] : ${ctx} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 10, column 20] : ${ctx} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 14, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 14, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 16, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 16, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 18, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 18, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 21, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 21, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 23, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 23, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 25, column 21] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,885 - Null reference [template 'templet/MainJspCode.vm', line 25, column 21] : ${staticPath} cannot be resolved.
+2015-10-26 14:37:00,888 - ResourceManager : found templet/MenuCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,888 - ResourceManager : found templet/MenuCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,890 - ResourceManager : found templet/PageJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,890 - ResourceManager : found templet/PageJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2015-10-26 14:37:00,891 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2015-10-26 14:37:00,892 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,892 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,897 - ResourceManager : found templet/TaglibsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,897 - ResourceManager : found templet/TaglibsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:37:00,897 - Null reference [template 'templet/TaglibsCode.vm', line 3, column 25] : ${pageContext.request.contextPath} cannot be resolved.
+2015-10-26 14:37:00,897 - Null reference [template 'templet/TaglibsCode.vm', line 3, column 25] : ${pageContext.request.contextPath} cannot be resolved.
+2015-10-26 14:39:25,444 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-26 14:39:25,445 - Initializing Velocity, Calling init()...
+2015-10-26 14:39:25,445 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-26 14:39:25,445 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-26 14:39:25,445 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-26 14:39:25,445 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-26 14:39:25,445 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:39:25,445 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:39:25,448 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,456 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-26 14:39:25,457 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-26 14:39:25,458 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-26 14:39:25,458 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-26 14:39:25,459 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-26 14:39:25,459 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-26 14:39:25,460 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-26 14:39:25,461 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-26 14:39:25,462 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-26 14:39:25,462 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-26 14:39:25,482 - Created '20' parsers.
+2015-10-26 14:39:25,487 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-26 14:39:25,487 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-10-26 14:39:25,488 - Velocimacro : Default library not found.
+2015-10-26 14:39:25,488 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-26 14:39:25,488 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-26 14:39:25,488 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-26 14:39:25,488 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-26 14:39:25,804 - ResourceManager : found templet/IbatisCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,828 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2015-10-26 14:39:25,832 - ResourceManager : found templet/WhereClause.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 8, column 26] : ${item.sql} cannot be resolved.
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 15, column 42] : ${item.sql} cannot be resolved.
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 35, column 42] : ${item.sql} cannot be resolved.
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 39, column 58] : ${item.separator} cannot be resolved.
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 42, column 50] : ${cdt.sql} cannot be resolved.
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 56, column 42] : ${item.suffixSql} cannot be resolved.
+2015-10-26 14:39:25,832 - Null reference [template 'templet/WhereClause.vm', line 65, column 34] : ${orderCol} cannot be resolved.
+2015-10-26 14:39:25,835 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-26 14:39:25,835 - Log4JLogChute initialized using file 'velocity.log'
+2015-10-26 14:39:25,835 - Initializing Velocity, Calling init()...
+2015-10-26 14:39:25,835 - Initializing Velocity, Calling init()...
+2015-10-26 14:39:25,835 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-26 14:39:25,835 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-10-26 14:39:25,835 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-26 14:39:25,835 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-10-26 14:39:25,835 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-26 14:39:25,835 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-10-26 14:39:25,835 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-26 14:39:25,835 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-10-26 14:39:25,835 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:39:25,835 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:39:25,835 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:39:25,835 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-10-26 14:39:25,836 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-10-26 14:39:25,836 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-10-26 14:39:25,836 - Do unicode file recognition:  false
+2015-10-26 14:39:25,836 - Do unicode file recognition:  false
+2015-10-26 14:39:25,836 - FileResourceLoader : adding path '.'
+2015-10-26 14:39:25,836 - FileResourceLoader : adding path '.'
+2015-10-26 14:39:25,836 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-26 14:39:25,836 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-26 14:39:25,837 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-10-26 14:39:25,838 - Created '20' parsers.
+2015-10-26 14:39:25,838 - Created '20' parsers.
+2015-10-26 14:39:25,838 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-26 14:39:25,838 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-10-26 14:39:25,838 - Velocimacro : Default library not found.
+2015-10-26 14:39:25,838 - Velocimacro : Default library not found.
+2015-10-26 14:39:25,838 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-26 14:39:25,838 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-10-26 14:39:25,838 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-26 14:39:25,838 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-10-26 14:39:25,838 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-26 14:39:25,838 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-10-26 14:39:25,838 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-26 14:39:25,838 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-10-26 14:39:25,840 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,840 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,845 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,845 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,849 - ResourceManager : found templet/schAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,849 - ResourceManager : found templet/schAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,852 - ResourceManager : found templet/updateAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,852 - ResourceManager : found templet/updateAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,853 - ResourceManager : found templet/DelAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,853 - ResourceManager : found templet/DelAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,855 - ResourceManager : found templet/AddAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,855 - ResourceManager : found templet/AddAction.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,856 - ResourceManager : found templet/ApplicationXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,856 - ResourceManager : found templet/ApplicationXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,856 - Null reference [template 'templet/ApplicationXmlCode.vm', line 38, column 49] : ${appname} cannot be resolved.
+2015-10-26 14:39:25,856 - Null reference [template 'templet/ApplicationXmlCode.vm', line 38, column 49] : ${appname} cannot be resolved.
+2015-10-26 14:39:25,856 - Null reference [template 'templet/ApplicationXmlCode.vm', line 39, column 52] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:39:25,856 - Null reference [template 'templet/ApplicationXmlCode.vm', line 39, column 52] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:39:25,857 - ResourceManager : found templet/ServerCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,857 - ResourceManager : found templet/ServerCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,858 - Null reference [template 'templet/ServerCode.vm', line 10, column 9] : ${appname} cannot be resolved.
+2015-10-26 14:39:25,858 - Null reference [template 'templet/ServerCode.vm', line 10, column 9] : ${appname} cannot be resolved.
+2015-10-26 14:39:25,858 - Null reference [template 'templet/ServerCode.vm', line 11, column 12] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:39:25,858 - Null reference [template 'templet/ServerCode.vm', line 11, column 12] : ${dbGroupKey} cannot be resolved.
+2015-10-26 14:39:25,859 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,859 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,862 - ResourceManager : found templet/JsViewCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,862 - ResourceManager : found templet/JsViewCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2015-10-26 14:39:25,862 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2015-10-26 14:39:25,865 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,865 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,865 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,865 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,866 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2015-10-26 14:39:25,866 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2015-10-26 14:39:25,867 - ResourceManager : found templet/LocalJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,867 - ResourceManager : found templet/LocalJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,868 - ResourceManager : found templet/MainJspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,868 - ResourceManager : found templet/MainJspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 10, column 20] : ${ctx} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 10, column 20] : ${ctx} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 14, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 14, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 16, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 16, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 18, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 18, column 44] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 21, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 21, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 23, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 23, column 45] : ${ctx} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 25, column 21] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,868 - Null reference [template 'templet/MainJspCode.vm', line 25, column 21] : ${staticPath} cannot be resolved.
+2015-10-26 14:39:25,870 - ResourceManager : found templet/MenuCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,870 - ResourceManager : found templet/MenuCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,871 - ResourceManager : found templet/PageJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,871 - ResourceManager : found templet/PageJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,871 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,871 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,872 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,872 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,872 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,872 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2015-10-26 14:39:25,872 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2015-10-26 14:39:25,872 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2015-10-26 14:39:25,873 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,873 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,875 - ResourceManager : found templet/TaglibsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,875 - ResourceManager : found templet/TaglibsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-10-26 14:39:25,875 - Null reference [template 'templet/TaglibsCode.vm', line 3, column 25] : ${pageContext.request.contextPath} cannot be resolved.
+2015-10-26 14:39:25,875 - Null reference [template 'templet/TaglibsCode.vm', line 3, column 25] : ${pageContext.request.contextPath} cannot be resolved.
+2017-03-17 00:56:46,222 - Log4JLogChute initialized using file 'velocity.log'
+2017-03-17 00:56:46,223 - Initializing Velocity, Calling init()...
+2017-03-17 00:56:46,223 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-03-17 00:56:46,223 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-03-17 00:56:46,223 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-03-17 00:56:46,223 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-03-17 00:56:46,223 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:46,223 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:46,225 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,232 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-03-17 00:56:46,233 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-03-17 00:56:46,233 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-03-17 00:56:46,234 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-03-17 00:56:46,234 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-03-17 00:56:46,234 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-03-17 00:56:46,235 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-03-17 00:56:46,236 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-03-17 00:56:46,236 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-03-17 00:56:46,237 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-03-17 00:56:46,255 - Created '20' parsers.
+2017-03-17 00:56:46,257 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-03-17 00:56:46,258 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-03-17 00:56:46,258 - Velocimacro : Default library not found.
+2017-03-17 00:56:46,258 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-03-17 00:56:46,258 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-03-17 00:56:46,258 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-03-17 00:56:46,258 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-03-17 00:56:46,332 - ResourceManager : found templet/ApplicationXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,579 - Null reference [template 'templet/ApplicationXmlCode.vm', line 38, column 49] : ${appname} cannot be resolved.
+2017-03-17 00:56:46,579 - Null reference [template 'templet/ApplicationXmlCode.vm', line 39, column 52] : ${dbGroupKey} cannot be resolved.
+2017-03-17 00:56:46,670 - ResourceManager : found templet/TestCreater.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,747 - Log4JLogChute initialized using file 'velocity.log'
+2017-03-17 00:56:46,747 - Log4JLogChute initialized using file 'velocity.log'
+2017-03-17 00:56:46,747 - Initializing Velocity, Calling init()...
+2017-03-17 00:56:46,747 - Initializing Velocity, Calling init()...
+2017-03-17 00:56:46,747 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-03-17 00:56:46,747 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-03-17 00:56:46,747 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-03-17 00:56:46,747 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-03-17 00:56:46,747 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-03-17 00:56:46,747 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-03-17 00:56:46,747 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-03-17 00:56:46,747 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-03-17 00:56:46,747 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:46,747 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:46,747 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:46,747 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:46,749 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-03-17 00:56:46,749 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-03-17 00:56:46,749 - Do unicode file recognition:  false
+2017-03-17 00:56:46,749 - Do unicode file recognition:  false
+2017-03-17 00:56:46,749 - FileResourceLoader : adding path '.'
+2017-03-17 00:56:46,749 - FileResourceLoader : adding path '.'
+2017-03-17 00:56:46,749 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-03-17 00:56:46,749 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-03-17 00:56:46,749 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-03-17 00:56:46,750 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-03-17 00:56:46,751 - Created '20' parsers.
+2017-03-17 00:56:46,751 - Created '20' parsers.
+2017-03-17 00:56:46,751 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-03-17 00:56:46,751 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-03-17 00:56:46,751 - Velocimacro : Default library not found.
+2017-03-17 00:56:46,751 - Velocimacro : Default library not found.
+2017-03-17 00:56:46,751 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-03-17 00:56:46,751 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-03-17 00:56:46,751 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-03-17 00:56:46,751 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-03-17 00:56:46,751 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-03-17 00:56:46,751 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-03-17 00:56:46,751 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-03-17 00:56:46,751 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-03-17 00:56:46,753 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,753 - ResourceManager : found templet/dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,814 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,814 - ResourceManager : found templet/DecoratorsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,869 - ResourceManager : found templet/IbaticContext.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,869 - ResourceManager : found templet/IbaticContext.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,936 - ResourceManager : found templet/IbatisCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:46,981 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2017-03-17 00:56:47,001 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2017-03-17 00:56:47,026 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2017-03-17 00:56:47,057 - Null reference [template 'templet/IbatisCode.vm', line 89, column 16] : ${columns} cannot be resolved.
+2017-03-17 00:56:47,119 - Log4JLogChute initialized using file 'velocity.log'
+2017-03-17 00:56:47,119 - Log4JLogChute initialized using file 'velocity.log'
+2017-03-17 00:56:47,119 - Initializing Velocity, Calling init()...
+2017-03-17 00:56:47,119 - Initializing Velocity, Calling init()...
+2017-03-17 00:56:47,119 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-03-17 00:56:47,119 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-03-17 00:56:47,119 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-03-17 00:56:47,119 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-03-17 00:56:47,119 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-03-17 00:56:47,119 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-03-17 00:56:47,119 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-03-17 00:56:47,119 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-03-17 00:56:47,119 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:47,119 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:47,119 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:47,119 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:47,119 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-03-17 00:56:47,119 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-03-17 00:56:47,119 - Do unicode file recognition:  false
+2017-03-17 00:56:47,119 - Do unicode file recognition:  false
+2017-03-17 00:56:47,119 - FileResourceLoader : adding path '.'
+2017-03-17 00:56:47,119 - FileResourceLoader : adding path '.'
+2017-03-17 00:56:47,119 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-03-17 00:56:47,119 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-03-17 00:56:47,119 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-03-17 00:56:47,119 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-03-17 00:56:47,120 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-03-17 00:56:47,120 - Created '20' parsers.
+2017-03-17 00:56:47,120 - Created '20' parsers.
+2017-03-17 00:56:47,121 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-03-17 00:56:47,121 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-03-17 00:56:47,121 - Velocimacro : Default library not found.
+2017-03-17 00:56:47,121 - Velocimacro : Default library not found.
+2017-03-17 00:56:47,121 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-03-17 00:56:47,121 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-03-17 00:56:47,121 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-03-17 00:56:47,121 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-03-17 00:56:47,121 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-03-17 00:56:47,121 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-03-17 00:56:47,121 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-03-17 00:56:47,121 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-03-17 00:56:47,123 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,123 - ResourceManager : found templet/pojo.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,180 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,180 - ResourceManager : found templet/JsModelCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,180 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,180 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,180 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,180 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,182 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,182 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,182 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,182 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,183 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,183 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,183 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,183 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,184 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,184 - Null reference [template 'templet/JsModelCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,184 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,184 - Null reference [template 'templet/JsModelCode.vm', line 3, column 18] : $createClass cannot be resolved.
+2017-03-17 00:56:47,245 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,245 - ResourceManager : found templet/JspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,308 - ResourceManager : found templet/JsViewCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,309 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,311 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,313 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 1, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 2, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 6, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,315 - Null reference [template 'templet/JsViewCode.vm', line 8, column 17] : $createClass cannot be resolved.
+2017-03-17 00:56:47,371 - ResourceManager : found templet/LocalJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,425 - ResourceManager : found templet/MainJspCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 10, column 20] : ${ctx} cannot be resolved.
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 14, column 44] : ${staticPath} cannot be resolved.
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 16, column 44] : ${staticPath} cannot be resolved.
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 18, column 44] : ${staticPath} cannot be resolved.
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 21, column 45] : ${ctx} cannot be resolved.
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 23, column 45] : ${ctx} cannot be resolved.
+2017-03-17 00:56:47,425 - Null reference [template 'templet/MainJspCode.vm', line 25, column 21] : ${staticPath} cannot be resolved.
+2017-03-17 00:56:47,474 - ResourceManager : found templet/PageJsCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,474 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,474 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,474 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,474 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2017-03-17 00:56:47,475 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,475 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,475 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,475 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 3, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 4, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 5, column 1] : $import cannot be resolved.
+2017-03-17 00:56:47,476 - Null reference [template 'templet/PageJsCode.vm', line 6, column 1] : $ready cannot be resolved.
+2017-03-17 00:56:47,519 - ResourceManager : found templet/PomXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 24, column 34] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 29, column 34] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 34, column 34] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 39, column 34] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 44, column 34] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 90, column 42] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 96, column 42] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 102, column 42] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 108, column 42] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,519 - Null reference [template 'templet/PomXmlCode.vm', line 124, column 42] : ${project.version} cannot be resolved.
+2017-03-17 00:56:47,779 - ResourceManager : found templet/WebXmlCode.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,930 - ResourceManager : found templet/WhereClause.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 8, column 26] : ${item.sql} cannot be resolved.
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 15, column 42] : ${item.sql} cannot be resolved.
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 35, column 42] : ${item.sql} cannot be resolved.
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 39, column 58] : ${item.separator} cannot be resolved.
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 42, column 50] : ${cdt.sql} cannot be resolved.
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 56, column 42] : ${item.suffixSql} cannot be resolved.
+2017-03-17 00:56:47,930 - Null reference [template 'templet/WhereClause.vm', line 65, column 34] : ${orderCol} cannot be resolved.
+2017-03-17 00:56:58,242 - Log4JLogChute initialized using file 'velocity.log'
+2017-03-17 00:56:58,242 - Initializing Velocity, Calling init()...
+2017-03-17 00:56:58,242 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-03-17 00:56:58,242 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-03-17 00:56:58,243 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-03-17 00:56:58,243 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-03-17 00:56:58,243 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:58,243 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-03-17 00:56:58,245 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-03-17 00:56:58,252 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-03-17 00:56:58,253 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-03-17 00:56:58,254 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-03-17 00:56:58,255 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-03-17 00:56:58,256 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-03-17 00:56:58,256 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-03-17 00:56:58,257 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-03-17 00:56:58,258 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-03-17 00:56:58,258 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-03-17 00:56:58,259 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-03-17 00:56:58,278 - Created '20' parsers.
+2017-03-17 00:56:58,281 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-03-17 00:56:58,281 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-03-17 00:56:58,282 - Velocimacro : Default library not found.
+2017-03-17 00:56:58,282 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-03-17 00:56:58,282 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-03-17 00:56:58,282 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-03-17 00:56:58,282 - Velocimacro : autoload off : VM system will not automatically reload global library macros

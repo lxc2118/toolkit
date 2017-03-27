@@ -1,0 +1,14 @@
+#set($modelName="${nameUtil.firstUpperPasical($table.name)}Model")
+#set($viewName="${nameUtil.firstUpperPasical($table.name)}View")
+$import('$viewName');
+$import('$modelName');
+$import('SFPage');
+$ready(function(){
+	var page= new SFPage({
+		menuList:menuList,
+		view : new $viewName(),
+		model: ${modelName}.get(),
+		viewMsgs:['add','del','update']
+	})
+});
+	

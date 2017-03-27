@@ -1,0 +1,13 @@
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\DbProperty.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\property\ProProxy.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\inf\IConnGeter.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\ConnFactory.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\JdbcConnGeter.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\property\ProContext.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\annotation\GetFromDb.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\annotation\SaveToDb.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\annotation\TableName.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\property\ProFactory.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\DbProxy.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\dbproperty\annotation\SetToDb.java
+D:\workspace\fastwebx\fastwebx-property\src\main\java\com\fastwebx\property\property\Pro.java

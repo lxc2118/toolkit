@@ -1,0 +1,52 @@
+$import('ValidateRule');
+$import('SFGridView');
+$import('SFGrid');
+$import('SFInput');
+$import('SFDate');
+$import('${nameUtil.firstUpperPasical($table.name)}Model');
+#set($viewName="${nameUtil.firstUpperPasical($table.name)}View")
+var $viewName = $createClass('$viewName',function(){
+	#if($table.autoIncrease==false)
+	this.pk = $table.firstPk.jsControl;
+	#end
+	this.pojoControls = [
+#set($cnt=1)
+#if($table.autoIncrease==false)
+    	this.pk
+#set($cnt=$cnt+1)
+#end
+#foreach($col in $table.otherColumns)
+		#if($cnt>1),#end$col.jsControl	
+		#set($cnt=$cnt+1)
+#end
+			
+	];
+#if($table.autoIncrease)
+	this.pojoHidden=["${nameUtil.pasical($table.firstPk.name)}"];
+#end
+	this.schControl =  [
+
+	];
+	this.leftBtns = [
+		this.createAddBtn()
+	];
+	this.SFGridView();
+},'SFGridView');
+${viewName}.prototype.buildGrid = function(){
+	var grid = new SFGrid({
+		model:${nameUtil.firstUpperPasical($table.name)}Model.get(),
+		col:[
+			#foreach($col in $table.columns)
+			#set($name="${nameUtil.pasical($col.name)}")
+    		#if($velocityCount>1),#end{id:'${name}',text:'${name}'}
+    		#end
+			
+		],
+			
+		linebutton:[
+			this.createUpdateBtn(),
+			this.createDelBtn()
+		]
+	});
+	return grid;
+}

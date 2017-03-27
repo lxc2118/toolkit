@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: com.fastwebx.common.util.FileHelpUtilTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.032 sec <<< FAILURE!
+test2bytes(com.fastwebx.common.util.FileHelpUtilTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at java.lang.String.<init>(String.java:566)
+	at com.fastwebx.common.util.FileHelpUtilTest.test2bytes(FileHelpUtilTest.java:40)
+
+testFile2bytes(com.fastwebx.common.util.FileHelpUtilTest)  Time elapsed: 0.032 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.fastwebx.common.util.FileHelpUtilTest.testFile2bytes(FileHelpUtilTest.java:33)
+

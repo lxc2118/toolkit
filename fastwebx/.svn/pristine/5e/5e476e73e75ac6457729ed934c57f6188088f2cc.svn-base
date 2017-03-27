@@ -1,0 +1,8 @@
+$rundata.request.getAttribute("error") <br>
+$error1 <br>
+$error2 <br>
+$test<br>
+
+$rundata.request.getAttribute("test")
+<hr>
+test.do

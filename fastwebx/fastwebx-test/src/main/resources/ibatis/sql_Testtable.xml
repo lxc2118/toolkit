@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.fastwebx.test.testtable.pojo.Testtable">
+<resultMap class="com.fastwebx.test.testtable.pojo.Testtable" id="BaseResultMap">
+	<result property="test1" column="test1" jdbcType="int"/>
+	<result property="name" column="name" jdbcType="varchar"/>
+</resultMap>
+<select id="find" resultMap="BaseResultMap" parameterClass="com.shunwang.framework.ibatis.query.ConditionQuery" >
+	select 
+	t.test1,
+	t.name	from testtable t
+	<isParameterPresent >
+	<include refid="Example_Where_Clause" />
+	</isParameterPresent>
+	<isNotNull property="orderCol" >
+		order by $orderCol$
+	</isNotNull>
+	<isNull property="orderCol" >
+		order by t.test1 desc 
+	</isNull>
+	<isNotEqual property="rp" compareValue="0" >
+	 LIMIT  #firstResult:INTEGER# , #rp:INTEGER#
+	</isNotEqual>
+</select>
+<insert id="insert" parameterClass="com.fastwebx.test.testtable.pojo.Testtable" >
+	insert into testtable (
+		name	)values(
+		#name:varchar#	)
+	<selectKey resultClass="java.lang.Integer" keyProperty="test1" >
+	select LAST_INSERT_ID()
+	</selectKey>
+</insert>
+<update id="update" parameterClass="com.fastwebx.test.testtable.pojo.Testtable" >
+	update testtable set
+		name=#name:varchar# where test1 = #test1:int#
+</update>
+<delete id="delete" parameterClass="com.fastwebx.test.testtable.pojo.Testtable" >
+	delete from testtable where test1=#test1:int#
+</delete>
+<select id="get" resultMap="BaseResultMap" parameterClass="Integer">
+	select
+	test1,
+	name	from testtable
+	where test1 = #value#
+</select>
+<select id="findCnt" parameterClass="com.shunwang.framework.ibatis.query.ConditionQuery" resultClass="java.lang.Integer" >
+	select count(*) from testtable t
+	<include refid="Example_Where_Clause" />
+</select>
+</sqlMap>

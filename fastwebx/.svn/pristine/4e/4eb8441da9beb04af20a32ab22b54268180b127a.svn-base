@@ -1,0 +1,30 @@
+package com.fastwebx.web.json.imp;
+
+import java.util.Date;
+
+import com.alibaba.fastjson.JSON;
+import com.fastwebx.web.json.JObj;
+import com.fastwebx.web.json.imp.builder.JsonBuilder;
+
+import junit.framework.TestCase;
+
+/**
+ * @author mj
+ */
+public class DefJsonParserTest extends TestCase {
+	public void testParser(){
+		JObj obj = new JObj();
+		obj.setAaa("aaaerer");
+		obj.setBbb(1234);
+		obj.setCcc(new Date());
+		DefJsonParser p = new DefJsonParser();
+		JSON json = (p.parse(obj));
+		System.out.println(json);
+		
+		JsonBuilder<JObj> builder = new JsonBuilder<JObj>(JObj.class);
+		JObj obj1 = builder.build(json);
+		System.out.println(obj1.getAaa());
+		System.out.println(obj1.getBbb());
+		System.out.println(obj1.getCcc());
+	}
+}
