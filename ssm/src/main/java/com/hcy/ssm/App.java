@@ -9,6 +9,8 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.hcy.ssm.codeCreater.IbatisCode;
+import com.hcy.ssm.codeCreater.JavaCode;
 import com.hcy.ssm.common.S;
 import com.hcy.ssm.common.SpringContext;
 import com.hcy.ssm.context.Context;
@@ -56,6 +58,12 @@ public class App extends TestBase{
 		StringWriter writer = new StringWriter();
 		template.merge(context, writer);
 		System.out.println(writer);
+	}
+	
+	public void testProcess() {
+		 S.get(IbatisCode.class).process();
+		 ((JavaCode)S.get("pojo")).process();
+		 new CopySrc().execute();
 	}
 	
 	public static void main(String[] args) {

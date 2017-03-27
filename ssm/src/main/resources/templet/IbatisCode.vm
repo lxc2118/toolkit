@@ -14,45 +14,25 @@
 #end
 </sql>
 
-<select id="find" resultMap="BaseResultMap" parameterType="java.util.ArrayList" >
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
 	select 
 	<include refid="cols" />
 	from $table.name t
-	<include refid="sql.where"></include>
-	<include refid="sql.order"></include>
 	<include refid="sql.page"></include>
 </select>
-
-<select id="findAll" resultMap="BaseResultMap" parameterType="java.util.ArrayList" >
-	select 
-	<include refid="cols" />
-	from $table.name t
-	<include refid="sql.where"></include>
-	<include refid="sql.order"></include>
-	<include refid="sql.page"></include>
-</select>
-
-<delete id="delete" parameterType="$pojoName" >
-	delete from $table.name where
-#foreach($col in $table.pks)
-	#if($velocityCount>1) and #end $col.sqlCode
-#end
-</delete>
 
 <select id="get" resultMap="BaseResultMap" parameterType="#if($table.singlePk==true)Object#else${pojoName}#end">
 	select <include refid="cols" /> from $table.name t where 
 	#if($table.singlePk==true)
-		$table.firstPk.name=#{value} 
-	#else	
+		$table.firstPk.name=#{value}
+	#else
 		#foreach($col in $table.pks)
-			#if($velocityCount>1) and #end $col.sqlCode
+			#if($velocityCount>1)
+				and 
+			#end
+				$col.sqlCode
 		#end
 	#end
+	
 </select>
-
-<select id="findCnt" parameterType="com.fastwebx.db.query.Query" resultType="java.lang.Integer" >
-	select count(*) from $table.name t 
-	<include refid="sql.where"></include>
-</select>
-
 </mapper>

@@ -40,9 +40,27 @@
 		<property name="useTddl" value="true"></property>
 		<property name="dataSource" ref="dataSource" />
 		<!-- 文件输出路径 -->
-		<property name="outPath" value="C:/Users/Administrator/Desktop/5/"></property>
+		<property name="outPath" value="D:/1/"></property>
 		<!-- 项目主包名 -->
-		<property name="pkgName" value="com.hcy.ssm"></property>
+		<property name="pkgName" value="util.db.sync"></property>
 	</bean>
 
+
+	<bean id="ibatisCode" class="com.hcy.ssm.codeCreater.IbatisCode">
+		<!--  ibatis模板路径 -->
+		<property name="templetPath" value="templet/IbatisCode.vm"/>
+		<!-- 运行ibatisCodeTest 和 javaCodeTest可以分别生成ibatis文件和java文件		 -->
+	</bean>
+	
+	<bean id="pojo" class="com.hcy.ssm.codeCreater.JavaCode">
+		<!--  领域类包名 -->
+		<property name="pkgName" value="pojo"></property>
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>$!{table}</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/pojo.vm">
+		</property>
+	</bean>
 </beans>
