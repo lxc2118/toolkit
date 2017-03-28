@@ -1,5 +1,5 @@
 package $pkg;
-import util.db.common.dao.inf.IPk;
+import com.fastwebx.common.dao.inf.IPk;
 import java.io.Serializable;
 #if($table.hasDate)
 

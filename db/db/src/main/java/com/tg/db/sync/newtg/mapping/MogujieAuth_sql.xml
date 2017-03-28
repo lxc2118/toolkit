@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.mogujieAuth.MogujieAuth">
+<resultMap type="util.db.sync.newtg.pojo.mogujieAuth.MogujieAuth" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="last_auth_time" property="lastAuthTime" jdbcType="TIMESTAMP"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="auth_times" property="authTimes" jdbcType="INTEGER"/>
+	<result column="access_token" property="accessToken" jdbcType="VARCHAR"/>
+	<result column="access_expires_in" property="accessExpiresIn" jdbcType="VARCHAR"/>
+	<result column="refresh_token" property="refreshToken" jdbcType="VARCHAR"/>
+	<result column="refresh_expires_in" property="refreshExpiresIn" jdbcType="VARCHAR"/>
+	<result column="mgj_user_id" property="mgjUserId" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.last_auth_time
+	, t.create_time
+	, t.update_time
+	, t.user_id
+	, t.auth_times
+	, t.access_token
+	, t.access_expires_in
+	, t.refresh_token
+	, t.refresh_expires_in
+	, t.mgj_user_id
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from mogujie_auth t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from mogujie_auth t where 
+			id=#{value}
+		
+</select>
+</mapper>

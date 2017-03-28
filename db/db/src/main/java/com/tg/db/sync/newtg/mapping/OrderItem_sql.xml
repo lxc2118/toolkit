@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.orderItem.OrderItem">
+<resultMap type="util.db.sync.newtg.pojo.orderItem.OrderItem" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="order_id" property="orderId" jdbcType="INTEGER"/>
+	<result column="num" property="num" jdbcType="INTEGER"/>
+	<result column="refund_num" property="refundNum" jdbcType="INTEGER"/>
+	<result column="item_id" property="itemId" jdbcType="INTEGER"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="total_fee" property="totalFee" jdbcType="DOUBLE"/>
+	<result column="payment" property="payment" jdbcType="DOUBLE"/>
+	<result column="refund_fee" property="refundFee" jdbcType="DOUBLE"/>
+	<result column="service_fee" property="serviceFee" jdbcType="DOUBLE"/>
+	<result column="sku_names" property="skuNames" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="taken_num" property="takenNum" jdbcType="INTEGER"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+	<result column="order_item_label_id" property="orderItemLabelId" jdbcType="INTEGER"/>
+	<result column="num_iid" property="numIid" jdbcType="VARCHAR"/>
+	<result column="oid" property="oid" jdbcType="VARCHAR"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="refund_status" property="refundStatus" jdbcType="VARCHAR"/>
+	<result column="item_name" property="itemName" jdbcType="VARCHAR"/>
+	<result column="rk_num" property="rkNum" jdbcType="INTEGER"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="refund_id" property="refundId" jdbcType="BIGINT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.order_id
+	, t.num
+	, t.refund_num
+	, t.item_id
+	, t.price
+	, t.total_fee
+	, t.payment
+	, t.refund_fee
+	, t.service_fee
+	, t.sku_names
+	, t.create_time
+	, t.taken_num
+	, t.update_time
+	, t.shop_id
+	, t.order_item_label_id
+	, t.num_iid
+	, t.oid
+	, t.type
+	, t.refund_status
+	, t.item_name
+	, t.rk_num
+	, t.status
+	, t.refund_id
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from order_item t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from order_item t where 
+			id=#{value}
+		
+</select>
+</mapper>

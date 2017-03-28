@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.userPermission.UserPermission">
+<resultMap type="util.db.sync.newtg.pojo.userPermission.UserPermission" id="BaseResultMap">
+	<result column="scope" property="scope" jdbcType="VARCHAR"/>
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="user_id" property="userId" jdbcType="VARCHAR"/>
+	<result column="permission" property="permission" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.scope
+	, t.id
+	, t.user_id
+	, t.permission
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from user_permission t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from user_permission t where 
+			id=#{value}
+		
+</select>
+</mapper>

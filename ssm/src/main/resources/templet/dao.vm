@@ -1,0 +1,9 @@
+package $pkg;
+#set($pojoName=${nameUtil.firstUpperPasical($table.name)})
+import org.springframework.stereotype.Repository;
+import com.fastwebx.db.dao.BaseDao;
+
+@Repository
+public class ${pojoName}Dao extends BaseDao<${pojoName}>{
+	
+}

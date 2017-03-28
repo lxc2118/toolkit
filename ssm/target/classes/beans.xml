@@ -63,4 +63,17 @@
 		<property name="templetPath" value="templet/pojo.vm">
 		</property>
 	</bean>
+	
+	<bean id="dao" class="com.hcy.ssm.codeCreater.JavaCode">
+		<!--  领域类包名 -->
+		<property name="pkgName" value="dao"></property>
+		<!--  领域类输出文件名 -->
+		<property name="fileName" >
+			<value>$!{table}Dao</value>
+		</property>
+		<!--  领域类模板路径文件名 -->
+		<property name="templetPath" value="templet/dao.vm">
+		</property>
+		
+	</bean>
 </beans>

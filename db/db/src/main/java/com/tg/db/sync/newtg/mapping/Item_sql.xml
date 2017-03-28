@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.item.Item">
+<resultMap type="util.db.sync.newtg.pojo.item.Item" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="pic_id" property="picId" jdbcType="INTEGER"/>
+	<result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="publish_times" property="publishTimes" jdbcType="INTEGER"/>
+	<result column="follow_times" property="followTimes" jdbcType="INTEGER"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="code" property="code" jdbcType="VARCHAR"/>
+	<result column="view_times" property="viewTimes" jdbcType="INTEGER"/>
+	<result column="selling_point" property="sellingPoint" jdbcType="VARCHAR"/>
+	<result column="description" property="description" jdbcType="VARCHAR"/>
+	<result column="sort_order" property="sortOrder" jdbcType="INTEGER"/>
+	<result column="recommend" property="recommend" jdbcType="BIT"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="site_id" property="siteId" jdbcType="INTEGER"/>
+	<result column="item_cate_id" property="itemCateId" jdbcType="INTEGER"/>
+	<result column="item_detail_json" property="itemDetailJson" jdbcType="VARCHAR"/>
+	<result column="download_times" property="downloadTimes" jdbcType="INTEGER"/>
+	<result column="tags" property="tags" jdbcType="VARCHAR"/>
+	<result column="item_package_id" property="itemPackageId" jdbcType="INTEGER"/>
+	<result column="source" property="source" jdbcType="VARCHAR"/>
+	<result column="refresh_time" property="refreshTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.title
+	, t.pic_id
+	, t.shop_id
+	, t.create_time
+	, t.update_time
+	, t.publish_times
+	, t.follow_times
+	, t.price
+	, t.code
+	, t.view_times
+	, t.selling_point
+	, t.description
+	, t.sort_order
+	, t.recommend
+	, t.status
+	, t.site_id
+	, t.item_cate_id
+	, t.item_detail_json
+	, t.download_times
+	, t.tags
+	, t.item_package_id
+	, t.source
+	, t.refresh_time
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from item t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from item t where 
+			id=#{value}
+		
+</select>
+</mapper>

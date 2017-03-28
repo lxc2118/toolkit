@@ -1,11 +1,13 @@
 package $pkg;
 import com.fastwebx.common.dao.inf.IPk;
 import java.io.Serializable;
+import org.springframework.stereotype.Component;
 #if($table.hasDate)
 
 import java.util.Date;
 
 #end
+@Component
 public class ${nameUtil.firstUpperPasical($table.name)} implements IPk,Serializable{
 	private static final long serialVersionUID = -871092257120622327L;
 #foreach($col in $table.columns)

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.itemArea.ItemArea">
+<resultMap type="util.db.sync.newtg.pojo.itemArea.ItemArea" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="supplier_id" property="supplierId" jdbcType="BIGINT"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.supplier_id
+	, t.status
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from item_area t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from item_area t where 
+			id=#{value}
+		
+</select>
+</mapper>

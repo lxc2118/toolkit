@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.proxy.Proxy">
+<resultMap type="util.db.sync.newtg.pojo.proxy.Proxy" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="ip" property="ip" jdbcType="VARCHAR"/>
+	<result column="port" property="port" jdbcType="INTEGER"/>
+	<result column="anonymity" property="anonymity" jdbcType="VARCHAR"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="country" property="country" jdbcType="VARCHAR"/>
+	<result column="address" property="address" jdbcType="VARCHAR"/>
+	<result column="speed" property="speed" jdbcType="DOUBLE"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.ip
+	, t.port
+	, t.anonymity
+	, t.type
+	, t.country
+	, t.address
+	, t.speed
+	, t.update_time
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from proxy t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from proxy t where 
+			id=#{value}
+		
+</select>
+</mapper>

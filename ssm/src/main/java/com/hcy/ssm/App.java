@@ -63,6 +63,7 @@ public class App extends TestBase{
 	public void testProcess() {
 		 S.get(IbatisCode.class).process();
 		 ((JavaCode)S.get("pojo")).process();
+		 ((JavaCode)S.get("dao")).process();
 		 new CopySrc().execute();
 	}
 	

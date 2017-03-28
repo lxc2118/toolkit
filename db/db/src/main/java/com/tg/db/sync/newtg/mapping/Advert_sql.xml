@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="util.db.sync.newtg.pojo.advert.Advert">
+<resultMap type="util.db.sync.newtg.pojo.advert.Advert" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+	<result column="phone" property="phone" jdbcType="VARCHAR"/>
+	<result column="shop_name" property="shopName" jdbcType="VARCHAR"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="ad" property="ad" jdbcType="VARCHAR"/>
+	<result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+	<result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.shop_id
+	, t.phone
+	, t.shop_name
+	, t.price
+	, t.ad
+	, t.start_time
+	, t.end_time
+	, t.create_time
+	, t.update_time
+	, t.status
+</sql>
+
+<select id="findAll" resultMap="BaseResultMap" parameterType="util.db.query.Query" >
+	select 
+	<include refid="cols" />
+	from advert t
+	<include refid="sql.page"></include>
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from advert t where 
+			id=#{value}
+		
+</select>
+</mapper>
