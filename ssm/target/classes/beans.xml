@@ -42,7 +42,7 @@
 		<!-- 文件输出路径 -->
 		<property name="outPath" value="D:/1/"></property>
 		<!-- 项目主包名 -->
-		<property name="pkgName" value="util.db.sync"></property>
+		<property name="pkgName" value="com.tg.db.sync"></property>
 	</bean>
 
 

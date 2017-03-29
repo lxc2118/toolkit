@@ -3,6 +3,8 @@ package com.tg.db;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tg.db.common.SpringContext;
+
 import junit.framework.TestCase;
 
 public class TestBase extends TestCase {
@@ -11,7 +13,7 @@ public class TestBase extends TestCase {
 
 	public TestBase() {
 		try {
-			ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+			new ClassPathXmlApplicationContext("applicationContext.xml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

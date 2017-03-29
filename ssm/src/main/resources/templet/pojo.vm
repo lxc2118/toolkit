@@ -1,5 +1,5 @@
 package $pkg;
-import com.fastwebx.common.dao.inf.IPk;
+import com.tg.db.common.IPk;
 import java.io.Serializable;
 import org.springframework.stereotype.Component;
 #if($table.hasDate)
