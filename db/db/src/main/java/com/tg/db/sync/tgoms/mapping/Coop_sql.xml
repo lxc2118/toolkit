@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.coop.Coop">
+<resultMap type="com.tg.db.sync.tgoms.pojo.coop.Coop" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="api_uri" property="apiUri" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="province_id" property="provinceId" jdbcType="VARCHAR"/>
+	<result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="web_site" property="webSite" jdbcType="VARCHAR"/>
+	<result column="coop_key" property="coopKey" jdbcType="VARCHAR"/>
+	<result column="secret" property="secret" jdbcType="VARCHAR"/>
+	<result column="code" property="code" jdbcType="VARCHAR"/>
+	<result column="site_id" property="siteId" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.api_uri
+	, t.create_time
+	, t.update_time
+	, t.name
+	, t.province_id
+	, t.city_id
+	, t.status
+	, t.web_site
+	, t.coop_key
+	, t.secret
+	, t.code
+	, t.site_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from coop t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from coop t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.coop.Coop">
+	insert into coop (
+	 id
+		, api_uri
+		, create_time
+		, update_time
+		, name
+		, province_id
+		, city_id
+		, status
+		, web_site
+		, coop_key
+		, secret
+		, code
+		, site_id
+		)values(
+	 #{id}
+		, #{apiUri}
+		, #{createTime}
+		, #{updateTime}
+		, #{name}
+		, #{provinceId}
+		, #{cityId}
+		, #{status}
+		, #{webSite}
+		, #{coopKey}
+		, #{secret}
+		, #{code}
+		, #{siteId}
+	)
+</insert>
+</mapper>

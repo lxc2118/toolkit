@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.newtg.pojo.booth.Booth">
+<resultMap type="com.tg.db.sync.newtg.pojo.booth.Booth" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="description" property="description" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="booth_place" property="boothPlace" jdbcType="VARCHAR"/>
+	<result column="strategy_type" property="strategyType" jdbcType="VARCHAR"/>
+	<result column="config_json" property="configJson" jdbcType="VARCHAR"/>
+	<result column="max_num" property="maxNum" jdbcType="INTEGER"/>
+	<result column="cache_timeout" property="cacheTimeout" jdbcType="INTEGER"/>
+	<result column="site_id" property="siteId" jdbcType="INTEGER"/>
+	<result column="sort_order" property="sortOrder" jdbcType="INTEGER"/>
+	<result column="booth_template" property="boothTemplate" jdbcType="VARCHAR"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="template_config_json" property="templateConfigJson" jdbcType="VARCHAR"/>
+	<result column="show_num" property="showNum" jdbcType="INTEGER"/>
+	<result column="show_type" property="showType" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.description
+	, t.create_time
+	, t.update_time
+	, t.booth_place
+	, t.strategy_type
+	, t.config_json
+	, t.max_num
+	, t.cache_timeout
+	, t.site_id
+	, t.sort_order
+	, t.booth_template
+	, t.status
+	, t.template_config_json
+	, t.show_num
+	, t.show_type
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from booth t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from booth t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.newtg.pojo.booth.Booth">
+	insert into booth (
+	 id
+		, name
+		, description
+		, create_time
+		, update_time
+		, booth_place
+		, strategy_type
+		, config_json
+		, max_num
+		, cache_timeout
+		, site_id
+		, sort_order
+		, booth_template
+		, status
+		, template_config_json
+		, show_num
+		, show_type
+		)values(
+	 #{id}
+		, #{name}
+		, #{description}
+		, #{createTime}
+		, #{updateTime}
+		, #{boothPlace}
+		, #{strategyType}
+		, #{configJson}
+		, #{maxNum}
+		, #{cacheTimeout}
+		, #{siteId}
+		, #{sortOrder}
+		, #{boothTemplate}
+		, #{status}
+		, #{templateConfigJson}
+		, #{showNum}
+		, #{showType}
+	)
+</insert>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.integralItem.IntegralItem">
+<resultMap type="com.tg.db.sync.sunrise.pojo.integralItem.IntegralItem" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="integral" property="integral" jdbcType="INTEGER"/>
+	<result column="description" property="description" jdbcType="VARCHAR"/>
+	<result column="exchange_num" property="exchangeNum" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="img_id" property="imgId" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.title
+	, t.integral
+	, t.description
+	, t.exchange_num
+	, t.create_time
+	, t.update_time
+	, t.status
+	, t.img_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from integral_item t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from integral_item t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.integralItem.IntegralItem">
+	insert into integral_item (
+	 id
+		, title
+		, integral
+		, description
+		, exchange_num
+		, create_time
+		, update_time
+		, status
+		, img_id
+		)values(
+	 #{id}
+		, #{title}
+		, #{integral}
+		, #{description}
+		, #{exchangeNum}
+		, #{createTime}
+		, #{updateTime}
+		, #{status}
+		, #{imgId}
+	)
+</insert>
+</mapper>

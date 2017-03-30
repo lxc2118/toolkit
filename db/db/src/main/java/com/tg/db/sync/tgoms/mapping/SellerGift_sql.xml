@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.sellerGift.SellerGift">
+<resultMap type="com.tg.db.sync.tgoms.pojo.sellerGift.SellerGift" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="seller_id" property="sellerId" jdbcType="INTEGER"/>
+	<result column="gift_id" property="giftId" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="selected" property="selected" jdbcType="BIT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.seller_id
+	, t.gift_id
+	, t.create_time
+	, t.selected
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from seller_gift t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from seller_gift t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.sellerGift.SellerGift">
+	insert into seller_gift (
+	 id
+		, seller_id
+		, gift_id
+		, create_time
+		, selected
+		)values(
+	 #{id}
+		, #{sellerId}
+		, #{giftId}
+		, #{createTime}
+		, #{selected}
+	)
+</insert>
+</mapper>

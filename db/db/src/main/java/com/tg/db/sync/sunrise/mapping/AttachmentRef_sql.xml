@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.attachmentRef.AttachmentRef">
+<resultMap type="com.tg.db.sync.sunrise.pojo.attachmentRef.AttachmentRef" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="attachment_id" property="attachmentId" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.attachment_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from attachment_ref t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from attachment_ref t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.attachmentRef.AttachmentRef">
+	insert into attachment_ref (
+	 id
+		, attachment_id
+		)values(
+	 #{id}
+		, #{attachmentId}
+	)
+</insert>
+</mapper>

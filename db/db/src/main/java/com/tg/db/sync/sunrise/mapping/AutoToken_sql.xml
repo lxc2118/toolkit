@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.autoToken.AutoToken">
+<resultMap type="com.tg.db.sync.sunrise.pojo.autoToken.AutoToken" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="access_key" property="accessKey" jdbcType="VARCHAR"/>
+	<result column="access_token" property="accessToken" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="expired_time" property="expiredTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.access_key
+	, t.access_token
+	, t.create_time
+	, t.expired_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from auto_token t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from auto_token t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.autoToken.AutoToken">
+	insert into auto_token (
+	 id
+		, access_key
+		, access_token
+		, create_time
+		, expired_time
+		)values(
+	 #{id}
+		, #{accessKey}
+		, #{accessToken}
+		, #{createTime}
+		, #{expiredTime}
+	)
+</insert>
+</mapper>

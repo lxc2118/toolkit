@@ -39,9 +39,53 @@
 	, t.phone
 </sql>
 
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from account t limit #{limitStart},#{limitEnd}
+</select>
+
 <select id="get" resultMap="BaseResultMap" parameterType="Object">
 	select <include refid="cols" /> from account t where 
 			id=#{value}
 		
 </select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.account.Account">
+	insert into account (
+	 id
+		, account
+		, password
+		, create_time
+		, update_time
+		, login_times
+		, last_login_time
+		, status
+		, type
+		, user_id
+		, original_account
+		, original_password
+		, original_user_id
+		, original_site_code
+		, open_id
+		, phone
+		)values(
+	 #{id}
+		, #{account}
+		, #{password}
+		, #{createTime}
+		, #{updateTime}
+		, #{loginTimes}
+		, #{lastLoginTime}
+		, #{status}
+		, #{type}
+		, #{userId}
+		, #{originalAccount}
+		, #{originalPassword}
+		, #{originalUserId}
+		, #{originalSiteCode}
+		, #{openId}
+		, #{phone}
+	)
+</insert>
 </mapper>

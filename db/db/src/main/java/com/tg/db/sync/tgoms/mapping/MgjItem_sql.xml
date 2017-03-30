@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.mgjItem.MgjItem">
+<resultMap type="com.tg.db.sync.tgoms.pojo.mgjItem.MgjItem" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="item_order_id" property="itemOrderId" jdbcType="BIGINT"/>
+	<result column="shop_order_id" property="shopOrderId" jdbcType="BIGINT"/>
+	<result column="item_code" property="itemCode" jdbcType="VARCHAR"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="img" property="img" jdbcType="VARCHAR"/>
+	<result column="img_url" property="imgUrl" jdbcType="VARCHAR"/>
+	<result column="sku_code" property="skuCode" jdbcType="VARCHAR"/>
+	<result column="sku_attributes" property="skuAttributes" jdbcType="VARCHAR"/>
+	<result column="number" property="number" jdbcType="BIGINT"/>
+	<result column="price" property="price" jdbcType="BIGINT"/>
+	<result column="refund_status" property="refundStatus" jdbcType="VARCHAR"/>
+	<result column="now_price" property="nowPrice" jdbcType="BIGINT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.item_order_id
+	, t.shop_order_id
+	, t.item_code
+	, t.title
+	, t.img
+	, t.img_url
+	, t.sku_code
+	, t.sku_attributes
+	, t.number
+	, t.price
+	, t.refund_status
+	, t.now_price
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from mgj_item t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from mgj_item t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.mgjItem.MgjItem">
+	insert into mgj_item (
+	 id
+		, item_order_id
+		, shop_order_id
+		, item_code
+		, title
+		, img
+		, img_url
+		, sku_code
+		, sku_attributes
+		, number
+		, price
+		, refund_status
+		, now_price
+		)values(
+	 #{id}
+		, #{itemOrderId}
+		, #{shopOrderId}
+		, #{itemCode}
+		, #{title}
+		, #{img}
+		, #{imgUrl}
+		, #{skuCode}
+		, #{skuAttributes}
+		, #{number}
+		, #{price}
+		, #{refundStatus}
+		, #{nowPrice}
+	)
+</insert>
+</mapper>

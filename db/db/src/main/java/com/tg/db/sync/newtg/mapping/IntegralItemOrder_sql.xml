@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.newtg.pojo.integralItemOrder.IntegralItemOrder">
+<resultMap type="com.tg.db.sync.newtg.pojo.integralItemOrder.IntegralItemOrder" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="address" property="address" jdbcType="VARCHAR"/>
+	<result column="province_id" property="provinceId" jdbcType="VARCHAR"/>
+	<result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	<result column="district_id" property="districtId" jdbcType="VARCHAR"/>
+	<result column="integral_item_id" property="integralItemId" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="integral" property="integral" jdbcType="INTEGER"/>
+	<result column="express_info" property="expressInfo" jdbcType="VARCHAR"/>
+	<result column="phone" property="phone" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.user_id
+	, t.address
+	, t.province_id
+	, t.city_id
+	, t.district_id
+	, t.integral_item_id
+	, t.create_time
+	, t.update_time
+	, t.status
+	, t.integral
+	, t.express_info
+	, t.phone
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from integral_item_order t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from integral_item_order t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.newtg.pojo.integralItemOrder.IntegralItemOrder">
+	insert into integral_item_order (
+	 id
+		, user_id
+		, address
+		, province_id
+		, city_id
+		, district_id
+		, integral_item_id
+		, create_time
+		, update_time
+		, status
+		, integral
+		, express_info
+		, phone
+		)values(
+	 #{id}
+		, #{userId}
+		, #{address}
+		, #{provinceId}
+		, #{cityId}
+		, #{districtId}
+		, #{integralItemId}
+		, #{createTime}
+		, #{updateTime}
+		, #{status}
+		, #{integral}
+		, #{expressInfo}
+		, #{phone}
+	)
+</insert>
+</mapper>

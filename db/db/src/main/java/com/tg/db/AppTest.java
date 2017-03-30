@@ -1,30 +1,42 @@
 package com.tg.db;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import java.util.List;
 
 import com.tg.db.common.S;
-import com.tg.db.core.CustomSqlSessionTemplate;
+import com.tg.db.core.CustomerContextHolder;
 import com.tg.db.sync.sunrise.pojo.account.Account;
 import com.tg.db.sync.sunrise.pojo.account.AccountDao;
-
+import com.tg.db.sync.syncAuto.GiftSync;
+import com.tg.db.sync.tgoms.pojo.gift.Gift;
+import com.tg.db.sync.tgoms.pojo.gift.GiftDao;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest extends TestBase {
 
-	public void testApp() {
-//		SpringContext.getBean(SqlSessionTemplate.class);
-//		S.get(SqlSessionTemplate.class);
-//		ac.getBean(Account.class);
-//		System.out.println(S.get(SqlSessionTemplate.class).getSqlSessionFactory());
-//		S.get(Account.class);
+	public void testMultiDataSource() {
 		Account accout = S.get(AccountDao.class).get(1);
-		
-//		accout.setId(1);
 		System.out.println(accout.getAccount());
-//		AccountDao dao = S.get(AccountDao.class);
-//		System.out.println(S.get(AccountDao.class).get(1));
+		com.tg.db.sync.newtg.pojo.account.Account newAccout = S.get(com.tg.db.sync.newtg.pojo.account.AccountDao.class).get(1);
+		System.out.println(newAccout.getAccount());
 	}
 	
+	public void testLimit() {
+		List<Account> list = (List<Account>) S.get(AccountDao.class).findLimit(10L);
+		for(Account accout:list) {
+			System.out.println(accout.getAccount());
+		}
+	}
+	
+	public void testTgoms(){
+		List<Gift> list = (List<Gift>) S.get(GiftDao.class).findLimit(1L);
+		for(Gift gift:list) {
+			System.out.println(gift.getName());
+		}
+	}
+
+	public void testSync() {
+		new GiftSync().porcess();
+	}
 }

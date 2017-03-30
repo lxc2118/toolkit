@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.itemPackageDownloadInfo.ItemPackageDownloadInfo">
+<resultMap type="com.tg.db.sync.sunrise.pojo.itemPackageDownloadInfo.ItemPackageDownloadInfo" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="item_id" property="itemId" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="hide" property="hide" jdbcType="BIT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.user_id
+	, t.item_id
+	, t.create_time
+	, t.update_time
+	, t.hide
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from item_package_download_info t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from item_package_download_info t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.itemPackageDownloadInfo.ItemPackageDownloadInfo">
+	insert into item_package_download_info (
+	 id
+		, user_id
+		, item_id
+		, create_time
+		, update_time
+		, hide
+		)values(
+	 #{id}
+		, #{userId}
+		, #{itemId}
+		, #{createTime}
+		, #{updateTime}
+		, #{hide}
+	)
+</insert>
+</mapper>

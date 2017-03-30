@@ -4,7 +4,7 @@ public class CustomerContextHolder {
 
 	public final static String SESSION_FACTORY_SUNRISE = "sunrise";
 	public final static String SESSION_FACTORY_NEWTG = "newtg";
-	public final static String SESSION_FACTORY_OMSTG = "oms_tg";
+	public final static String SESSION_FACTORY_OMSTG = "tg_oms";
 
 	private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>();
 

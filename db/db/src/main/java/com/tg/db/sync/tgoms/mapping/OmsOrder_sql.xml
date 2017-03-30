@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.omsOrder.OmsOrder">
+<resultMap type="com.tg.db.sync.tgoms.pojo.omsOrder.OmsOrder" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="source" property="source" jdbcType="VARCHAR"/>
+	<result column="receiver_name" property="receiverName" jdbcType="VARCHAR"/>
+	<result column="receiver_state" property="receiverState" jdbcType="VARCHAR"/>
+	<result column="receiver_mobile" property="receiverMobile" jdbcType="VARCHAR"/>
+	<result column="receiver_city" property="receiverCity" jdbcType="VARCHAR"/>
+	<result column="receiver_district" property="receiverDistrict" jdbcType="VARCHAR"/>
+	<result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR"/>
+	<result column="seller_id" property="sellerId" jdbcType="INTEGER"/>
+	<result column="total_service_fee" property="totalServiceFee" jdbcType="DOUBLE"/>
+	<result column="total_freight" property="totalFreight" jdbcType="DOUBLE"/>
+	<result column="total_item_amount" property="totalItemAmount" jdbcType="DOUBLE"/>
+	<result column="total_item_num" property="totalItemNum" jdbcType="INTEGER"/>
+	<result column="total_amount" property="totalAmount" jdbcType="DOUBLE"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="remark" property="remark" jdbcType="VARCHAR"/>
+	<result column="logistics_expected" property="logisticsExpected" jdbcType="VARCHAR"/>
+	<result column="logistics_company_name" property="logisticsCompanyName" jdbcType="VARCHAR"/>
+	<result column="logistics_sid" property="logisticsSid" jdbcType="VARCHAR"/>
+	<result column="logistics_time" property="logisticsTime" jdbcType="TIMESTAMP"/>
+	<result column="reject_reason" property="rejectReason" jdbcType="VARCHAR"/>
+	<result column="logistics_notified" property="logisticsNotified" jdbcType="BIT"/>
+	<result column="outer_buyer_nick" property="outerBuyerNick" jdbcType="VARCHAR"/>
+	<result column="outer_seller_nick" property="outerSellerNick" jdbcType="VARCHAR"/>
+	<result column="supplier_id" property="supplierId" jdbcType="INTEGER"/>
+	<result column="outer_order_id" property="outerOrderId" jdbcType="VARCHAR"/>
+	<result column="logistics_company_code" property="logisticsCompanyCode" jdbcType="VARCHAR"/>
+	<result column="logistics_notify_msg" property="logisticsNotifyMsg" jdbcType="VARCHAR"/>
+	<result column="cancel_reason" property="cancelReason" jdbcType="VARCHAR"/>
+	<result column="total_gift_fee" property="totalGiftFee" jdbcType="DOUBLE"/>
+	<result column="settlement" property="settlement" jdbcType="BIT"/>
+	<result column="is_export" property="isExport" jdbcType="BIT"/>
+	<result column="adjusted_fee" property="adjustedFee" jdbcType="DOUBLE"/>
+	<result column="logistics_code_expected" property="logisticsCodeExpected" jdbcType="VARCHAR"/>
+	<result column="logistics_mark" property="logisticsMark" jdbcType="VARCHAR"/>
+	<result column="logistics_online" property="logisticsOnline" jdbcType="BIT"/>
+	<result column="logistics_site_name" property="logisticsSiteName" jdbcType="VARCHAR"/>
+	<result column="logistics_site_code" property="logisticsSiteCode" jdbcType="VARCHAR"/>
+	<result column="outbound" property="outbound" jdbcType="BIT"/>
+	<result column="order_batch_id" property="orderBatchId" jdbcType="INTEGER"/>
+	<result column="hang_up_reason" property="hangUpReason" jdbcType="VARCHAR"/>
+	<result column="logistics_printed" property="logisticsPrinted" jdbcType="BIT"/>
+	<result column="supplier_remark" property="supplierRemark" jdbcType="VARCHAR"/>
+	<result column="postage" property="postage" jdbcType="DOUBLE"/>
+	<result column="postage_plus" property="postagePlus" jdbcType="DOUBLE"/>
+	<result column="service_fee" property="serviceFee" jdbcType="DOUBLE"/>
+	<result column="ship_time" property="shipTime" jdbcType="TIMESTAMP"/>
+	<result column="thx_num" property="thxNum" jdbcType="INTEGER"/>
+	<result column="thx_fee" property="thxFee" jdbcType="DOUBLE"/>
+	<result column="used_thx_num" property="usedThxNum" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.source
+	, t.receiver_name
+	, t.receiver_state
+	, t.receiver_mobile
+	, t.receiver_city
+	, t.receiver_district
+	, t.receiver_address
+	, t.seller_id
+	, t.total_service_fee
+	, t.total_freight
+	, t.total_item_amount
+	, t.total_item_num
+	, t.total_amount
+	, t.create_time
+	, t.update_time
+	, t.status
+	, t.remark
+	, t.logistics_expected
+	, t.logistics_company_name
+	, t.logistics_sid
+	, t.logistics_time
+	, t.reject_reason
+	, t.logistics_notified
+	, t.outer_buyer_nick
+	, t.outer_seller_nick
+	, t.supplier_id
+	, t.outer_order_id
+	, t.logistics_company_code
+	, t.logistics_notify_msg
+	, t.cancel_reason
+	, t.total_gift_fee
+	, t.settlement
+	, t.is_export
+	, t.adjusted_fee
+	, t.logistics_code_expected
+	, t.logistics_mark
+	, t.logistics_online
+	, t.logistics_site_name
+	, t.logistics_site_code
+	, t.outbound
+	, t.order_batch_id
+	, t.hang_up_reason
+	, t.logistics_printed
+	, t.supplier_remark
+	, t.postage
+	, t.postage_plus
+	, t.service_fee
+	, t.ship_time
+	, t.thx_num
+	, t.thx_fee
+	, t.used_thx_num
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from oms_order t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from oms_order t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.omsOrder.OmsOrder">
+	insert into oms_order (
+	 id
+		, source
+		, receiver_name
+		, receiver_state
+		, receiver_mobile
+		, receiver_city
+		, receiver_district
+		, receiver_address
+		, seller_id
+		, total_service_fee
+		, total_freight
+		, total_item_amount
+		, total_item_num
+		, total_amount
+		, create_time
+		, update_time
+		, status
+		, remark
+		, logistics_expected
+		, logistics_company_name
+		, logistics_sid
+		, logistics_time
+		, reject_reason
+		, logistics_notified
+		, outer_buyer_nick
+		, outer_seller_nick
+		, supplier_id
+		, outer_order_id
+		, logistics_company_code
+		, logistics_notify_msg
+		, cancel_reason
+		, total_gift_fee
+		, settlement
+		, is_export
+		, adjusted_fee
+		, logistics_code_expected
+		, logistics_mark
+		, logistics_online
+		, logistics_site_name
+		, logistics_site_code
+		, outbound
+		, order_batch_id
+		, hang_up_reason
+		, logistics_printed
+		, supplier_remark
+		, postage
+		, postage_plus
+		, service_fee
+		, ship_time
+		, thx_num
+		, thx_fee
+		, used_thx_num
+		)values(
+	 #{id}
+		, #{source}
+		, #{receiverName}
+		, #{receiverState}
+		, #{receiverMobile}
+		, #{receiverCity}
+		, #{receiverDistrict}
+		, #{receiverAddress}
+		, #{sellerId}
+		, #{totalServiceFee}
+		, #{totalFreight}
+		, #{totalItemAmount}
+		, #{totalItemNum}
+		, #{totalAmount}
+		, #{createTime}
+		, #{updateTime}
+		, #{status}
+		, #{remark}
+		, #{logisticsExpected}
+		, #{logisticsCompanyName}
+		, #{logisticsSid}
+		, #{logisticsTime}
+		, #{rejectReason}
+		, #{logisticsNotified}
+		, #{outerBuyerNick}
+		, #{outerSellerNick}
+		, #{supplierId}
+		, #{outerOrderId}
+		, #{logisticsCompanyCode}
+		, #{logisticsNotifyMsg}
+		, #{cancelReason}
+		, #{totalGiftFee}
+		, #{settlement}
+		, #{isExport}
+		, #{adjustedFee}
+		, #{logisticsCodeExpected}
+		, #{logisticsMark}
+		, #{logisticsOnline}
+		, #{logisticsSiteName}
+		, #{logisticsSiteCode}
+		, #{outbound}
+		, #{orderBatchId}
+		, #{hangUpReason}
+		, #{logisticsPrinted}
+		, #{supplierRemark}
+		, #{postage}
+		, #{postagePlus}
+		, #{serviceFee}
+		, #{shipTime}
+		, #{thxNum}
+		, #{thxFee}
+		, #{usedThxNum}
+	)
+</insert>
+</mapper>

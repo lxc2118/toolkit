@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.userBills.UserBills">
+<resultMap type="com.tg.db.sync.tgoms.pojo.userBills.UserBills" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="VARCHAR"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="remark" property="remark" jdbcType="VARCHAR"/>
+	<result column="money" property="money" jdbcType="DOUBLE"/>
+	<result column="remain_money" property="remainMoney" jdbcType="DOUBLE"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="order_ids" property="orderIds" jdbcType="VARCHAR"/>
+	<result column="pay_remark" property="payRemark" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.user_id
+	, t.type
+	, t.create_time
+	, t.title
+	, t.remark
+	, t.money
+	, t.remain_money
+	, t.status
+	, t.order_ids
+	, t.pay_remark
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from user_bills t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from user_bills t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.userBills.UserBills">
+	insert into user_bills (
+	 id
+		, user_id
+		, type
+		, create_time
+		, title
+		, remark
+		, money
+		, remain_money
+		, status
+		, order_ids
+		, pay_remark
+		)values(
+	 #{id}
+		, #{userId}
+		, #{type}
+		, #{createTime}
+		, #{title}
+		, #{remark}
+		, #{money}
+		, #{remainMoney}
+		, #{status}
+		, #{orderIds}
+		, #{payRemark}
+	)
+</insert>
+</mapper>

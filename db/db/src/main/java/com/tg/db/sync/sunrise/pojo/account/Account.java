@@ -2,9 +2,11 @@ package com.tg.db.sync.sunrise.pojo.account;
 import com.tg.db.common.IPk;
 import java.io.Serializable;
 import org.springframework.stereotype.Component;
+import com.tg.db.common.Table;
 
 import java.util.Date;
 
+@Table(name="sunrise")
 @Component
 public class Account implements IPk,Serializable{
 	private static final long serialVersionUID = -871092257120622327L;

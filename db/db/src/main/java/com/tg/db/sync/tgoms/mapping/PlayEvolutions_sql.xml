@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.playEvolutions.PlayEvolutions">
+<resultMap type="com.tg.db.sync.tgoms.pojo.playEvolutions.PlayEvolutions" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="hash" property="hash" jdbcType="VARCHAR"/>
+	<result column="applied_at" property="appliedAt" jdbcType="TIMESTAMP"/>
+	<result column="apply_script" property="applyScript" jdbcType="VARCHAR"/>
+	<result column="revert_script" property="revertScript" jdbcType="VARCHAR"/>
+	<result column="state" property="state" jdbcType="VARCHAR"/>
+	<result column="last_problem" property="lastProblem" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.hash
+	, t.applied_at
+	, t.apply_script
+	, t.revert_script
+	, t.state
+	, t.last_problem
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from play_evolutions t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from play_evolutions t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.playEvolutions.PlayEvolutions">
+	insert into play_evolutions (
+	 id
+		, hash
+		, applied_at
+		, apply_script
+		, revert_script
+		, state
+		, last_problem
+		)values(
+	 #{id}
+		, #{hash}
+		, #{appliedAt}
+		, #{applyScript}
+		, #{revertScript}
+		, #{state}
+		, #{lastProblem}
+	)
+</insert>
+</mapper>

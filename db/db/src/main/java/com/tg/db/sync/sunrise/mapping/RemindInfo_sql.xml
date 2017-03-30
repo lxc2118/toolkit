@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.remindInfo.RemindInfo">
+<resultMap type="com.tg.db.sync.sunrise.pojo.remindInfo.RemindInfo" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="order_id" property="orderId" jdbcType="INTEGER"/>
+	<result column="remind" property="remind" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.order_id
+	, t.remind
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from remind_info t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="com.tg.db.sync.sunrise.pojo.remindInfo.RemindInfo">
+	select <include refid="cols" /> from remind_info t where 
+					
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.remindInfo.RemindInfo">
+	insert into remind_info (
+	 id
+		, order_id
+		, remind
+		)values(
+	 #{id}
+		, #{orderId}
+		, #{remind}
+	)
+</insert>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.salesPromotionInfo.SalesPromotionInfo">
+<resultMap type="com.tg.db.sync.tgoms.pojo.salesPromotionInfo.SalesPromotionInfo" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="acitivity_id" property="acitivityId" jdbcType="VARCHAR"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="level" property="level" jdbcType="VARCHAR"/>
+	<result column="integral" property="integral" jdbcType="INTEGER"/>
+	<result column="free_num" property="freeNum" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.acitivity_id
+	, t.name
+	, t.level
+	, t.integral
+	, t.free_num
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from sales_promotion_info t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from sales_promotion_info t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.salesPromotionInfo.SalesPromotionInfo">
+	insert into sales_promotion_info (
+	 id
+		, acitivity_id
+		, name
+		, level
+		, integral
+		, free_num
+		)values(
+	 #{id}
+		, #{acitivityId}
+		, #{name}
+		, #{level}
+		, #{integral}
+		, #{freeNum}
+	)
+</insert>
+</mapper>

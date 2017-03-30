@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.smartTask.SmartTask">
+<resultMap type="com.tg.db.sync.sunrise.pojo.smartTask.SmartTask" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="last_run_time" property="lastRunTime" jdbcType="TIMESTAMP"/>
+	<result column="last_finish_time" property="lastFinishTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="last_run_result" property="lastRunResult" jdbcType="VARCHAR"/>
+	<result column="running" property="running" jdbcType="BIT"/>
+	<result column="last_run_msg" property="lastRunMsg" jdbcType="VARCHAR"/>
+	<result column="cron" property="cron" jdbcType="VARCHAR"/>
+	<result column="job_class" property="jobClass" jdbcType="VARCHAR"/>
+	<result column="config_json" property="configJson" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.create_time
+	, t.update_time
+	, t.last_run_time
+	, t.last_finish_time
+	, t.status
+	, t.last_run_result
+	, t.running
+	, t.last_run_msg
+	, t.cron
+	, t.job_class
+	, t.config_json
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from smart_task t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from smart_task t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.smartTask.SmartTask">
+	insert into smart_task (
+	 id
+		, name
+		, create_time
+		, update_time
+		, last_run_time
+		, last_finish_time
+		, status
+		, last_run_result
+		, running
+		, last_run_msg
+		, cron
+		, job_class
+		, config_json
+		)values(
+	 #{id}
+		, #{name}
+		, #{createTime}
+		, #{updateTime}
+		, #{lastRunTime}
+		, #{lastFinishTime}
+		, #{status}
+		, #{lastRunResult}
+		, #{running}
+		, #{lastRunMsg}
+		, #{cron}
+		, #{jobClass}
+		, #{configJson}
+	)
+</insert>
+</mapper>

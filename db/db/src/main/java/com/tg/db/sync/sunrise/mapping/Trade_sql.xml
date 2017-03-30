@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.trade.Trade">
+<resultMap type="com.tg.db.sync.sunrise.pojo.trade.Trade" id="BaseResultMap">
+	<result column="tid" property="tid" jdbcType="BIGINT"/>
+	<result column="seller_nick" property="sellerNick" jdbcType="VARCHAR"/>
+	<result column="pic_path" property="picPath" jdbcType="VARCHAR"/>
+	<result column="payment" property="payment" jdbcType="VARCHAR"/>
+	<result column="seller_rate" property="sellerRate" jdbcType="BIT"/>
+	<result column="post_fee" property="postFee" jdbcType="VARCHAR"/>
+	<result column="receiver_name" property="receiverName" jdbcType="VARCHAR"/>
+	<result column="receiver_state" property="receiverState" jdbcType="VARCHAR"/>
+	<result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR"/>
+	<result column="receiver_zip" property="receiverZip" jdbcType="VARCHAR"/>
+	<result column="logistics_id" property="logisticsId" jdbcType="INTEGER"/>
+	<result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR"/>
+	<result column="receiver_mobile" property="receiverMobile" jdbcType="VARCHAR"/>
+	<result column="consign_time" property="consignTime" jdbcType="TIMESTAMP"/>
+	<result column="receiver_payment" property="receiverPayment" jdbcType="VARCHAR"/>
+	<result column="num" property="num" jdbcType="BIGINT"/>
+	<result column="num_iid" property="numIid" jdbcType="BIGINT"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="price" property="price" jdbcType="VARCHAR"/>
+	<result column="discount_fee" property="discountFee" jdbcType="VARCHAR"/>
+	<result column="point_fee" property="pointFee" jdbcType="BIGINT"/>
+	<result column="total_fee" property="totalFee" jdbcType="VARCHAR"/>
+	<result column="is_lgtype" property="isLgtype" jdbcType="BIT"/>
+	<result column="is_brand_sale" property="isBrandSale" jdbcType="BIT"/>
+	<result column="is_force_wlb" property="isForceWlb" jdbcType="BIT"/>
+	<result column="lg_aging" property="lgAging" jdbcType="VARCHAR"/>
+	<result column="lg_aging_type" property="lgAgingType" jdbcType="VARCHAR"/>
+	<result column="created" property="created" jdbcType="TIMESTAMP"/>
+	<result column="pay_time" property="payTime" jdbcType="TIMESTAMP"/>
+	<result column="modified" property="modified" jdbcType="TIMESTAMP"/>
+	<result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+	<result column="alipay_id" property="alipayId" jdbcType="BIGINT"/>
+	<result column="alipay_no" property="alipayNo" jdbcType="VARCHAR"/>
+	<result column="seller_flag" property="sellerFlag" jdbcType="BIGINT"/>
+	<result column="buyer_nick" property="buyerNick" jdbcType="VARCHAR"/>
+	<result column="buyer_area" property="buyerArea" jdbcType="VARCHAR"/>
+	<result column="has_yfx" property="hasYfx" jdbcType="BIT"/>
+	<result column="yfx_fee" property="yfxFee" jdbcType="VARCHAR"/>
+	<result column="yfx_id" property="yfxId" jdbcType="VARCHAR"/>
+	<result column="yfx_type" property="yfxType" jdbcType="VARCHAR"/>
+	<result column="credit_card_fee" property="creditCardFee" jdbcType="VARCHAR"/>
+	<result column="nut_feature" property="nutFeature" jdbcType="VARCHAR"/>
+	<result column="step_trade_status" property="stepTradeStatus" jdbcType="VARCHAR"/>
+	<result column="step_paid_fee" property="stepPaidFee" jdbcType="VARCHAR"/>
+	<result column="mark_desc" property="markDesc" jdbcType="VARCHAR"/>
+	<result column="send_time" property="sendTime" jdbcType="VARCHAR"/>
+	<result column="shipping_type" property="shippingType" jdbcType="VARCHAR"/>
+	<result column="adjust_fee" property="adjustFee" jdbcType="VARCHAR"/>
+	<result column="buyer_obtain_point_fee" property="buyerObtainPointFee" jdbcType="BIGINT"/>
+	<result column="cod_fee" property="codFee" jdbcType="VARCHAR"/>
+	<result column="trade_from" property="tradeFrom" jdbcType="VARCHAR"/>
+	<result column="cod_status" property="codStatus" jdbcType="VARCHAR"/>
+	<result column="commission_fee" property="commissionFee" jdbcType="VARCHAR"/>
+	<result column="buyer_rate" property="buyerRate" jdbcType="BIT"/>
+	<result column="trade_source" property="tradeSource" jdbcType="VARCHAR"/>
+	<result column="seller_can_rate" property="sellerCanRate" jdbcType="BIT"/>
+	<result column="is_part_consign" property="isPartConsign" jdbcType="BIT"/>
+	<result column="is_daixiao" property="isDaixiao" jdbcType="BIT"/>
+	<result column="real_point_fee" property="realPointFee" jdbcType="BIGINT"/>
+	<result column="receiver_city" property="receiverCity" jdbcType="VARCHAR"/>
+	<result column="receiver_district" property="receiverDistrict" jdbcType="VARCHAR"/>
+	<result column="async_modified" property="asyncModified" jdbcType="TIMESTAMP"/>
+	<result column="o2o" property="o2o" jdbcType="VARCHAR"/>
+	<result column="o2o_guide_id" property="o2oGuideId" jdbcType="VARCHAR"/>
+	<result column="o2o_shop_id" property="o2oShopId" jdbcType="VARCHAR"/>
+	<result column="o2o_shop_name" property="o2oShopName" jdbcType="VARCHAR"/>
+	<result column="o2o_guide_name" property="o2oGuideName" jdbcType="VARCHAR"/>
+	<result column="o2o_delivery" property="o2oDelivery" jdbcType="VARCHAR"/>
+	<result column="zero_purchase" property="zeroPurchase" jdbcType="BIT"/>
+	<result column="o2o_out_trade_id" property="o2oOutTradeId" jdbcType="VARCHAR"/>
+	<result column="is_wt" property="isWt" jdbcType="INTEGER"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="daifa" property="daifa" jdbcType="VARCHAR"/>
+	<result column="buyer_memo" property="buyerMemo" jdbcType="VARCHAR"/>
+	<result column="seller_memo" property="sellerMemo" jdbcType="VARCHAR"/>
+	<result column="buyer_message" property="buyerMessage" jdbcType="VARCHAR"/>
+	<result column="daifa_status" property="daifaStatus" jdbcType="VARCHAR"/>
+	<result column="remark" property="remark" jdbcType="VARCHAR"/>
+	<result column="seller_id" property="sellerId" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.tid
+	, t.seller_nick
+	, t.pic_path
+	, t.payment
+	, t.seller_rate
+	, t.post_fee
+	, t.receiver_name
+	, t.receiver_state
+	, t.receiver_address
+	, t.receiver_zip
+	, t.logistics_id
+	, t.receiver_phone
+	, t.receiver_mobile
+	, t.consign_time
+	, t.receiver_payment
+	, t.num
+	, t.num_iid
+	, t.status
+	, t.title
+	, t.type
+	, t.price
+	, t.discount_fee
+	, t.point_fee
+	, t.total_fee
+	, t.is_lgtype
+	, t.is_brand_sale
+	, t.is_force_wlb
+	, t.lg_aging
+	, t.lg_aging_type
+	, t.created
+	, t.pay_time
+	, t.modified
+	, t.end_time
+	, t.alipay_id
+	, t.alipay_no
+	, t.seller_flag
+	, t.buyer_nick
+	, t.buyer_area
+	, t.has_yfx
+	, t.yfx_fee
+	, t.yfx_id
+	, t.yfx_type
+	, t.credit_card_fee
+	, t.nut_feature
+	, t.step_trade_status
+	, t.step_paid_fee
+	, t.mark_desc
+	, t.send_time
+	, t.shipping_type
+	, t.adjust_fee
+	, t.buyer_obtain_point_fee
+	, t.cod_fee
+	, t.trade_from
+	, t.cod_status
+	, t.commission_fee
+	, t.buyer_rate
+	, t.trade_source
+	, t.seller_can_rate
+	, t.is_part_consign
+	, t.is_daixiao
+	, t.real_point_fee
+	, t.receiver_city
+	, t.receiver_district
+	, t.async_modified
+	, t.o2o
+	, t.o2o_guide_id
+	, t.o2o_shop_id
+	, t.o2o_shop_name
+	, t.o2o_guide_name
+	, t.o2o_delivery
+	, t.zero_purchase
+	, t.o2o_out_trade_id
+	, t.is_wt
+	, t.update_time
+	, t.daifa
+	, t.buyer_memo
+	, t.seller_memo
+	, t.buyer_message
+	, t.daifa_status
+	, t.remark
+	, t.seller_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from trade t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from trade t where 
+			tid=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.trade.Trade">
+	insert into trade (
+	 tid
+		, seller_nick
+		, pic_path
+		, payment
+		, seller_rate
+		, post_fee
+		, receiver_name
+		, receiver_state
+		, receiver_address
+		, receiver_zip
+		, logistics_id
+		, receiver_phone
+		, receiver_mobile
+		, consign_time
+		, receiver_payment
+		, num
+		, num_iid
+		, status
+		, title
+		, type
+		, price
+		, discount_fee
+		, point_fee
+		, total_fee
+		, is_lgtype
+		, is_brand_sale
+		, is_force_wlb
+		, lg_aging
+		, lg_aging_type
+		, created
+		, pay_time
+		, modified
+		, end_time
+		, alipay_id
+		, alipay_no
+		, seller_flag
+		, buyer_nick
+		, buyer_area
+		, has_yfx
+		, yfx_fee
+		, yfx_id
+		, yfx_type
+		, credit_card_fee
+		, nut_feature
+		, step_trade_status
+		, step_paid_fee
+		, mark_desc
+		, send_time
+		, shipping_type
+		, adjust_fee
+		, buyer_obtain_point_fee
+		, cod_fee
+		, trade_from
+		, cod_status
+		, commission_fee
+		, buyer_rate
+		, trade_source
+		, seller_can_rate
+		, is_part_consign
+		, is_daixiao
+		, real_point_fee
+		, receiver_city
+		, receiver_district
+		, async_modified
+		, o2o
+		, o2o_guide_id
+		, o2o_shop_id
+		, o2o_shop_name
+		, o2o_guide_name
+		, o2o_delivery
+		, zero_purchase
+		, o2o_out_trade_id
+		, is_wt
+		, update_time
+		, daifa
+		, buyer_memo
+		, seller_memo
+		, buyer_message
+		, daifa_status
+		, remark
+		, seller_id
+		)values(
+	 #{tid}
+		, #{sellerNick}
+		, #{picPath}
+		, #{payment}
+		, #{sellerRate}
+		, #{postFee}
+		, #{receiverName}
+		, #{receiverState}
+		, #{receiverAddress}
+		, #{receiverZip}
+		, #{logisticsId}
+		, #{receiverPhone}
+		, #{receiverMobile}
+		, #{consignTime}
+		, #{receiverPayment}
+		, #{num}
+		, #{numIid}
+		, #{status}
+		, #{title}
+		, #{type}
+		, #{price}
+		, #{discountFee}
+		, #{pointFee}
+		, #{totalFee}
+		, #{isLgtype}
+		, #{isBrandSale}
+		, #{isForceWlb}
+		, #{lgAging}
+		, #{lgAgingType}
+		, #{created}
+		, #{payTime}
+		, #{modified}
+		, #{endTime}
+		, #{alipayId}
+		, #{alipayNo}
+		, #{sellerFlag}
+		, #{buyerNick}
+		, #{buyerArea}
+		, #{hasYfx}
+		, #{yfxFee}
+		, #{yfxId}
+		, #{yfxType}
+		, #{creditCardFee}
+		, #{nutFeature}
+		, #{stepTradeStatus}
+		, #{stepPaidFee}
+		, #{markDesc}
+		, #{sendTime}
+		, #{shippingType}
+		, #{adjustFee}
+		, #{buyerObtainPointFee}
+		, #{codFee}
+		, #{tradeFrom}
+		, #{codStatus}
+		, #{commissionFee}
+		, #{buyerRate}
+		, #{tradeSource}
+		, #{sellerCanRate}
+		, #{isPartConsign}
+		, #{isDaixiao}
+		, #{realPointFee}
+		, #{receiverCity}
+		, #{receiverDistrict}
+		, #{asyncModified}
+		, #{o2o}
+		, #{o2oGuideId}
+		, #{o2oShopId}
+		, #{o2oShopName}
+		, #{o2oGuideName}
+		, #{o2oDelivery}
+		, #{zeroPurchase}
+		, #{o2oOutTradeId}
+		, #{isWt}
+		, #{updateTime}
+		, #{daifa}
+		, #{buyerMemo}
+		, #{sellerMemo}
+		, #{buyerMessage}
+		, #{daifaStatus}
+		, #{remark}
+		, #{sellerId}
+	)
+</insert>
+</mapper>

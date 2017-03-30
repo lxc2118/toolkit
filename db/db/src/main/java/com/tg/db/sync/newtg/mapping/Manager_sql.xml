@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.newtg.pojo.manager.Manager">
+<resultMap type="com.tg.db.sync.newtg.pojo.manager.Manager" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="account" property="account" jdbcType="VARCHAR"/>
+	<result column="password" property="password" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+	<result column="login_times" property="loginTimes" jdbcType="INTEGER"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="is_admin" property="isAdmin" jdbcType="BIT"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.account
+	, t.password
+	, t.create_time
+	, t.last_login_time
+	, t.login_times
+	, t.status
+	, t.is_admin
+	, t.update_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from manager t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from manager t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.newtg.pojo.manager.Manager">
+	insert into manager (
+	 id
+		, name
+		, account
+		, password
+		, create_time
+		, last_login_time
+		, login_times
+		, status
+		, is_admin
+		, update_time
+		)values(
+	 #{id}
+		, #{name}
+		, #{account}
+		, #{password}
+		, #{createTime}
+		, #{lastLoginTime}
+		, #{loginTimes}
+		, #{status}
+		, #{isAdmin}
+		, #{updateTime}
+	)
+</insert>
+</mapper>

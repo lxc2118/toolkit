@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.newtg.pojo.siteConfig.SiteConfig">
+<resultMap type="com.tg.db.sync.newtg.pojo.siteConfig.SiteConfig" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="site_id" property="siteId" jdbcType="INTEGER"/>
+	<result column="hot_search_words" property="hotSearchWords" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="qq_service_id" property="qqServiceId" jdbcType="VARCHAR"/>
+	<result column="traffic_stat_code" property="trafficStatCode" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.site_id
+	, t.hot_search_words
+	, t.create_time
+	, t.update_time
+	, t.qq_service_id
+	, t.traffic_stat_code
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from site_config t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from site_config t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.newtg.pojo.siteConfig.SiteConfig">
+	insert into site_config (
+	 id
+		, site_id
+		, hot_search_words
+		, create_time
+		, update_time
+		, qq_service_id
+		, traffic_stat_code
+		)values(
+	 #{id}
+		, #{siteId}
+		, #{hotSearchWords}
+		, #{createTime}
+		, #{updateTime}
+		, #{qqServiceId}
+		, #{trafficStatCode}
+	)
+</insert>
+</mapper>

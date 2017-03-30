@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.userWallet.UserWallet">
+<resultMap type="com.tg.db.sync.sunrise.pojo.userWallet.UserWallet" id="BaseResultMap">
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="inpour_money" property="inpourMoney" jdbcType="DOUBLE"/>
+	<result column="money" property="money" jdbcType="DOUBLE"/>
+	<result column="outpour_money" property="outpourMoney" jdbcType="DOUBLE"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="version" property="version" jdbcType="INTEGER"/>
+	<result column="total_money" property="totalMoney" jdbcType="DOUBLE"/>
+	<result column="integral" property="integral" jdbcType="INTEGER"/>
+	<result column="total_integral" property="totalIntegral" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.user_id
+	, t.inpour_money
+	, t.money
+	, t.outpour_money
+	, t.create_time
+	, t.update_time
+	, t.id
+	, t.version
+	, t.total_money
+	, t.integral
+	, t.total_integral
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from user_wallet t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from user_wallet t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.userWallet.UserWallet">
+	insert into user_wallet (
+	 user_id
+		, inpour_money
+		, money
+		, outpour_money
+		, create_time
+		, update_time
+		, id
+		, version
+		, total_money
+		, integral
+		, total_integral
+		)values(
+	 #{userId}
+		, #{inpourMoney}
+		, #{money}
+		, #{outpourMoney}
+		, #{createTime}
+		, #{updateTime}
+		, #{id}
+		, #{version}
+		, #{totalMoney}
+		, #{integral}
+		, #{totalIntegral}
+	)
+</insert>
+</mapper>

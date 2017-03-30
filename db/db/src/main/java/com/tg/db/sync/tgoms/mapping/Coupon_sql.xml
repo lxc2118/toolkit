@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.coupon.Coupon">
+<resultMap type="com.tg.db.sync.tgoms.pojo.coupon.Coupon" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="num" property="num" jdbcType="INTEGER"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="supplier_id" property="supplierId" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="valid_time" property="validTime" jdbcType="INTEGER"/>
+	<result column="link" property="link" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.num
+	, t.price
+	, t.supplier_id
+	, t.create_time
+	, t.update_time
+	, t.valid_time
+	, t.link
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from coupon t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from coupon t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.coupon.Coupon">
+	insert into coupon (
+	 id
+		, name
+		, num
+		, price
+		, supplier_id
+		, create_time
+		, update_time
+		, valid_time
+		, link
+		)values(
+	 #{id}
+		, #{name}
+		, #{num}
+		, #{price}
+		, #{supplierId}
+		, #{createTime}
+		, #{updateTime}
+		, #{validTime}
+		, #{link}
+	)
+</insert>
+</mapper>

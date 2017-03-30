@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.omsOrder.OmsOrder">
+<resultMap type="com.tg.db.sync.sunrise.pojo.omsOrder.OmsOrder" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="receiver_name" property="receiverName" jdbcType="VARCHAR"/>
+	<result column="receiver_state" property="receiverState" jdbcType="VARCHAR"/>
+	<result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR"/>
+	<result column="receiver_mobile" property="receiverMobile" jdbcType="VARCHAR"/>
+	<result column="receiver_city" property="receiverCity" jdbcType="VARCHAR"/>
+	<result column="receiver_district" property="receiverDistrict" jdbcType="VARCHAR"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="supplier_id" property="supplierId" jdbcType="INTEGER"/>
+	<result column="total_service_fee" property="totalServiceFee" jdbcType="DOUBLE"/>
+	<result column="total_gift_fee" property="totalGiftFee" jdbcType="DOUBLE"/>
+	<result column="total_freight" property="totalFreight" jdbcType="DOUBLE"/>
+	<result column="total_item_amount" property="totalItemAmount" jdbcType="DOUBLE"/>
+	<result column="total_item_num" property="totalItemNum" jdbcType="INTEGER"/>
+	<result column="total_amount" property="totalAmount" jdbcType="DOUBLE"/>
+	<result column="total_taken_num" property="totalTakenNum" jdbcType="INTEGER"/>
+	<result column="payment" property="payment" jdbcType="DOUBLE"/>
+	<result column="refund_fee" property="refundFee" jdbcType="DOUBLE"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="ship_time" property="shipTime" jdbcType="TIMESTAMP"/>
+	<result column="remark" property="remark" jdbcType="VARCHAR"/>
+	<result column="supplier_remark" property="supplierRemark" jdbcType="VARCHAR"/>
+	<result column="logistics_expected" property="logisticsExpected" jdbcType="VARCHAR"/>
+	<result column="logistics_code_expected" property="logisticsCodeExpected" jdbcType="VARCHAR"/>
+	<result column="logistics_company_name" property="logisticsCompanyName" jdbcType="VARCHAR"/>
+	<result column="logistics_company_code" property="logisticsCompanyCode" jdbcType="VARCHAR"/>
+	<result column="logistics_sid" property="logisticsSid" jdbcType="VARCHAR"/>
+	<result column="freight_template_id" property="freightTemplateId" jdbcType="INTEGER"/>
+	<result column="logistics_time" property="logisticsTime" jdbcType="TIMESTAMP"/>
+	<result column="settled" property="settled" jdbcType="BIT"/>
+	<result column="adjusted_fee" property="adjustedFee" jdbcType="DOUBLE"/>
+	<result column="logistics_printed" property="logisticsPrinted" jdbcType="BIT"/>
+	<result column="buyer_nick" property="buyerNick" jdbcType="VARCHAR"/>
+	<result column="seller_nick" property="sellerNick" jdbcType="VARCHAR"/>
+	<result column="tid" property="tid" jdbcType="VARCHAR"/>
+	<result column="logistics_notified" property="logisticsNotified" jdbcType="BIT"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="logistics_online" property="logisticsOnline" jdbcType="BIT"/>
+	<result column="thx_num" property="thxNum" jdbcType="INTEGER"/>
+	<result column="used_thx_num" property="usedThxNum" jdbcType="INTEGER"/>
+	<result column="outer_order_id" property="outerOrderId" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.receiver_name
+	, t.receiver_state
+	, t.receiver_address
+	, t.receiver_mobile
+	, t.receiver_city
+	, t.receiver_district
+	, t.user_id
+	, t.supplier_id
+	, t.total_service_fee
+	, t.total_gift_fee
+	, t.total_freight
+	, t.total_item_amount
+	, t.total_item_num
+	, t.total_amount
+	, t.total_taken_num
+	, t.payment
+	, t.refund_fee
+	, t.create_time
+	, t.update_time
+	, t.status
+	, t.ship_time
+	, t.remark
+	, t.supplier_remark
+	, t.logistics_expected
+	, t.logistics_code_expected
+	, t.logistics_company_name
+	, t.logistics_company_code
+	, t.logistics_sid
+	, t.freight_template_id
+	, t.logistics_time
+	, t.settled
+	, t.adjusted_fee
+	, t.logistics_printed
+	, t.buyer_nick
+	, t.seller_nick
+	, t.tid
+	, t.logistics_notified
+	, t.type
+	, t.logistics_online
+	, t.thx_num
+	, t.used_thx_num
+	, t.outer_order_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from oms_order t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from oms_order t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.omsOrder.OmsOrder">
+	insert into oms_order (
+	 id
+		, receiver_name
+		, receiver_state
+		, receiver_address
+		, receiver_mobile
+		, receiver_city
+		, receiver_district
+		, user_id
+		, supplier_id
+		, total_service_fee
+		, total_gift_fee
+		, total_freight
+		, total_item_amount
+		, total_item_num
+		, total_amount
+		, total_taken_num
+		, payment
+		, refund_fee
+		, create_time
+		, update_time
+		, status
+		, ship_time
+		, remark
+		, supplier_remark
+		, logistics_expected
+		, logistics_code_expected
+		, logistics_company_name
+		, logistics_company_code
+		, logistics_sid
+		, freight_template_id
+		, logistics_time
+		, settled
+		, adjusted_fee
+		, logistics_printed
+		, buyer_nick
+		, seller_nick
+		, tid
+		, logistics_notified
+		, type
+		, logistics_online
+		, thx_num
+		, used_thx_num
+		, outer_order_id
+		)values(
+	 #{id}
+		, #{receiverName}
+		, #{receiverState}
+		, #{receiverAddress}
+		, #{receiverMobile}
+		, #{receiverCity}
+		, #{receiverDistrict}
+		, #{userId}
+		, #{supplierId}
+		, #{totalServiceFee}
+		, #{totalGiftFee}
+		, #{totalFreight}
+		, #{totalItemAmount}
+		, #{totalItemNum}
+		, #{totalAmount}
+		, #{totalTakenNum}
+		, #{payment}
+		, #{refundFee}
+		, #{createTime}
+		, #{updateTime}
+		, #{status}
+		, #{shipTime}
+		, #{remark}
+		, #{supplierRemark}
+		, #{logisticsExpected}
+		, #{logisticsCodeExpected}
+		, #{logisticsCompanyName}
+		, #{logisticsCompanyCode}
+		, #{logisticsSid}
+		, #{freightTemplateId}
+		, #{logisticsTime}
+		, #{settled}
+		, #{adjustedFee}
+		, #{logisticsPrinted}
+		, #{buyerNick}
+		, #{sellerNick}
+		, #{tid}
+		, #{logisticsNotified}
+		, #{type}
+		, #{logisticsOnline}
+		, #{thxNum}
+		, #{usedThxNum}
+		, #{outerOrderId}
+	)
+</insert>
+</mapper>

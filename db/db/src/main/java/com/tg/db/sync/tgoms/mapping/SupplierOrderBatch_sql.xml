@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.supplierOrderBatch.SupplierOrderBatch">
+<resultMap type="com.tg.db.sync.tgoms.pojo.supplierOrderBatch.SupplierOrderBatch" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="supplier_id" property="supplierId" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="description" property="description" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.supplier_id
+	, t.name
+	, t.description
+	, t.create_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from supplier_order_batch t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from supplier_order_batch t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.supplierOrderBatch.SupplierOrderBatch">
+	insert into supplier_order_batch (
+	 id
+		, supplier_id
+		, name
+		, description
+		, create_time
+		)values(
+	 #{id}
+		, #{supplierId}
+		, #{name}
+		, #{description}
+		, #{createTime}
+	)
+</insert>
+</mapper>

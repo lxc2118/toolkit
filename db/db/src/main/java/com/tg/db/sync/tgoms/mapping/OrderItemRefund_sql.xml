@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.orderItemRefund.OrderItemRefund">
+<resultMap type="com.tg.db.sync.tgoms.pojo.orderItemRefund.OrderItemRefund" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="reason" property="reason" jdbcType="VARCHAR"/>
+	<result column="refund_fee" property="refundFee" jdbcType="DOUBLE"/>
+	<result column="refund_desc" property="refundDesc" jdbcType="VARCHAR"/>
+	<result column="pic_urls" property="picUrls" jdbcType="VARCHAR"/>
+	<result column="refuse_reason" property="refuseReason" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="actual_refund_fee" property="actualRefundFee" jdbcType="DOUBLE"/>
+	<result column="logistics_sid" property="logisticsSid" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.reason
+	, t.refund_fee
+	, t.refund_desc
+	, t.pic_urls
+	, t.refuse_reason
+	, t.create_time
+	, t.update_time
+	, t.status
+	, t.actual_refund_fee
+	, t.logistics_sid
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from order_item_refund t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from order_item_refund t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.orderItemRefund.OrderItemRefund">
+	insert into order_item_refund (
+	 id
+		, reason
+		, refund_fee
+		, refund_desc
+		, pic_urls
+		, refuse_reason
+		, create_time
+		, update_time
+		, status
+		, actual_refund_fee
+		, logistics_sid
+		)values(
+	 #{id}
+		, #{reason}
+		, #{refundFee}
+		, #{refundDesc}
+		, #{picUrls}
+		, #{refuseReason}
+		, #{createTime}
+		, #{updateTime}
+		, #{status}
+		, #{actualRefundFee}
+		, #{logisticsSid}
+	)
+</insert>
+</mapper>

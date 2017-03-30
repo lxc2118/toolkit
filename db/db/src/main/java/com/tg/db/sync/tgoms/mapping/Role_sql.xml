@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.role.Role">
+<resultMap type="com.tg.db.sync.tgoms.pojo.role.Role" id="BaseResultMap">
+	<result column="scope" property="scope" jdbcType="VARCHAR"/>
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="valid" property="valid" jdbcType="BIT"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.scope
+	, t.id
+	, t.name
+	, t.valid
+	, t.update_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from role t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from role t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.role.Role">
+	insert into role (
+	 scope
+		, id
+		, name
+		, valid
+		, update_time
+		)values(
+	 #{scope}
+		, #{id}
+		, #{name}
+		, #{valid}
+		, #{updateTime}
+	)
+</insert>
+</mapper>

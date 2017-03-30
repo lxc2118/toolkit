@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.supplierSettlementItem.SupplierSettlementItem">
+<resultMap type="com.tg.db.sync.tgoms.pojo.supplierSettlementItem.SupplierSettlementItem" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="total_amount" property="totalAmount" jdbcType="DOUBLE"/>
+	<result column="supplier_settlement_id" property="supplierSettlementId" jdbcType="INTEGER"/>
+	<result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="order_id" property="orderId" jdbcType="VARCHAR"/>
+	<result column="refund_fee" property="refundFee" jdbcType="DOUBLE"/>
+	<result column="actual_refund_fee" property="actualRefundFee" jdbcType="DOUBLE"/>
+	<result column="payment" property="payment" jdbcType="DOUBLE"/>
+	<result column="order_date" property="orderDate" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.total_amount
+	, t.supplier_settlement_id
+	, t.create_date
+	, t.status
+	, t.order_id
+	, t.refund_fee
+	, t.actual_refund_fee
+	, t.payment
+	, t.order_date
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from supplier_settlement_item t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from supplier_settlement_item t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.supplierSettlementItem.SupplierSettlementItem">
+	insert into supplier_settlement_item (
+	 id
+		, total_amount
+		, supplier_settlement_id
+		, create_date
+		, status
+		, order_id
+		, refund_fee
+		, actual_refund_fee
+		, payment
+		, order_date
+		)values(
+	 #{id}
+		, #{totalAmount}
+		, #{supplierSettlementId}
+		, #{createDate}
+		, #{status}
+		, #{orderId}
+		, #{refundFee}
+		, #{actualRefundFee}
+		, #{payment}
+		, #{orderDate}
+	)
+</insert>
+</mapper>

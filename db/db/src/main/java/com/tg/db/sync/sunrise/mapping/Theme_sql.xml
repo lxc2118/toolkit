@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.theme.Theme">
+<resultMap type="com.tg.db.sync.sunrise.pojo.theme.Theme" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="body" property="body" jdbcType="VARCHAR"/>
+	<result column="picture" property="picture" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.user_id
+	, t.title
+	, t.body
+	, t.picture
+	, t.create_time
+	, t.update_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from theme t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from theme t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.theme.Theme">
+	insert into theme (
+	 id
+		, user_id
+		, title
+		, body
+		, picture
+		, create_time
+		, update_time
+		)values(
+	 #{id}
+		, #{userId}
+		, #{title}
+		, #{body}
+		, #{picture}
+		, #{createTime}
+		, #{updateTime}
+	)
+</insert>
+</mapper>

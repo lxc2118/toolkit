@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.userCart.UserCart">
+<resultMap type="com.tg.db.sync.sunrise.pojo.userCart.UserCart" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="num" property="num" jdbcType="INTEGER"/>
+	<result column="sku_names" property="skuNames" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="item_id" property="itemId" jdbcType="INTEGER"/>
+	<result column="sku_prop" property="skuProp" jdbcType="VARCHAR"/>
+	<result column="valid" property="valid" jdbcType="BIT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.user_id
+	, t.num
+	, t.sku_names
+	, t.create_time
+	, t.update_time
+	, t.item_id
+	, t.sku_prop
+	, t.valid
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from user_cart t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from user_cart t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.userCart.UserCart">
+	insert into user_cart (
+	 id
+		, user_id
+		, num
+		, sku_names
+		, create_time
+		, update_time
+		, item_id
+		, sku_prop
+		, valid
+		)values(
+	 #{id}
+		, #{userId}
+		, #{num}
+		, #{skuNames}
+		, #{createTime}
+		, #{updateTime}
+		, #{itemId}
+		, #{skuProp}
+		, #{valid}
+	)
+</insert>
+</mapper>

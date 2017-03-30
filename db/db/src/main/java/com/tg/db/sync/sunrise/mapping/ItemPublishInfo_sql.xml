@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.itemPublishInfo.ItemPublishInfo">
+<resultMap type="com.tg.db.sync.sunrise.pojo.itemPublishInfo.ItemPublishInfo" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="item_id" property="itemId" jdbcType="INTEGER"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="platform" property="platform" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+	<result column="finish_time" property="finishTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="seller_nick" property="sellerNick" jdbcType="VARCHAR"/>
+	<result column="trace_info" property="traceInfo" jdbcType="VARCHAR"/>
+	<result column="publish_detail_json" property="publishDetailJson" jdbcType="VARCHAR"/>
+	<result column="used_time_millis" property="usedTimeMillis" jdbcType="INTEGER"/>
+	<result column="num_iid" property="numIid" jdbcType="BIGINT"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="error_msg" property="errorMsg" jdbcType="VARCHAR"/>
+	<result column="platform_onsale" property="platformOnsale" jdbcType="BIT"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="shop_name" property="shopName" jdbcType="VARCHAR"/>
+	<result column="wd_item_id" property="wdItemId" jdbcType="INTEGER"/>
+	<result column="access_token" property="accessToken" jdbcType="VARCHAR"/>
+	<result column="offer_id" property="offerId" jdbcType="BIGINT"/>
+	<result column="member_id" property="memberId" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.user_id
+	, t.item_id
+	, t.title
+	, t.platform
+	, t.create_time
+	, t.start_time
+	, t.finish_time
+	, t.status
+	, t.seller_nick
+	, t.trace_info
+	, t.publish_detail_json
+	, t.used_time_millis
+	, t.num_iid
+	, t.update_time
+	, t.error_msg
+	, t.platform_onsale
+	, t.price
+	, t.shop_name
+	, t.wd_item_id
+	, t.access_token
+	, t.offer_id
+	, t.member_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from item_publish_info t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from item_publish_info t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.itemPublishInfo.ItemPublishInfo">
+	insert into item_publish_info (
+	 id
+		, user_id
+		, item_id
+		, title
+		, platform
+		, create_time
+		, start_time
+		, finish_time
+		, status
+		, seller_nick
+		, trace_info
+		, publish_detail_json
+		, used_time_millis
+		, num_iid
+		, update_time
+		, error_msg
+		, platform_onsale
+		, price
+		, shop_name
+		, wd_item_id
+		, access_token
+		, offer_id
+		, member_id
+		)values(
+	 #{id}
+		, #{userId}
+		, #{itemId}
+		, #{title}
+		, #{platform}
+		, #{createTime}
+		, #{startTime}
+		, #{finishTime}
+		, #{status}
+		, #{sellerNick}
+		, #{traceInfo}
+		, #{publishDetailJson}
+		, #{usedTimeMillis}
+		, #{numIid}
+		, #{updateTime}
+		, #{errorMsg}
+		, #{platformOnsale}
+		, #{price}
+		, #{shopName}
+		, #{wdItemId}
+		, #{accessToken}
+		, #{offerId}
+		, #{memberId}
+	)
+</insert>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.itemFetchSource.ItemFetchSource">
+<resultMap type="com.tg.db.sync.sunrise.pojo.itemFetchSource.ItemFetchSource" id="BaseResultMap">
+	<result column="item_id" property="itemId" jdbcType="INTEGER"/>
+	<result column="source_url" property="sourceUrl" jdbcType="VARCHAR"/>
+	<result column="come_from" property="comeFrom" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="product_id" property="productId" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.item_id
+	, t.source_url
+	, t.come_from
+	, t.create_time
+	, t.product_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from item_fetch_source t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from item_fetch_source t where 
+			item_id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.itemFetchSource.ItemFetchSource">
+	insert into item_fetch_source (
+	 item_id
+		, source_url
+		, come_from
+		, create_time
+		, product_id
+		)values(
+	 #{itemId}
+		, #{sourceUrl}
+		, #{comeFrom}
+		, #{createTime}
+		, #{productId}
+	)
+</insert>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.waybillCancelInfo.WaybillCancelInfo">
+<resultMap type="com.tg.db.sync.sunrise.pojo.waybillCancelInfo.WaybillCancelInfo" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="cp_code" property="cpCode" jdbcType="VARCHAR"/>
+	<result column="waybill_code" property="waybillCode" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="supplier_id" property="supplierId" jdbcType="INTEGER"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="success" property="success" jdbcType="BIT"/>
+	<result column="msg" property="msg" jdbcType="VARCHAR"/>
+	<result column="order_id" property="orderId" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.cp_code
+	, t.waybill_code
+	, t.create_time
+	, t.supplier_id
+	, t.type
+	, t.success
+	, t.msg
+	, t.order_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from waybill_cancel_info t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from waybill_cancel_info t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.waybillCancelInfo.WaybillCancelInfo">
+	insert into waybill_cancel_info (
+	 id
+		, cp_code
+		, waybill_code
+		, create_time
+		, supplier_id
+		, type
+		, success
+		, msg
+		, order_id
+		)values(
+	 #{id}
+		, #{cpCode}
+		, #{waybillCode}
+		, #{createTime}
+		, #{supplierId}
+		, #{type}
+		, #{success}
+		, #{msg}
+		, #{orderId}
+	)
+</insert>
+</mapper>

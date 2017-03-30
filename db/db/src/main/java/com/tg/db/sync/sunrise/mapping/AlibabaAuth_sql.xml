@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.alibabaAuth.AlibabaAuth">
+<resultMap type="com.tg.db.sync.sunrise.pojo.alibabaAuth.AlibabaAuth" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="ali_id" property="aliId" jdbcType="INTEGER"/>
+	<result column="resource_owner" property="resourceOwner" jdbcType="VARCHAR"/>
+	<result column="member_id" property="memberId" jdbcType="INTEGER"/>
+	<result column="expires_in" property="expiresIn" jdbcType="INTEGER"/>
+	<result column="refresh_token" property="refreshToken" jdbcType="VARCHAR"/>
+	<result column="access_token" property="accessToken" jdbcType="VARCHAR"/>
+	<result column="refresh_token_timeout" property="refreshTokenTimeout" jdbcType="TIMESTAMP"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.ali_id
+	, t.resource_owner
+	, t.member_id
+	, t.expires_in
+	, t.refresh_token
+	, t.access_token
+	, t.refresh_token_timeout
+	, t.create_time
+	, t.update_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from alibaba_auth t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from alibaba_auth t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.alibabaAuth.AlibabaAuth">
+	insert into alibaba_auth (
+	 id
+		, ali_id
+		, resource_owner
+		, member_id
+		, expires_in
+		, refresh_token
+		, access_token
+		, refresh_token_timeout
+		, create_time
+		, update_time
+		)values(
+	 #{id}
+		, #{aliId}
+		, #{resourceOwner}
+		, #{memberId}
+		, #{expiresIn}
+		, #{refreshToken}
+		, #{accessToken}
+		, #{refreshTokenTimeout}
+		, #{createTime}
+		, #{updateTime}
+	)
+</insert>
+</mapper>

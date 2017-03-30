@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.tradeRecord.TradeRecord">
+<resultMap type="com.tg.db.sync.sunrise.pojo.tradeRecord.TradeRecord" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="order_id" property="orderId" jdbcType="BIGINT"/>
+	<result column="trade_no" property="tradeNo" jdbcType="VARCHAR"/>
+	<result column="out_trade_no" property="outTradeNo" jdbcType="BIGINT"/>
+	<result column="trade_status" property="tradeStatus" jdbcType="VARCHAR"/>
+	<result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+	<result column="gmt_payment" property="gmtPayment" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.order_id
+	, t.trade_no
+	, t.out_trade_no
+	, t.trade_status
+	, t.gmt_create
+	, t.gmt_payment
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from trade_record t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from trade_record t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.tradeRecord.TradeRecord">
+	insert into trade_record (
+	 id
+		, order_id
+		, trade_no
+		, out_trade_no
+		, trade_status
+		, gmt_create
+		, gmt_payment
+		)values(
+	 #{id}
+		, #{orderId}
+		, #{tradeNo}
+		, #{outTradeNo}
+		, #{tradeStatus}
+		, #{gmtCreate}
+		, #{gmtPayment}
+	)
+</insert>
+</mapper>

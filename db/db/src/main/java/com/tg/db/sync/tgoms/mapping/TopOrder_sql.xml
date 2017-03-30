@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.topOrder.TopOrder">
+<resultMap type="com.tg.db.sync.tgoms.pojo.topOrder.TopOrder" id="BaseResultMap">
+	<result column="oid" property="oid" jdbcType="BIGINT"/>
+	<result column="item_meal_name" property="itemMealName" jdbcType="VARCHAR"/>
+	<result column="pic_path" property="picPath" jdbcType="VARCHAR"/>
+	<result column="seller_nick" property="sellerNick" jdbcType="VARCHAR"/>
+	<result column="buyer_nick" property="buyerNick" jdbcType="VARCHAR"/>
+	<result column="refund_status" property="refundStatus" jdbcType="VARCHAR"/>
+	<result column="outer_iid" property="outerIid" jdbcType="VARCHAR"/>
+	<result column="buyer_rate" property="buyerRate" jdbcType="BIT"/>
+	<result column="seller_rate" property="sellerRate" jdbcType="BIT"/>
+	<result column="seller_type" property="sellerType" jdbcType="VARCHAR"/>
+	<result column="cid" property="cid" jdbcType="BIGINT"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="price" property="price" jdbcType="VARCHAR"/>
+	<result column="num_iid" property="numIid" jdbcType="BIGINT"/>
+	<result column="item_meal_id" property="itemMealId" jdbcType="BIGINT"/>
+	<result column="sku_id" property="skuId" jdbcType="VARCHAR"/>
+	<result column="num" property="num" jdbcType="BIGINT"/>
+	<result column="outer_sku_id" property="outerSkuId" jdbcType="VARCHAR"/>
+	<result column="total_fee" property="totalFee" jdbcType="VARCHAR"/>
+	<result column="payment" property="payment" jdbcType="VARCHAR"/>
+	<result column="discount_fee" property="discountFee" jdbcType="VARCHAR"/>
+	<result column="adjust_fee" property="adjustFee" jdbcType="VARCHAR"/>
+	<result column="modified" property="modified" jdbcType="TIMESTAMP"/>
+	<result column="sku_properties_name" property="skuPropertiesName" jdbcType="VARCHAR"/>
+	<result column="refund_id" property="refundId" jdbcType="BIGINT"/>
+	<result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+	<result column="consign_time" property="consignTime" jdbcType="VARCHAR"/>
+	<result column="shipping_type" property="shippingType" jdbcType="VARCHAR"/>
+	<result column="bind_oid" property="bindOid" jdbcType="BIGINT"/>
+	<result column="logistics_company" property="logisticsCompany" jdbcType="VARCHAR"/>
+	<result column="invoice_no" property="invoiceNo" jdbcType="VARCHAR"/>
+	<result column="is_daixiao" property="isDaixiao" jdbcType="BIT"/>
+	<result column="divide_order_fee" property="divideOrderFee" jdbcType="VARCHAR"/>
+	<result column="part_mjz_discount" property="partMjzDiscount" jdbcType="VARCHAR"/>
+	<result column="ticket_outer_id" property="ticketOuterId" jdbcType="VARCHAR"/>
+	<result column="ticket_expdate_key" property="ticketExpdateKey" jdbcType="VARCHAR"/>
+	<result column="store_code" property="storeCode" jdbcType="VARCHAR"/>
+	<result column="is_www" property="isWww" jdbcType="BIT"/>
+	<result column="tmser_spu_code" property="tmserSpuCode" jdbcType="VARCHAR"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="tid" property="tid" jdbcType="BIGINT"/>
+	<result column="daifa" property="daifa" jdbcType="VARCHAR"/>
+	<result column="seller_id" property="sellerId" jdbcType="INTEGER"/>
+	<result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	<result column="city" property="city" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.oid
+	, t.item_meal_name
+	, t.pic_path
+	, t.seller_nick
+	, t.buyer_nick
+	, t.refund_status
+	, t.outer_iid
+	, t.buyer_rate
+	, t.seller_rate
+	, t.seller_type
+	, t.cid
+	, t.status
+	, t.title
+	, t.price
+	, t.num_iid
+	, t.item_meal_id
+	, t.sku_id
+	, t.num
+	, t.outer_sku_id
+	, t.total_fee
+	, t.payment
+	, t.discount_fee
+	, t.adjust_fee
+	, t.modified
+	, t.sku_properties_name
+	, t.refund_id
+	, t.end_time
+	, t.consign_time
+	, t.shipping_type
+	, t.bind_oid
+	, t.logistics_company
+	, t.invoice_no
+	, t.is_daixiao
+	, t.divide_order_fee
+	, t.part_mjz_discount
+	, t.ticket_outer_id
+	, t.ticket_expdate_key
+	, t.store_code
+	, t.is_www
+	, t.tmser_spu_code
+	, t.update_time
+	, t.tid
+	, t.daifa
+	, t.seller_id
+	, t.city_id
+	, t.city
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from top_order t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from top_order t where 
+			oid=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.topOrder.TopOrder">
+	insert into top_order (
+	 oid
+		, item_meal_name
+		, pic_path
+		, seller_nick
+		, buyer_nick
+		, refund_status
+		, outer_iid
+		, buyer_rate
+		, seller_rate
+		, seller_type
+		, cid
+		, status
+		, title
+		, price
+		, num_iid
+		, item_meal_id
+		, sku_id
+		, num
+		, outer_sku_id
+		, total_fee
+		, payment
+		, discount_fee
+		, adjust_fee
+		, modified
+		, sku_properties_name
+		, refund_id
+		, end_time
+		, consign_time
+		, shipping_type
+		, bind_oid
+		, logistics_company
+		, invoice_no
+		, is_daixiao
+		, divide_order_fee
+		, part_mjz_discount
+		, ticket_outer_id
+		, ticket_expdate_key
+		, store_code
+		, is_www
+		, tmser_spu_code
+		, update_time
+		, tid
+		, daifa
+		, seller_id
+		, city_id
+		, city
+		)values(
+	 #{oid}
+		, #{itemMealName}
+		, #{picPath}
+		, #{sellerNick}
+		, #{buyerNick}
+		, #{refundStatus}
+		, #{outerIid}
+		, #{buyerRate}
+		, #{sellerRate}
+		, #{sellerType}
+		, #{cid}
+		, #{status}
+		, #{title}
+		, #{price}
+		, #{numIid}
+		, #{itemMealId}
+		, #{skuId}
+		, #{num}
+		, #{outerSkuId}
+		, #{totalFee}
+		, #{payment}
+		, #{discountFee}
+		, #{adjustFee}
+		, #{modified}
+		, #{skuPropertiesName}
+		, #{refundId}
+		, #{endTime}
+		, #{consignTime}
+		, #{shippingType}
+		, #{bindOid}
+		, #{logisticsCompany}
+		, #{invoiceNo}
+		, #{isDaixiao}
+		, #{divideOrderFee}
+		, #{partMjzDiscount}
+		, #{ticketOuterId}
+		, #{ticketExpdateKey}
+		, #{storeCode}
+		, #{isWww}
+		, #{tmserSpuCode}
+		, #{updateTime}
+		, #{tid}
+		, #{daifa}
+		, #{sellerId}
+		, #{cityId}
+		, #{city}
+	)
+</insert>
+</mapper>

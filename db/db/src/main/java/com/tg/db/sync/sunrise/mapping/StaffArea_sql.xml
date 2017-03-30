@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.staffArea.StaffArea">
+<resultMap type="com.tg.db.sync.sunrise.pojo.staffArea.StaffArea" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="staff_id" property="staffId" jdbcType="INTEGER"/>
+	<result column="area_id" property="areaId" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.staff_id
+	, t.area_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from staff_area t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from staff_area t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.staffArea.StaffArea">
+	insert into staff_area (
+	 id
+		, staff_id
+		, area_id
+		)values(
+	 #{id}
+		, #{staffId}
+		, #{areaId}
+	)
+</insert>
+</mapper>

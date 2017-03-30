@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.newtg.pojo.advert.Advert">
+<resultMap type="com.tg.db.sync.newtg.pojo.advert.Advert" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+	<result column="phone" property="phone" jdbcType="VARCHAR"/>
+	<result column="shop_name" property="shopName" jdbcType="VARCHAR"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="ad" property="ad" jdbcType="VARCHAR"/>
+	<result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+	<result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.shop_id
+	, t.phone
+	, t.shop_name
+	, t.price
+	, t.ad
+	, t.start_time
+	, t.end_time
+	, t.create_time
+	, t.update_time
+	, t.status
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from advert t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from advert t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.newtg.pojo.advert.Advert">
+	insert into advert (
+	 id
+		, shop_id
+		, phone
+		, shop_name
+		, price
+		, ad
+		, start_time
+		, end_time
+		, create_time
+		, update_time
+		, status
+		)values(
+	 #{id}
+		, #{shopId}
+		, #{phone}
+		, #{shopName}
+		, #{price}
+		, #{ad}
+		, #{startTime}
+		, #{endTime}
+		, #{createTime}
+		, #{updateTime}
+		, #{status}
+	)
+</insert>
+</mapper>

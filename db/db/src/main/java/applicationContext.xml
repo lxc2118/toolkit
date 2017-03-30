@@ -1,0 +1,99 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<!-- 加载数据库配置 -->
+	<bean id="configurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 初始化配置 -->
+	<bean id="springContext" class="com.tg.db.common.SpringContext"></bean>
+
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.tg.db.sync"
+		name-generator="com.tg.db.core.CustomAnnotationBeanNameGenerator"></context:component-scan>
+
+	<!-- 数据源配置 -->
+	<bean id="sunriseDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${sunrise.driverClassName}"></property>
+		<property name="jdbcUrl" value="${sunrise.url}"></property>
+		<property name="user" value="${sunrise.username}"></property>
+		<property name="password" value="${sunrise.password}"></property>
+		<property name="autoCommitOnClose" value="true"></property>
+	</bean>
+	<bean id="newtgDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${newtg.driverClassName}"></property>
+		<property name="jdbcUrl" value="${newtg.url}"></property>
+		<property name="user" value="${newtg.username}"></property>
+		<property name="password" value="${newtg.password}"></property>
+		<property name="autoCommitOnClose" value="true"></property>
+	</bean>
+	<bean id="tgomsDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${tg_oms.driverClassName}"></property>
+		<property name="jdbcUrl" value="${tg_oms.url}"></property>
+		<property name="user" value="${tg_oms.username}"></property>
+		<property name="password" value="${tg_oms.password}"></property>
+		<property name="autoCommitOnClose" value="true"></property>
+	</bean>
+
+	<!-- 自动扫描mapping.xml文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+		<!-- 注入数据源 -->
+		<property name="dataSource" ref="dynamicDataSource" />
+		<!-- 扫描 sql 配置文件，即 mapper 对应的 xml 文件 -->
+		<!-- property name="mapperLocations" value="classpath:com/wujh/mapping/*.xml" 
+			/ -->
+		<property name="mapperLocations">
+			<array>
+				<value>classpath:com/tg/db/sync/newtg/mapping/*_sql.xml</value>
+				<value>classpath:com/tg/db/sync/sunrise/mapping/*_sql.xml</value>
+				<value>classpath:com/tg/db/sync/tgoms/mapping/*_sql.xml</value>
+			</array>
+		</property>
+	</bean>
+
+	<!-- 自定义sqlSessionTemplate -->
+	<!-- <bean id="sqlSessionTemplate" class="com.tg.db.core.CustomSqlSessionTemplate"> 
+		<constructor-arg ref="sunriseSqlSessionFactory" /> <property name="targetSqlSessionFactorys"> 
+		<map> <entry key="oracle" value-ref="sunriseSqlSessionFactory"/> <entry key="mysql" 
+		value-ref="newtgSqlSessionFactory"/> </map> </property> </bean> -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- 定义事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dynamicDataSource" />
+	</bean>
+
+	<bean id="dynamicDataSource" class="com.tg.db.core.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry value-ref="sunriseDataSource" key="sunrise" />
+				<entry value-ref="newtgDataSource" key="newtg" />
+				<entry value-ref="tgomsDataSource" key="tg_oms" />
+			</map>
+		</property>
+
+		<!-- 默认使用productDataSource的数据源 -->
+		<property name="defaultTargetDataSource" ref="sunriseDataSource" />
+	</bean>
+</beans>

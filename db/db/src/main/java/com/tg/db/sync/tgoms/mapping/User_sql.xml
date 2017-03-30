@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.user.User">
+<resultMap type="com.tg.db.sync.tgoms.pojo.user.User" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="login_times" property="loginTimes" jdbcType="INTEGER"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+	<result column="phone" property="phone" jdbcType="VARCHAR"/>
+	<result column="qq" property="qq" jdbcType="VARCHAR"/>
+	<result column="ww" property="ww" jdbcType="VARCHAR"/>
+	<result column="address" property="address" jdbcType="VARCHAR"/>
+	<result column="province_id" property="provinceId" jdbcType="VARCHAR"/>
+	<result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	<result column="district_id" property="districtId" jdbcType="VARCHAR"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="service_fee" property="serviceFee" jdbcType="DOUBLE"/>
+	<result column="inner_service_fee" property="innerServiceFee" jdbcType="DOUBLE"/>
+	<result column="account" property="account" jdbcType="VARCHAR"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="password" property="password" jdbcType="VARCHAR"/>
+	<result column="sender_name" property="senderName" jdbcType="VARCHAR"/>
+	<result column="sender_phone" property="senderPhone" jdbcType="VARCHAR"/>
+	<result column="sender_address" property="senderAddress" jdbcType="VARCHAR"/>
+	<result column="wx_open_id" property="wxOpenId" jdbcType="VARCHAR"/>
+	<result column="alipay_account" property="alipayAccount" jdbcType="VARCHAR"/>
+	<result column="id_no" property="idNo" jdbcType="VARCHAR"/>
+	<result column="seller_email" property="sellerEmail" jdbcType="VARCHAR"/>
+	<result column="web_user_id" property="webUserId" jdbcType="INTEGER"/>
+	<result column="cainiao_ship_address" property="cainiaoShipAddress" jdbcType="VARCHAR"/>
+	<result column="waybill_ship_address" property="waybillShipAddress" jdbcType="VARCHAR"/>
+	<result column="power_password" property="powerPassword" jdbcType="VARCHAR"/>
+	<result column="open_thx" property="openThx" jdbcType="BIT"/>
+	<result column="thx_fee" property="thxFee" jdbcType="DOUBLE"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.login_times
+	, t.create_time
+	, t.update_time
+	, t.last_login_time
+	, t.phone
+	, t.qq
+	, t.ww
+	, t.address
+	, t.province_id
+	, t.city_id
+	, t.district_id
+	, t.status
+	, t.service_fee
+	, t.inner_service_fee
+	, t.account
+	, t.type
+	, t.password
+	, t.sender_name
+	, t.sender_phone
+	, t.sender_address
+	, t.wx_open_id
+	, t.alipay_account
+	, t.id_no
+	, t.seller_email
+	, t.web_user_id
+	, t.cainiao_ship_address
+	, t.waybill_ship_address
+	, t.power_password
+	, t.open_thx
+	, t.thx_fee
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from user t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from user t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.user.User">
+	insert into user (
+	 id
+		, name
+		, login_times
+		, create_time
+		, update_time
+		, last_login_time
+		, phone
+		, qq
+		, ww
+		, address
+		, province_id
+		, city_id
+		, district_id
+		, status
+		, service_fee
+		, inner_service_fee
+		, account
+		, type
+		, password
+		, sender_name
+		, sender_phone
+		, sender_address
+		, wx_open_id
+		, alipay_account
+		, id_no
+		, seller_email
+		, web_user_id
+		, cainiao_ship_address
+		, waybill_ship_address
+		, power_password
+		, open_thx
+		, thx_fee
+		)values(
+	 #{id}
+		, #{name}
+		, #{loginTimes}
+		, #{createTime}
+		, #{updateTime}
+		, #{lastLoginTime}
+		, #{phone}
+		, #{qq}
+		, #{ww}
+		, #{address}
+		, #{provinceId}
+		, #{cityId}
+		, #{districtId}
+		, #{status}
+		, #{serviceFee}
+		, #{innerServiceFee}
+		, #{account}
+		, #{type}
+		, #{password}
+		, #{senderName}
+		, #{senderPhone}
+		, #{senderAddress}
+		, #{wxOpenId}
+		, #{alipayAccount}
+		, #{idNo}
+		, #{sellerEmail}
+		, #{webUserId}
+		, #{cainiaoShipAddress}
+		, #{waybillShipAddress}
+		, #{powerPassword}
+		, #{openThx}
+		, #{thxFee}
+	)
+</insert>
+</mapper>

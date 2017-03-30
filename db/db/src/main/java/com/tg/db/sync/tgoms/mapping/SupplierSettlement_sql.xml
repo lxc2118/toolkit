@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.supplierSettlement.SupplierSettlement">
+<resultMap type="com.tg.db.sync.tgoms.pojo.supplierSettlement.SupplierSettlement" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="supplier_id" property="supplierId" jdbcType="VARCHAR"/>
+	<result column="total_amount" property="totalAmount" jdbcType="DOUBLE"/>
+	<result column="refund_fee" property="refundFee" jdbcType="DOUBLE"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="amount_payable" property="amountPayable" jdbcType="DOUBLE"/>
+	<result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.supplier_id
+	, t.total_amount
+	, t.refund_fee
+	, t.status
+	, t.amount_payable
+	, t.create_date
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from supplier_settlement t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from supplier_settlement t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.supplierSettlement.SupplierSettlement">
+	insert into supplier_settlement (
+	 id
+		, supplier_id
+		, total_amount
+		, refund_fee
+		, status
+		, amount_payable
+		, create_date
+		)values(
+	 #{id}
+		, #{supplierId}
+		, #{totalAmount}
+		, #{refundFee}
+		, #{status}
+		, #{amountPayable}
+		, #{createDate}
+	)
+</insert>
+</mapper>

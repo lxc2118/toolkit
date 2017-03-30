@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.sellerCart.SellerCart">
+<resultMap type="com.tg.db.sync.tgoms.pojo.sellerCart.SellerCart" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="seller_id" property="sellerId" jdbcType="INTEGER"/>
+	<result column="num" property="num" jdbcType="INTEGER"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+	<result column="company_phone" property="companyPhone" jdbcType="VARCHAR"/>
+	<result column="company_address" property="companyAddress" jdbcType="VARCHAR"/>
+	<result column="sku_names" property="skuNames" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="item_pic" property="itemPic" jdbcType="VARCHAR"/>
+	<result column="item_code" property="itemCode" jdbcType="VARCHAR"/>
+	<result column="inner_item_url" property="innerItemUrl" jdbcType="VARCHAR"/>
+	<result column="inner_from" property="innerFrom" jdbcType="VARCHAR"/>
+	<result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.seller_id
+	, t.num
+	, t.price
+	, t.company_name
+	, t.company_phone
+	, t.company_address
+	, t.sku_names
+	, t.create_time
+	, t.update_time
+	, t.item_pic
+	, t.item_code
+	, t.inner_item_url
+	, t.inner_from
+	, t.city_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from seller_cart t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from seller_cart t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.sellerCart.SellerCart">
+	insert into seller_cart (
+	 id
+		, seller_id
+		, num
+		, price
+		, company_name
+		, company_phone
+		, company_address
+		, sku_names
+		, create_time
+		, update_time
+		, item_pic
+		, item_code
+		, inner_item_url
+		, inner_from
+		, city_id
+		)values(
+	 #{id}
+		, #{sellerId}
+		, #{num}
+		, #{price}
+		, #{companyName}
+		, #{companyPhone}
+		, #{companyAddress}
+		, #{skuNames}
+		, #{createTime}
+		, #{updateTime}
+		, #{itemPic}
+		, #{itemCode}
+		, #{innerItemUrl}
+		, #{innerFrom}
+		, #{cityId}
+	)
+</insert>
+</mapper>

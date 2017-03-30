@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.user.User">
+<resultMap type="com.tg.db.sync.sunrise.pojo.user.User" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="phone" property="phone" jdbcType="VARCHAR"/>
+	<result column="qq" property="qq" jdbcType="VARCHAR"/>
+	<result column="ww" property="ww" jdbcType="VARCHAR"/>
+	<result column="address" property="address" jdbcType="VARCHAR"/>
+	<result column="province_id" property="provinceId" jdbcType="VARCHAR"/>
+	<result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	<result column="district_id" property="districtId" jdbcType="VARCHAR"/>
+	<result column="status" property="status" jdbcType="VARCHAR"/>
+	<result column="wx_open_id" property="wxOpenId" jdbcType="VARCHAR"/>
+	<result column="alipay_account" property="alipayAccount" jdbcType="VARCHAR"/>
+	<result column="sender_name" property="senderName" jdbcType="VARCHAR"/>
+	<result column="sender_phone" property="senderPhone" jdbcType="VARCHAR"/>
+	<result column="sender_address" property="senderAddress" jdbcType="VARCHAR"/>
+	<result column="avatar_id" property="avatarId" jdbcType="BIGINT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.create_time
+	, t.update_time
+	, t.phone
+	, t.qq
+	, t.ww
+	, t.address
+	, t.province_id
+	, t.city_id
+	, t.district_id
+	, t.status
+	, t.wx_open_id
+	, t.alipay_account
+	, t.sender_name
+	, t.sender_phone
+	, t.sender_address
+	, t.avatar_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from user t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from user t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.user.User">
+	insert into user (
+	 id
+		, name
+		, create_time
+		, update_time
+		, phone
+		, qq
+		, ww
+		, address
+		, province_id
+		, city_id
+		, district_id
+		, status
+		, wx_open_id
+		, alipay_account
+		, sender_name
+		, sender_phone
+		, sender_address
+		, avatar_id
+		)values(
+	 #{id}
+		, #{name}
+		, #{createTime}
+		, #{updateTime}
+		, #{phone}
+		, #{qq}
+		, #{ww}
+		, #{address}
+		, #{provinceId}
+		, #{cityId}
+		, #{districtId}
+		, #{status}
+		, #{wxOpenId}
+		, #{alipayAccount}
+		, #{senderName}
+		, #{senderPhone}
+		, #{senderAddress}
+		, #{avatarId}
+	)
+</insert>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.orderItemDetail.OrderItemDetail">
+<resultMap type="com.tg.db.sync.sunrise.pojo.orderItemDetail.OrderItemDetail" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="sku_names" property="skuNames" jdbcType="VARCHAR"/>
+	<result column="item_name" property="itemName" jdbcType="VARCHAR"/>
+	<result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+	<result column="company_address" property="companyAddress" jdbcType="VARCHAR"/>
+	<result column="company_phone" property="companyPhone" jdbcType="VARCHAR"/>
+	<result column="order_id" property="orderId" jdbcType="BIGINT"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.sku_names
+	, t.item_name
+	, t.company_name
+	, t.company_address
+	, t.company_phone
+	, t.order_id
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from order_item_detail t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from order_item_detail t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.orderItemDetail.OrderItemDetail">
+	insert into order_item_detail (
+	 id
+		, sku_names
+		, item_name
+		, company_name
+		, company_address
+		, company_phone
+		, order_id
+		)values(
+	 #{id}
+		, #{skuNames}
+		, #{itemName}
+		, #{companyName}
+		, #{companyAddress}
+		, #{companyPhone}
+		, #{orderId}
+	)
+</insert>
+</mapper>

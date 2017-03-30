@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.cateMenuTag.CateMenuTag">
+<resultMap type="com.tg.db.sync.sunrise.pojo.cateMenuTag.CateMenuTag" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="cate_menu_id" property="cateMenuId" jdbcType="INTEGER"/>
+	<result column="title" property="title" jdbcType="VARCHAR"/>
+	<result column="icon_id" property="iconId" jdbcType="INTEGER"/>
+	<result column="url" property="url" jdbcType="VARCHAR"/>
+	<result column="sort_order" property="sortOrder" jdbcType="INTEGER"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.cate_menu_id
+	, t.title
+	, t.icon_id
+	, t.url
+	, t.sort_order
+	, t.update_time
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from cate_menu_tag t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from cate_menu_tag t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.cateMenuTag.CateMenuTag">
+	insert into cate_menu_tag (
+	 id
+		, cate_menu_id
+		, title
+		, icon_id
+		, url
+		, sort_order
+		, update_time
+		)values(
+	 #{id}
+		, #{cateMenuId}
+		, #{title}
+		, #{iconId}
+		, #{url}
+		, #{sortOrder}
+		, #{updateTime}
+	)
+</insert>
+</mapper>

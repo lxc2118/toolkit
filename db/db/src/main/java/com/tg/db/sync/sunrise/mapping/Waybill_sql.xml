@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.waybill.Waybill">
+<resultMap type="com.tg.db.sync.sunrise.pojo.waybill.Waybill" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="supplier_id" property="supplierId" jdbcType="INTEGER"/>
+	<result column="order_id" property="orderId" jdbcType="INTEGER"/>
+	<result column="short_address" property="shortAddress" jdbcType="VARCHAR"/>
+	<result column="waybill_code" property="waybillCode" jdbcType="VARCHAR"/>
+	<result column="cp_code" property="cpCode" jdbcType="VARCHAR"/>
+	<result column="package_center" property="packageCenter" jdbcType="VARCHAR"/>
+	<result column="package_center_name" property="packageCenterName" jdbcType="VARCHAR"/>
+	<result column="print_config" property="printConfig" jdbcType="VARCHAR"/>
+	<result column="shipping_branch_code" property="shippingBranchCode" jdbcType="VARCHAR"/>
+	<result column="consignee_branch_name" property="consigneeBranchName" jdbcType="VARCHAR"/>
+	<result column="shipping_branch_name" property="shippingBranchName" jdbcType="VARCHAR"/>
+	<result column="consignee_branch_code" property="consigneeBranchCode" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="real_user_id" property="realUserId" jdbcType="BIGINT"/>
+	<result column="consignee_name" property="consigneeName" jdbcType="VARCHAR"/>
+	<result column="consignee_province" property="consigneeProvince" jdbcType="VARCHAR"/>
+	<result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR"/>
+	<result column="consignee_phone" property="consigneePhone" jdbcType="VARCHAR"/>
+	<result column="shipping_province" property="shippingProvince" jdbcType="VARCHAR"/>
+	<result column="shipping_address" property="shippingAddress" jdbcType="VARCHAR"/>
+	<result column="shipping_area" property="shippingArea" jdbcType="VARCHAR"/>
+	<result column="shipping_city" property="shippingCity" jdbcType="VARCHAR"/>
+	<result column="consignee_area" property="consigneeArea" jdbcType="VARCHAR"/>
+	<result column="consignee_city" property="consigneeCity" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.supplier_id
+	, t.order_id
+	, t.short_address
+	, t.waybill_code
+	, t.cp_code
+	, t.package_center
+	, t.package_center_name
+	, t.print_config
+	, t.shipping_branch_code
+	, t.consignee_branch_name
+	, t.shipping_branch_name
+	, t.consignee_branch_code
+	, t.create_time
+	, t.update_time
+	, t.type
+	, t.real_user_id
+	, t.consignee_name
+	, t.consignee_province
+	, t.consignee_address
+	, t.consignee_phone
+	, t.shipping_province
+	, t.shipping_address
+	, t.shipping_area
+	, t.shipping_city
+	, t.consignee_area
+	, t.consignee_city
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from waybill t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from waybill t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.waybill.Waybill">
+	insert into waybill (
+	 id
+		, supplier_id
+		, order_id
+		, short_address
+		, waybill_code
+		, cp_code
+		, package_center
+		, package_center_name
+		, print_config
+		, shipping_branch_code
+		, consignee_branch_name
+		, shipping_branch_name
+		, consignee_branch_code
+		, create_time
+		, update_time
+		, type
+		, real_user_id
+		, consignee_name
+		, consignee_province
+		, consignee_address
+		, consignee_phone
+		, shipping_province
+		, shipping_address
+		, shipping_area
+		, shipping_city
+		, consignee_area
+		, consignee_city
+		)values(
+	 #{id}
+		, #{supplierId}
+		, #{orderId}
+		, #{shortAddress}
+		, #{waybillCode}
+		, #{cpCode}
+		, #{packageCenter}
+		, #{packageCenterName}
+		, #{printConfig}
+		, #{shippingBranchCode}
+		, #{consigneeBranchName}
+		, #{shippingBranchName}
+		, #{consigneeBranchCode}
+		, #{createTime}
+		, #{updateTime}
+		, #{type}
+		, #{realUserId}
+		, #{consigneeName}
+		, #{consigneeProvince}
+		, #{consigneeAddress}
+		, #{consigneePhone}
+		, #{shippingProvince}
+		, #{shippingAddress}
+		, #{shippingArea}
+		, #{shippingCity}
+		, #{consigneeArea}
+		, #{consigneeCity}
+	)
+</insert>
+</mapper>

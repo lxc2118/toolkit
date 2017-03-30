@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.sunrise.pojo.orderRefundDetail.OrderRefundDetail">
+<resultMap type="com.tg.db.sync.sunrise.pojo.orderRefundDetail.OrderRefundDetail" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="order_id" property="orderId" jdbcType="BIGINT"/>
+	<result column="order_item_id" property="orderItemId" jdbcType="BIGINT"/>
+	<result column="order_refund_id" property="orderRefundId" jdbcType="BIGINT"/>
+	<result column="num" property="num" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.order_id
+	, t.order_item_id
+	, t.order_refund_id
+	, t.num
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from order_refund_detail t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from order_refund_detail t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.sunrise.pojo.orderRefundDetail.OrderRefundDetail">
+	insert into order_refund_detail (
+	 id
+		, order_id
+		, order_item_id
+		, order_refund_id
+		, num
+		)values(
+	 #{id}
+		, #{orderId}
+		, #{orderItemId}
+		, #{orderRefundId}
+		, #{num}
+	)
+</insert>
+</mapper>

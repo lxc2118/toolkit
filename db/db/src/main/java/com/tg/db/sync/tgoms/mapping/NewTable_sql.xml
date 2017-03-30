@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.newTable.NewTable">
+<resultMap type="com.tg.db.sync.tgoms.pojo.newTable.NewTable" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="acitivity_id" property="acitivityId" jdbcType="VARCHAR"/>
+	<result column="description" property="description" jdbcType="VARCHAR"/>
+	<result column="level" property="level" jdbcType="VARCHAR"/>
+	<result column="integral" property="integral" jdbcType="INTEGER"/>
+	<result column="freeNum" property="freeNum" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.acitivity_id
+	, t.description
+	, t.level
+	, t.integral
+	, t.freeNum
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from new_table t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from new_table t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.newTable.NewTable">
+	insert into new_table (
+	 id
+		, acitivity_id
+		, description
+		, level
+		, integral
+		, freeNum
+		)values(
+	 #{id}
+		, #{acitivityId}
+		, #{description}
+		, #{level}
+		, #{integral}
+		, #{freeNum}
+	)
+</insert>
+</mapper>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.orderItem.OrderItem">
+<resultMap type="com.tg.db.sync.tgoms.pojo.orderItem.OrderItem" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="order_id" property="orderId" jdbcType="BIGINT"/>
+	<result column="item_name" property="itemName" jdbcType="VARCHAR"/>
+	<result column="num" property="num" jdbcType="INTEGER"/>
+	<result column="outer_item_id" property="outerItemId" jdbcType="VARCHAR"/>
+	<result column="inner_item_id" property="innerItemId" jdbcType="VARCHAR"/>
+	<result column="inner_status" property="innerStatus" jdbcType="BIT"/>
+	<result column="inner_item_code" property="innerItemCode" jdbcType="VARCHAR"/>
+	<result column="outer_tid" property="outerTid" jdbcType="VARCHAR"/>
+	<result column="outer_oid" property="outerOid" jdbcType="VARCHAR"/>
+	<result column="outer_payment" property="outerPayment" jdbcType="DOUBLE"/>
+	<result column="outer_price" property="outerPrice" jdbcType="DOUBLE"/>
+	<result column="price" property="price" jdbcType="DOUBLE"/>
+	<result column="total_fee" property="totalFee" jdbcType="DOUBLE"/>
+	<result column="payment" property="payment" jdbcType="DOUBLE"/>
+	<result column="service_fee" property="serviceFee" jdbcType="DOUBLE"/>
+	<result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+	<result column="company_phone" property="companyPhone" jdbcType="VARCHAR"/>
+	<result column="company_address" property="companyAddress" jdbcType="VARCHAR"/>
+	<result column="sku_names" property="skuNames" jdbcType="VARCHAR"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="inner" property="inner" jdbcType="INTEGER"/>
+	<result column="item_pic" property="itemPic" jdbcType="VARCHAR"/>
+	<result column="outer_item_code" property="outerItemCode" jdbcType="VARCHAR"/>
+	<result column="item_code" property="itemCode" jdbcType="VARCHAR"/>
+	<result column="inner_item_url" property="innerItemUrl" jdbcType="VARCHAR"/>
+	<result column="inner_from" property="innerFrom" jdbcType="VARCHAR"/>
+	<result column="refund_id" property="refundId" jdbcType="INTEGER"/>
+	<result column="refund_status" property="refundStatus" jdbcType="VARCHAR"/>
+	<result column="item_area_id" property="itemAreaId" jdbcType="INTEGER"/>
+	<result column="th_exported" property="thExported" jdbcType="BIT"/>
+	<result column="door_no" property="doorNo" jdbcType="INTEGER"/>
+	<result column="order_item_label_id" property="orderItemLabelId" jdbcType="INTEGER"/>
+	<result column="order_itemcol" property="orderItemcol" jdbcType="VARCHAR"/>
+	<result column="rk_num" property="rkNum" jdbcType="INTEGER"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.order_id
+	, t.item_name
+	, t.num
+	, t.outer_item_id
+	, t.inner_item_id
+	, t.inner_status
+	, t.inner_item_code
+	, t.outer_tid
+	, t.outer_oid
+	, t.outer_payment
+	, t.outer_price
+	, t.price
+	, t.total_fee
+	, t.payment
+	, t.service_fee
+	, t.company_name
+	, t.company_phone
+	, t.company_address
+	, t.sku_names
+	, t.create_time
+	, t.update_time
+	, t.inner
+	, t.item_pic
+	, t.outer_item_code
+	, t.item_code
+	, t.inner_item_url
+	, t.inner_from
+	, t.refund_id
+	, t.refund_status
+	, t.item_area_id
+	, t.th_exported
+	, t.door_no
+	, t.order_item_label_id
+	, t.order_itemcol
+	, t.rk_num
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from order_item t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from order_item t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.orderItem.OrderItem">
+	insert into order_item (
+	 id
+		, order_id
+		, item_name
+		, num
+		, outer_item_id
+		, inner_item_id
+		, inner_status
+		, inner_item_code
+		, outer_tid
+		, outer_oid
+		, outer_payment
+		, outer_price
+		, price
+		, total_fee
+		, payment
+		, service_fee
+		, company_name
+		, company_phone
+		, company_address
+		, sku_names
+		, create_time
+		, update_time
+		, inner
+		, item_pic
+		, outer_item_code
+		, item_code
+		, inner_item_url
+		, inner_from
+		, refund_id
+		, refund_status
+		, item_area_id
+		, th_exported
+		, door_no
+		, order_item_label_id
+		, order_itemcol
+		, rk_num
+		)values(
+	 #{id}
+		, #{orderId}
+		, #{itemName}
+		, #{num}
+		, #{outerItemId}
+		, #{innerItemId}
+		, #{innerStatus}
+		, #{innerItemCode}
+		, #{outerTid}
+		, #{outerOid}
+		, #{outerPayment}
+		, #{outerPrice}
+		, #{price}
+		, #{totalFee}
+		, #{payment}
+		, #{serviceFee}
+		, #{companyName}
+		, #{companyPhone}
+		, #{companyAddress}
+		, #{skuNames}
+		, #{createTime}
+		, #{updateTime}
+		, #{inner}
+		, #{itemPic}
+		, #{outerItemCode}
+		, #{itemCode}
+		, #{innerItemUrl}
+		, #{innerFrom}
+		, #{refundId}
+		, #{refundStatus}
+		, #{itemAreaId}
+		, #{thExported}
+		, #{doorNo}
+		, #{orderItemLabelId}
+		, #{orderItemcol}
+		, #{rkNum}
+	)
+</insert>
+</mapper>

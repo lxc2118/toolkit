@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.tgoms.pojo.frequentContacts.FrequentContacts">
+<resultMap type="com.tg.db.sync.tgoms.pojo.frequentContacts.FrequentContacts" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="phone" property="phone" jdbcType="VARCHAR"/>
+	<result column="address" property="address" jdbcType="VARCHAR"/>
+	<result column="seller_id" property="sellerId" jdbcType="VARCHAR"/>
+	<result column="province" property="province" jdbcType="VARCHAR"/>
+	<result column="city" property="city" jdbcType="VARCHAR"/>
+	<result column="district" property="district" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.name
+	, t.phone
+	, t.address
+	, t.seller_id
+	, t.province
+	, t.city
+	, t.district
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from frequent_contacts t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from frequent_contacts t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.tgoms.pojo.frequentContacts.FrequentContacts">
+	insert into frequent_contacts (
+	 id
+		, name
+		, phone
+		, address
+		, seller_id
+		, province
+		, city
+		, district
+		)values(
+	 #{id}
+		, #{name}
+		, #{phone}
+		, #{address}
+		, #{sellerId}
+		, #{province}
+		, #{city}
+		, #{district}
+	)
+</insert>
+</mapper>

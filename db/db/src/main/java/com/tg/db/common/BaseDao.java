@@ -5,45 +5,18 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
-import javax.annotation.Resource;
 import javax.management.Query;
 
-import org.apache.ibatis.session.ResultContext;
 import org.apache.ibatis.session.ResultHandler;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 
-import com.tg.db.core.CustomSqlSessionTemplate;
+import com.tg.db.core.CustomerContextHolder;
 
 @SuppressWarnings("deprecation")
 public abstract class BaseDao<Pojo> {
 
-	@Resource
-	protected volatile SqlSessionTemplate sqlSessionTemplate;
-
-    private Map<Object, SqlSessionFactory> targetSqlSessionFactorys;
-    private SqlSessionFactory defaultTargetSqlSessionFactory;
-    private SqlSession sqlSession;
- 
-    @Override
-    public final SqlSession getSqlSession() {
-        SqlSessionFactory targetSqlSessionFactory = targetSqlSessionFactorys.get(CustomerContextHolder.getContextType());
-        if (targetSqlSessionFactory != null) {
-            setSqlSessionFactory(targetSqlSessionFactory);
-        } else if (defaultTargetSqlSessionFactory != null) {
-            setSqlSessionFactory(defaultTargetSqlSessionFactory);
-            targetSqlSessionFactory = defaultTargetSqlSessionFactory;
-        } else {
-            targetSqlSessionFactory = (SqlSessionFactory) applicationContext.getBean(CustomerContextHolder.getContextType());
-            setSqlSessionFactory(targetSqlSessionFactory);
-        }
-        this.sqlSession = SqlSessionUtils.getSqlSession(targetSqlSessionFactory);
-        return this.sqlSession;
-    }
+	protected volatile SqlSessionTemplate sqlSession;
 	
 	/**
 	 * 根据pojo读取一个实例，如果不存在，则增加一条记录
@@ -93,13 +66,20 @@ public abstract class BaseDao<Pojo> {
 	}
 
 	protected SqlSessionTemplate acqSqlSession() {
-		if (sqlSession == null) {
-			sqlSession = S.get(CustomSqlSessionTemplate.class);
-		}
-		System.out.println(sqlSession.getSqlSessionFactory().getConfiguration().getEnvironment());
+		Table table = (Table) classT.getAnnotation(Table.class);
+		CustomerContextHolder.setContextType(table.name());
+		sqlSession = (SqlSessionTemplate) S.get("sqlSession");
 		return sqlSession;
 	}
 
+	public Collection<Pojo> findLimit(Long start, Long end) {
+		return (ArrayList<Pojo>) this.acqSqlSession().selectList (this.getStatementName("findLimit"),new Limit(start, end));
+	}
+	
+	public Collection<Pojo> findLimit(Long start) {
+		return (ArrayList<Pojo>) this.acqSqlSession().selectList (this.getStatementName("findLimit"),new Limit(start, start + 20L));
+	}
+	
 	public int findCnt() {
 		return (Integer) acqSqlSession().selectOne(this.getStatementName("findCnt"));
 	}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tg.db.sync.newtg.pojo.auth.Auth">
+<resultMap type="com.tg.db.sync.newtg.pojo.auth.Auth" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="INTEGER"/>
+	<result column="last_auth_time" property="lastAuthTime" jdbcType="TIMESTAMP"/>
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+	<result column="expire_time" property="expireTime" jdbcType="TIMESTAMP"/>
+	<result column="user_id" property="userId" jdbcType="INTEGER"/>
+	<result column="auth_times" property="authTimes" jdbcType="INTEGER"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="access_token" property="accessToken" jdbcType="VARCHAR"/>
+	<result column="token_type" property="tokenType" jdbcType="VARCHAR"/>
+	<result column="expires_in" property="expiresIn" jdbcType="INTEGER"/>
+	<result column="refresh_token" property="refreshToken" jdbcType="VARCHAR"/>
+	<result column="re_expires_in" property="reExpiresIn" jdbcType="INTEGER"/>
+	<result column="r1expires_in" property="r1expiresIn" jdbcType="INTEGER"/>
+	<result column="r2expires_in" property="r2expiresIn" jdbcType="INTEGER"/>
+	<result column="w1expires_in" property="w1expiresIn" jdbcType="INTEGER"/>
+	<result column="w2expires_in" property="w2expiresIn" jdbcType="INTEGER"/>
+	<result column="taobao_user_nick" property="taobaoUserNick" jdbcType="VARCHAR"/>
+	<result column="taobao_user_id" property="taobaoUserId" jdbcType="VARCHAR"/>
+	<result column="sub_taobao_user_id" property="subTaobaoUserId" jdbcType="VARCHAR"/>
+	<result column="sub_taobao_user_nick" property="subTaobaoUserNick" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.last_auth_time
+	, t.create_time
+	, t.update_time
+	, t.expire_time
+	, t.user_id
+	, t.auth_times
+	, t.type
+	, t.access_token
+	, t.token_type
+	, t.expires_in
+	, t.refresh_token
+	, t.re_expires_in
+	, t.r1expires_in
+	, t.r2expires_in
+	, t.w1expires_in
+	, t.w2expires_in
+	, t.taobao_user_nick
+	, t.taobao_user_id
+	, t.sub_taobao_user_id
+	, t.sub_taobao_user_nick
+</sql>
+
+<select id="findLimit" resultMap="BaseResultMap" parameterType="com.tg.db.common.Limit" >
+	select 
+	<include refid="cols" />
+	from auth t limit #{limitStart},#{limitEnd}
+</select>
+
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="cols" /> from auth t where 
+			id=#{value}
+		
+</select>
+
+<insert id="insert" parameterType="com.tg.db.sync.newtg.pojo.auth.Auth">
+	insert into auth (
+	 id
+		, last_auth_time
+		, create_time
+		, update_time
+		, expire_time
+		, user_id
+		, auth_times
+		, type
+		, access_token
+		, token_type
+		, expires_in
+		, refresh_token
+		, re_expires_in
+		, r1expires_in
+		, r2expires_in
+		, w1expires_in
+		, w2expires_in
+		, taobao_user_nick
+		, taobao_user_id
+		, sub_taobao_user_id
+		, sub_taobao_user_nick
+		)values(
+	 #{id}
+		, #{lastAuthTime}
+		, #{createTime}
+		, #{updateTime}
+		, #{expireTime}
+		, #{userId}
+		, #{authTimes}
+		, #{type}
+		, #{accessToken}
+		, #{tokenType}
+		, #{expiresIn}
+		, #{refreshToken}
+		, #{reExpiresIn}
+		, #{r1expiresIn}
+		, #{r2expiresIn}
+		, #{w1expiresIn}
+		, #{w2expiresIn}
+		, #{taobaoUserNick}
+		, #{taobaoUserId}
+		, #{subTaobaoUserId}
+		, #{subTaobaoUserNick}
+	)
+</insert>
+</mapper>
