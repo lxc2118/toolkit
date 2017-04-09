@@ -22,13 +22,11 @@ public abstract class AbsReq {
 
 	protected List<Header> defaultHeaders = new ArrayList<Header>() {
 		{
-			add(new BasicHeader("Accept",
-					"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"));
+			add(new BasicHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"));
 			add(new BasicHeader("Accept-Encoding", "gzip, deflate, sdch, br"));
 			add(new BasicHeader("Accept-Language", "zh-CN,zh;q=0.8"));
 			add(new BasicHeader("Connection", "keep-alive"));
-			add(new BasicHeader("User-Agent",
-					"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"));
+			add(new BasicHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"));
 			add(new BasicHeader("Upgrade-Insecure-Requests", "1"));
 		}
 	};

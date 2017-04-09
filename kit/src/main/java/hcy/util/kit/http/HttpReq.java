@@ -34,12 +34,16 @@ import util.MapUtil;
 import util.ReqUtil;
 
 /**
- * Created by lxc on 2016/9/2. Request请求 支持 http,https 目前https只支持get方法
- * example:new HttpReq(url).execute(); new HttpReq(url, params).execute(); new
- * HttpReq(url).put("a","b").execute(); new
- * HttpReq(url).put(params).setMethod(HttpReq.Method.POST).execute(); new
- * HttpReq(url).put(params).setFilter("k1,k2,k3").execute();
- * @author Axios
+ * Created by lxc on 2016/9/2. 
+ * Request请求 支持 http,https 目前https只支持get方法
+ * example:
+ * new HttpReq(url).execute();
+ * new HttpReq(url, params).execute();
+ * new HttpReq(url).setCharset("utf-8").execute();
+ * new HttpReq(url).put("a","b").execute();
+ * new HttpReq(url).put(params).setMethod("post").execute();
+ * new HttpReq(url).put(params).setFilter("k1,k2,k3").execute();
+ * @author lxc
  */
 public class HttpReq extends AbsReq{
 

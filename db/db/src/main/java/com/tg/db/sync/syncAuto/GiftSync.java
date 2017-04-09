@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.tg.db.sync.AbsSync;
 import com.tg.db.sync.sunrise.pojo.gift.Gift;
 
-@Repository
 public class GiftSync extends AbsSync<com.tg.db.sync.tgoms.pojo.gift.Gift,Gift>{
 
 	@Override

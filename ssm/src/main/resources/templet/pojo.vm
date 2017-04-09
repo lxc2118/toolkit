@@ -2,11 +2,13 @@ package $pkg;
 import com.tg.db.common.IPk;
 import java.io.Serializable;
 import org.springframework.stereotype.Component;
+import com.tg.db.common.Table;
 #if($table.hasDate)
 
 import java.util.Date;
 
 #end
+@Table(name="tg_oms")
 @Component
 public class ${nameUtil.firstUpperPasical($table.name)} implements IPk,Serializable{
 	private static final long serialVersionUID = -871092257120622327L;

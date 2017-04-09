@@ -77,4 +77,18 @@ public class App extends TestBase{
 //		Person person = (Person) context.getBean("personBean");
 //		person.say();
 	}
+	
+	public void testDBVelocity() {
+		Properties p = new Properties();
+		p.setProperty("file.resource.loader.class","org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		Velocity.init(p);
+		Template template = Velocity.getTemplate("/templet/dbcopy.vm");
+		VelocityContext context = new VelocityContext();
+		List<Table> tables = S.get(TableDao.class).getTables();
+		context.put("tables", tables);
+//		context.put("project", "Jakarta");
+		StringWriter writer = new StringWriter();
+		template.merge(context, writer);
+		System.out.println(writer);
+	}
 }

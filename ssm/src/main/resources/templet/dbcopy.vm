@@ -1,0 +1,3 @@
+#foreach($table in $tables)
+INSERT INTO tg_huipi.$table.name SELECT * FROM tg_oms.$table.name 
+#end

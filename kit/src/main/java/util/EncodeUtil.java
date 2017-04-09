@@ -1,11 +1,31 @@
 package util;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
 /**
  * TODO 待修改
+ * @author lxc
  */
 public class EncodeUtil {
+	
+	/**
+	 * 字符串encode转换
+	 * @param str
+	 * @param type
+	 * @param encodeType
+	 * @return
+	 */
+	public static String encode(String str, String type, String encodeType) {
+		String temp = null;
+		try {
+			temp = new String(str.getBytes(type), encodeType);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} 
+		return temp;
+	}
+	
 	/**
 	 * 判断文件编码 有一定概率出错
 	 * 

@@ -52,7 +52,7 @@ public class JavaCode extends TableCode {
 	protected String getFullPkg(Table table) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(Context.getPkgName());
-		sb.append(".newtg.pojo.");
+		sb.append(".tgoms.pojo.");
 		sb.append(NameUtil.get().pasical(table.getName()));
 		// sb.append(".pojo");
 		// sb.append(pkgName);
