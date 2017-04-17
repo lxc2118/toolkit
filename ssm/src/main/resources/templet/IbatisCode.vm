@@ -1,4 +1,4 @@
-#set($pojoName="${pojoPkg}.tgoms.pojo.${nameUtil.pasical($table.name)}.${nameUtil.firstUpperPasical($table.name)}")
+#set($pojoName="${pojoPkg}.sunrise.pojo.${nameUtil.pasical($table.name)}.${nameUtil.firstUpperPasical($table.name)}")
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="$pojoName">

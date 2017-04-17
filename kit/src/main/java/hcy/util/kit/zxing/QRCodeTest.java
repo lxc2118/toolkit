@@ -45,7 +45,7 @@ public class QRCodeTest {
         json.put(  
                 "zxing",  
                 "https://github.com/zxing/zxing/tree/zxing-3.0.0/javase/src/main/java/com/google/zxing");  
-        json.put("author", "shihy");  
+        json.put("author", "shihy");
         String content = json.toJSONString();// 内容  
         int width = 200; // 图像宽度  
         int height = 200; // 图像高度  
