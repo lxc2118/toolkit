@@ -50,4 +50,21 @@
 #end
 )
 </insert>
+
+#if($table.allPk==false)
+<update id="update" parameterType="$pojoName" >
+	update $table.name set
+#set($cnt=0)
+#foreach($col in $table.columns)
+#if(!$col.pk)
+	#set($cnt=$cnt+1)
+	#if($cnt>1),#end $col.sqlCode
+#end
+#end
+	where 
+#foreach($col in $table.pks)
+	#if($velocityCount>1) and #end $col.sqlCode
+#end
+</update>
+#end
 </mapper>

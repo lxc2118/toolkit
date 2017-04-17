@@ -12,13 +12,14 @@ public class Query implements Serializable {
 	 * 页数
 	 */
 	private int page;
-	
+
 	/**
 	 * 每页数量
 	 */
 	private int pageSize;
 
-	public Query() {}
+	public Query() {
+	}
 
 	public int getPage() {
 		return page;
