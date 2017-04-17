@@ -1,5 +1,8 @@
 package hcy.util.kit;
 
+import java.util.Date;
+import java.util.UUID;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -29,6 +32,8 @@ public class AppTest extends TestCase {
 	 * Rigourous Test :-)
 	 */
 	public void testApp() {
-		assertTrue(true);
+		System.out.println(UUID.randomUUID().toString().length());
+		
+//		assertTrue(true);
 	}
 }

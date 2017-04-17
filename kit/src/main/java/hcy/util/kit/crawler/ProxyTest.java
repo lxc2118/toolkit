@@ -19,7 +19,7 @@ public class ProxyTest {
 //		System.getProperties().setProperty("http.proxyHost", "93.91.200.146");  
 //		System.getProperties().setProperty("http.proxyPort", "80"); 
 //		System.out.println(ProxyTest.getHtml("http://1212.ip138.com/ic.asp"));
-		new HttpReq("http://1212.ip138.com/ic.asp").setProxy(true).execute();
+		new HttpReq("http://1212.ip138.com/ic.asp").setProxy().execute();
 	}
 
 }
