@@ -2,67 +2,89 @@ package hcy.util.kit.http;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpHost;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.protocol.HttpCoreContext;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
+import hcy.util.kit.http.inf.IProxy;
 import util.MapUtil;
 import util.ReqUtil;
 
 /**
  * Created by lxc on 2016/9/2. 
- * Request请求 支持 http,https 目前https只支持get方法
+ * Request请求
+ * 支持 http,https
+ * 目前https只支持get方法
  * example:
  * new HttpReq(url).execute();
- * new HttpReq(url, params).execute();
- * new HttpReq(url).setCharset("utf-8").execute();
+ * new HttpReq(url, params).setCharset("utf-8").execute();
  * new HttpReq(url).put("a","b").execute();
  * new HttpReq(url).put(params).setMethod("post").execute();
  * new HttpReq(url).put(params).setFilter("k1,k2,k3").execute();
  * @author lxc
  */
 public class HttpReq extends AbsReq{
-
-	protected String[] filterKeys;
 	
+	private static Logger logger = Logger.getLogger(HttpReq.class);
+
+	/**
+	 * 过滤字段
+	 */
+	protected String[] filterKeys;
+
+	/**
+	 * 真实访问地址
+	 * 302等访问跳转
+	 */
 	private String realReqUri;
 
+	/**
+	 * 默认方法
+	 */
 	private String method = "get";
 
+	/**
+	 * 访问参数
+	 */
 	protected HashMap<String, String> params = new HashMap<>();
 
-	private static Logger logger = Logger.getLogger(HttpReq.class);
-	
+	/**
+	 * 返回字符串格式
+	 */
 	private String charset = "gbk";
-	
-	private Boolean proxy = false;
 
-	public HttpReq() {
-	}
+	/**
+	 * 内部代理类
+	 */
+	private HttpHost host;
+
+	/**
+	 * 本地代理类
+	 */
+	private IProxy proxy;
+	
+	/**
+	 * proxy工厂
+	 */
+	private ProxyFac proxyFac;
+
+	public HttpReq() {}
 
 	public HttpReq(String url) {
 		this.url = url;
@@ -72,9 +94,37 @@ public class HttpReq extends AbsReq{
 		this.headers.add(new BasicHeader(name, value));
 		return this;
 	}
+
+	public HttpReq setProxy() {
+		if (proxyFac!=null) {
+			IProxy proxy = proxyFac.getProxy();
+			if(proxy != null)
+				this.setProxy(proxy);
+		}
+		return this;
+	}
+
+	public HttpReq setProxy(IProxy proxy) {
+		if (proxy == null) {
+			this.proxy = proxy;
+			this.host = new HttpHost(proxy.getIp(), proxy.getPort());
+		}
+		return this;
+	}
 	
-	public HttpReq setProxy(boolean proxy) {
-		this.proxy = proxy;
+	public HttpReq setProxy(HttpHost host) {
+		this.host = host;
+		return this;
+	}
+	
+	public HttpReq setProxy(String proxy) {
+		String[] temp = proxy.split(":");
+		this.host = new HttpHost(temp[0], Integer.parseInt(temp[1]));
+		return this;
+	}
+	
+	public HttpReq setProxy(String hostName, int port) {
+		this.host = new HttpHost(hostName, port);
 		return this;
 	}
 	
@@ -196,6 +246,16 @@ public class HttpReq extends AbsReq{
 	}
 
 	public String execute() {
+		//　说明启用了代理
+		if (this.host!= null){
+			String html = this.doExecute();
+			if (html == null) {
+				this.proxyFac.delete(proxy);
+				this.setProxy(this.proxyFac.getProxy());
+				return this.execute();
+			}
+			return html;
+		}
 		return this.doExecute();
 	}
 
@@ -213,42 +273,16 @@ public class HttpReq extends AbsReq{
 	}
 	
 	public byte[] execute2Bytes() {
-		this.doExecute();
-		try {
-			return doExecute2Bytes();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		return doExecute2Bytes();
 	}
+	
 	public byte[] doExecute2Bytes() {
 		CloseableHttpClient httpClient = this.getHttpClient();
 		CloseableHttpResponse httpResp = null;
-		HttpUriRequest httpUriReq = null;
-		HttpContext httpContext = new BasicHttpContext();
-		if (this.method.equals("get")) {
-			httpUriReq = new HttpGet(this.getUrlWithParam());
-			httpUriReq.setHeaders(this.getAllHeaders());
-		}
-		if (this.method.endsWith("post")) {
-			HttpPost httpPost = new HttpPost(this.getUrl());
-			if (this.params != null) {
-				List<NameValuePair> paramList = new ArrayList<>();
-				for (String key : params.keySet())
-					paramList.add(new BasicNameValuePair(key, params.get(key)));
-				// 构造一个form表单式的实体
-				UrlEncodedFormEntity formEntity;
-				try {
-					formEntity = new UrlEncodedFormEntity(paramList);
-					// 将请求实体设置到httpPost对象中
-					httpPost.setEntity(formEntity);
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		HttpUriRequest httpUriReq = HttpUriReqFac.get(this);
 		if (httpUriReq == null)
 			logger.error("httpUriReq is null");
+		HttpContext httpContext = new BasicHttpContext();
 		try {
 			httpResp = httpClient.execute(httpUriReq,httpContext);
 			// 获取最终跳转uri
@@ -279,31 +313,10 @@ public class HttpReq extends AbsReq{
 	public String doExecute() {
 		CloseableHttpClient httpClient = this.getHttpClient();
 		CloseableHttpResponse httpResp = null;
-		HttpUriRequest httpUriReq = null;
-		HttpContext httpContext = new BasicHttpContext();
-		if (this.method.equals("get")) {
-			httpUriReq = new HttpGet(this.getUrlWithParam());
-			httpUriReq.setHeaders(this.getAllHeaders());
-		}
-		if (this.method.endsWith("post")) {
-			HttpPost httpPost = new HttpPost(this.getUrl());
-			if (this.params != null) {
-				List<NameValuePair> paramList = new ArrayList<>();
-				for (String key : params.keySet())
-					paramList.add(new BasicNameValuePair(key, params.get(key)));
-				// 构造一个form表单式的实体
-				UrlEncodedFormEntity formEntity;
-				try {
-					formEntity = new UrlEncodedFormEntity(paramList);
-					// 将请求实体设置到httpPost对象中
-					httpPost.setEntity(formEntity);
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		HttpUriRequest httpUriReq = HttpUriReqFac.get(this);
 		if (httpUriReq == null)
 			logger.error("httpUriReq is null");
+		HttpContext httpContext = new BasicHttpContext();
 		try {
 			httpResp = httpClient.execute(httpUriReq,httpContext);
 			// 获取最终跳转uri
@@ -335,9 +348,9 @@ public class HttpReq extends AbsReq{
 	 * TODO 代理目前只支持http请求
 	 */
 	public CloseableHttpClient getHttpClient(){
-		if (this.proxy) {
+		if (this.host!=null) {
 			RequestConfig defaultRequestConfig = RequestConfig.custom()
-	                .setCookieSpec(CookieSpecs.BEST_MATCH)
+	                .setCookieSpec(CookieSpecs.DEFAULT)
 	                .setExpectContinueEnabled(true)
 	                .setStaleConnectionCheckEnabled(true)
 	                .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.DIGEST))
@@ -347,8 +360,7 @@ public class HttpReq extends AbsReq{
 	                .setSocketTimeout(5000)
 	                .setConnectTimeout(5000)
 	                .setConnectionRequestTimeout(5000)
-	                // TODO ip代理池没做
-	                .setProxy(new HttpHost("183.61.236.53", 3128))
+	                .setProxy(this.host)
 	                .build();
 			return HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
 		}

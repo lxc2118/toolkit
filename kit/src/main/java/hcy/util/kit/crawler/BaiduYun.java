@@ -3,7 +3,7 @@ package hcy.util.kit.crawler;
 import hcy.util.kit.http.HttpReq;
 
 /**
- * 阿里云爬虫 TODO
+ * 百度云爬虫 TODO
  * @author lxc
  *
  */
@@ -13,7 +13,7 @@ public class BaiduYun {
 
 	public static void main(String[] args) {
 		String html = new HttpReq("http://plus.go2.cn/new_style/1")
-				.setProxy(true)
+				.setProxy()
 				.execute();
 		System.out.println(html);
 	}
