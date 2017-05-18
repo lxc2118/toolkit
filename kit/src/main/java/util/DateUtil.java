@@ -7,14 +7,14 @@ import java.util.Date;
 
 /**
  * dateUtil
+ * 
  * @author lxc
  * @date 2016/11/20 13:17:43(update)
  */
 public class DateUtil {
 
-	public static final long hourMill = 3600l * 1000l;
-	public static final long dayMill = 86400l * 1000l;
-	public static final long monthMill = 30l * 24l * 3600l * 1000l;
+	public static final long hourMill = 3600000L;
+	public static final long dayMill = 86400000L;
 
 	public static final String timeFmt = "yyyy-MM-dd HH:mm:ss";
 	public static final String chinaTimeFmt = "yyyy年MM月dd日 HH:mm:ss";
@@ -422,6 +422,25 @@ public class DateUtil {
 	public static Date afterDay(int n) {
 		Date d = getToday();
 		return new Date(d.getTime() + n * dayMill);
+	}
+
+	/**
+	 * 几小时后
+	 * 
+	 * @return
+	 */
+	public static Date afterHour(int n) {
+		Date d = new Date();
+		return new Date(d.getTime() + n * hourMill);
+	}
+
+	/**
+	 * 几小时后
+	 * 
+	 * @return
+	 */
+	public static Date afterHour(Date d, int n) {
+		return new Date(d.getTime() + n * hourMill);
 	}
 
 	/**

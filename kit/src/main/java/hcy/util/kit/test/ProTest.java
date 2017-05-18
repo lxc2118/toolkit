@@ -3,21 +3,18 @@ package hcy.util.kit.test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ProTest {
 
 	public static void main(String[] args) {
-		String today = LocalDate.now().toString();
-		SimpleDateFormat format = new SimpleDateFormat();
-		format.applyPattern("yyyy-MM-dd");
-		try {
-			Date haha = format.parse(today);
-			System.out.println(haha);
-//			System.out.println(new Date(today));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(new ArrayList<Integer>(){{
+		    add(1);
+		}}.stream().map(a->{System.out.print("a"); return false;}).equals(null)){
+			System.out.println("a");
+		} else {
+			System.out.println("b");
 		}
         
 	}
