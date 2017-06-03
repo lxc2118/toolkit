@@ -26,7 +26,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  */
 public class Xls {
 
-	HSSFWorkbook wb = new HSSFWorkbook();
+	private HSSFWorkbook wb = new HSSFWorkbook();
 
 	/**
 	 * 单页最大行数
@@ -36,8 +36,6 @@ public class Xls {
 	private HashMap<String, Integer> sheetMap = new HashMap<>();
 
 	private List<List> dataLists = new ArrayList<>();
-	
-	private List<Method> methodList = new ArrayList<>();
 
 	public Xls(List... lists) {
 		for (List list : lists) {

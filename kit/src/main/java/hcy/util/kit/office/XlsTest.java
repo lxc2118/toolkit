@@ -18,5 +18,8 @@ public abstract class XlsTest extends TestCase{
 		list.add(p2);
 		
 		new Xls(list).create2File("D:\\1.xls");
+		
+		// 导出byte[]
+//		new Xls(list).create2Byte();
 	}
 }
