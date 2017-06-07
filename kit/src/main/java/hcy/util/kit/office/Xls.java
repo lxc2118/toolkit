@@ -1,4 +1,4 @@
-package hcy.util.kit.office;
+package kit.xls;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -7,7 +7,9 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -123,7 +125,14 @@ public class Xls {
 			try {
 				for (int j = 0; j < fieldList.size(); j++) {
 					Method method = clazz.getDeclaredMethod(getGetMethod(fieldList.get(j).getName()));
-					row.createCell(j).setCellValue(method.invoke(list.get(i)) == null ? "" : method.invoke(list.get(i)).toString());
+					if (method.invoke(list.get(i)) == null)
+						row.createCell(j).setCellValue("");
+					else {
+						if (method.invoke(list.get(i)) instanceof Date)
+							row.createCell(j).setCellValue(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(method.invoke(list.get(i))));
+						else
+							row.createCell(j).setCellValue(method.invoke(list.get(i)).toString());
+					}
 				}
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
