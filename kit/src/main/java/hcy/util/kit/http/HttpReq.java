@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.AuthSchemes;
@@ -65,9 +66,9 @@ public class HttpReq extends AbsReq{
 	private String charset = "gbk";
 
 	/**
-	 * 内部代理类
+	 * 内部代理host
 	 */
-	private HttpHost host;
+	private HttpHost httpHost;
 
 	/**
 	 * 本地代理类
@@ -86,7 +87,13 @@ public class HttpReq extends AbsReq{
 	}
 
 	public HttpReq setHeader(String name, String value){
-		this.headers.add(new BasicHeader(name, value));
+		Header header = this.headersMap.get(name);
+		if (header!=null) {
+			this.headersMap.put(name, new BasicHeader(name, header.getValue() + "; " + value));
+		} else {
+			this.headersMap.put(name, new BasicHeader(name, value));
+		}
+//		this.headers.add(new BasicHeader(name, value));
 		return this;
 	}
 
@@ -100,26 +107,26 @@ public class HttpReq extends AbsReq{
 	}
 
 	public HttpReq setProxy(IProxy proxy) {
-		if (proxy == null) {
+		if (proxy != null) {
 			this.proxy = proxy;
-			this.host = new HttpHost(proxy.getIp(), proxy.getPort());
+			this.httpHost = new HttpHost(proxy.getIp(), proxy.getPort());
 		}
 		return this;
 	}
 	
-	public HttpReq setProxy(HttpHost host) {
-		this.host = host;
+	public HttpReq setProxy(HttpHost httpHost) {
+		this.httpHost = httpHost;
 		return this;
 	}
 	
 	public HttpReq setProxy(String proxy) {
 		String[] temp = proxy.split(":");
-		this.host = new HttpHost(temp[0], Integer.parseInt(temp[1]));
+		this.httpHost = new HttpHost(temp[0], Integer.parseInt(temp[1]));
 		return this;
 	}
 	
 	public HttpReq setProxy(String hostName, int port) {
-		this.host = new HttpHost(hostName, port);
+		this.httpHost = new HttpHost(hostName, port);
 		return this;
 	}
 	
@@ -169,15 +176,23 @@ public class HttpReq extends AbsReq{
 	}
 	
 	public HttpReq setCookies(String cookie) {
+		this.getHeadersMap().get("Cookie");
 		this.setHeader("Cookie", cookie);
 		return this;
 	}
 	
 	/**
-	 * TODO 还没有仔细研究cookie规范
-	 * 待修改
+	 * cookie规范
+	 * Set-Cookie: <name>=<value>[; <name>=<value>]...
+	 * [; expires=<date>(DAY, DD MMM YYYY HH:MM:SS GMT)][;domain=<domain_name>]
+	 * [; path=<some_path>][;secure][;httponly]
 	 */
 	public HttpReq setCookie(String k, String v) {
+		this.setHeader("Cookie", k+"="+v);
+		return this;
+	}
+	
+	public HttpReq setCookie(String k, String v, String date) {
 		this.setHeader("Cookie", k+":"+v+";");
 		return this;
 	}
@@ -242,7 +257,7 @@ public class HttpReq extends AbsReq{
 
 	public String execute() {
 		//　说明启用了代理
-		if (this.host!= null){
+		if (this.httpHost!= null){
 			String html = this.doExecute();
 			if (html == null) {
 				this.proxyFac.delete(proxy);
@@ -305,6 +320,10 @@ public class HttpReq extends AbsReq{
 		return null;
 	}
 
+	/**
+	 * http请求核心方法
+	 * @return
+	 */
 	public String doExecute() {
 		CloseableHttpClient httpClient = this.getHttpClient();
 		CloseableHttpResponse httpResp = null;
@@ -343,7 +362,7 @@ public class HttpReq extends AbsReq{
 	 * TODO 代理目前只支持http请求
 	 */
 	public CloseableHttpClient getHttpClient(){
-		if (this.host!=null) {
+		if (this.httpHost!=null) {
 			RequestConfig defaultRequestConfig = RequestConfig.custom()
 	                .setCookieSpec(CookieSpecs.DEFAULT)
 	                .setExpectContinueEnabled(true)
@@ -355,7 +374,7 @@ public class HttpReq extends AbsReq{
 	                .setSocketTimeout(5000)
 	                .setConnectTimeout(5000)
 	                .setConnectionRequestTimeout(5000)
-	                .setProxy(this.host)
+	                .setProxy(this.httpHost)
 	                .build();
 			return HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
 		}

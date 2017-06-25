@@ -1,4 +1,4 @@
-package api;
+package hcy.util.kit;
 
 /**
  * Created by lxc on 2016/10/11.

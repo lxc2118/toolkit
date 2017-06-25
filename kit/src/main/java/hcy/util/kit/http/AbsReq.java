@@ -6,7 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.net.ssl.SSLContext;
 
@@ -19,10 +22,15 @@ import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.TrustStrategy;
 
 public abstract class AbsReq {
-
-	protected List<Header> defaultHeaders = new ArrayList<Header>() {
+	
+	/**
+	 * 
+	 */
+	protected Map<String, Header> headersMap = new HashMap<>();
+	
+	protected List<Header> headers = new ArrayList<Header>() {
 		{
-			add(new BasicHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"));
+			add(new BasicHeader("Accept","text/html"));
 			add(new BasicHeader("Accept-Encoding", "gzip, deflate, sdch, br"));
 			add(new BasicHeader("Accept-Language", "zh-CN,zh;q=0.8"));
 			add(new BasicHeader("Connection", "keep-alive"));
@@ -31,8 +39,26 @@ public abstract class AbsReq {
 		}
 	};
 	
-	protected List<Header> headers = new ArrayList<>();
+	@Deprecated
+	protected List<Header> defaultHeaders = new ArrayList<Header>() {
+		{
+//			add(new BasicHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"));
+			add(new BasicHeader("Accept","text/html"));
+			add(new BasicHeader("Accept-Encoding", "gzip, deflate, sdch, br"));
+			add(new BasicHeader("Accept-Language", "zh-CN,zh;q=0.8"));
+			add(new BasicHeader("Connection", "keep-alive"));
+			add(new BasicHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"));
+			add(new BasicHeader("Upgrade-Insecure-Requests", "1"));
+		}
+	};
 	
+	public AbsReq() {
+		this.headersMap = this.headers.stream().collect(Collectors.toMap(Header::getName, b -> b));
+	}
+	
+	/**
+	 * 请求url
+	 */
 	protected String url;
 	
 	public String getUrl() {
@@ -42,7 +68,12 @@ public abstract class AbsReq {
 	public List<Header> getHeaders() {
 		return this.headers;
 	}
+	
+	public Map<String,Header> getHeadersMap() {
+		return this.headersMap;
+	}
 
+	@Deprecated
 	public Header[] getAllHeaders() {
 		if (!this.getHeaders().isEmpty())
 			defaultHeaders.addAll(headers);

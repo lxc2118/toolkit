@@ -1,7 +1,5 @@
-package helper;
+package hcy.util.kit;
 
-import api.ApiResponse;
-import api.ObjResponse;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializeFilter;
@@ -33,6 +31,7 @@ public class JSONHelper {
     public static <T> String toJSONString(T t,SerializeFilter serializeFilter){
         return JSON.toJSONString(t, serializeFilter);
     }
+    
     public static String ok() {
         ApiResponse resp = new ApiResponse();
         resp.setSuccess(true);
@@ -43,6 +42,7 @@ public class JSONHelper {
         ApiResponse resp = new ApiResponse();
         resp.setSuccess(true);
         resp.setMsg(msg);
+        resp.setCode("200");
         return JSON.toJSONString(resp);
     }
 }

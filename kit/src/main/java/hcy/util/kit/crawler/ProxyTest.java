@@ -20,9 +20,11 @@ public class ProxyTest {
 //		System.getProperties().setProperty("http.proxyPort", "80"); 
 //		System.out.println(ProxyTest.getHtml("http://1212.ip138.com/ic.asp"));
 		// 正常访问
-		new HttpReq("http://1212.ip138.com/ic.asp").execute();
+//		new HttpReq("http://1212.ip138.com/ic.asp").execute();
 		// 设置代理
-		new HttpReq("http://1212.ip138.com/ic.asp").setProxy().execute();
+//		new HttpReq("http://1212.ip138.com/ic.asp").setProxy().execute();
+		HttpReq req = new HttpReq("http://1212.ip138.com/ic.asp").setCookie("1", "1").setCookie("1", "2");
+		System.out.println(1);
 	}
 
 }

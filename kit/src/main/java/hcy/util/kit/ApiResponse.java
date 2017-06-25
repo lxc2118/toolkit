@@ -1,4 +1,4 @@
-package api;
+package hcy.util.kit;
 
 public class ApiResponse {
 
@@ -48,6 +48,7 @@ public class ApiResponse {
         this.success = false;
         this.msg = msg;
     }
+    
     public void setErrorMsg(String code, String msg){
         this.setErrorMsg(msg);
         this.code = code;
