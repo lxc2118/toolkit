@@ -14,12 +14,14 @@ import org.apache.http.message.BasicNameValuePair;
 public class HttpUriReqFac {
 
 	public static HttpUriRequest get(HttpReq req) {
+//        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECTION_TIMEOUT)
+//                .setSocketTimeout(SOCKET_TIMEOUT).build();
+//        post.setConfig(requestConfig);  
 		HttpUriRequest httpUriReq = null;
 		switch (req.getMethod()) {
-		
 		case "get":
 			httpUriReq = new HttpGet(req.getUrlWithParam());
-			httpUriReq.setHeaders(req.getAllHeaders());
+			httpUriReq.setHeaders(req.getHeaderArray());
 			break;
 		case "post":
 			httpUriReq = new HttpPost(req.getUrl());
@@ -29,13 +31,15 @@ public class HttpUriReqFac {
 					paramList.add(new BasicNameValuePair(key, req.params.get(key)));
 				try {
 					// 构造一个form表单式的实体
-					UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(paramList);
+					UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(paramList,req.getCharset());
 					// 将请求实体设置到httpPost对象中
 					((HttpPost) httpUriReq).setEntity(formEntity);
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 				}
 			}
+			break;
+		default:
 			break;
 		}
 		return httpUriReq;

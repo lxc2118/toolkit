@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +67,13 @@ public abstract class AbsReq {
 	}
 	
 	public List<Header> getHeaders() {
-		return this.headers;
+		return (List<Header>) this.headersMap.values();
+	}
+	
+	public Header[] getHeaderArray() {
+		Collection<Header> headerCollection = this.headersMap.values();
+		int size = headerCollection.size();
+		return headerCollection.toArray(new Header[size]);
 	}
 	
 	public Map<String,Header> getHeadersMap() {
@@ -96,7 +103,9 @@ public abstract class AbsReq {
 					return true;
 				}
 			}).build();
-			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext);
+			new SSLConnectionSocketFactory(sslContext);
+			SSLConnectionSocketFactory sslsf = SSLConnectionSocketFactory.getSocketFactory();
+//			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext,SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER); 
 			return HttpClients.custom().setSSLSocketFactory(sslsf).build();
 		} catch (KeyManagementException e) {
 			e.printStackTrace();

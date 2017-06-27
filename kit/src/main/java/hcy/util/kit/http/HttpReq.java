@@ -12,7 +12,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -34,6 +36,18 @@ import util.ReqUtil;
  * @author lxc
  */
 public class HttpReq extends AbsReq{
+	
+    public static final int OK = 200;// 返回状态码正常  
+    
+    public static final int DEFAULT_HTTP_PORT = 80;// http端口  
+  
+    public static final int DEFAULT_HTTPS_PORT = 443;// https端口  
+	
+	// 连接超时  
+    public static final int CONNECTION_TIMEOUT = 5000;
+    
+    // 数据读取等待超时  
+    public static final int SOCKET_TIMEOUT = 10000;
 	
 	private static Logger logger = Logger.getLogger(HttpReq.class);
 	
@@ -325,8 +339,11 @@ public class HttpReq extends AbsReq{
 	 * @return
 	 */
 	public String doExecute() {
+		// 创建client
 		CloseableHttpClient httpClient = this.getHttpClient();
+		// 创建httpResp
 		CloseableHttpResponse httpResp = null;
+		// 获取请求
 		HttpUriRequest httpUriReq = HttpUriReqFac.get(this);
 		if (httpUriReq == null)
 			logger.error("httpUriReq is null");
@@ -338,7 +355,7 @@ public class HttpReq extends AbsReq{
 			// host
 			HttpHost httpHost = (HttpHost)httpContext.getAttribute(HttpCoreContext.HTTP_TARGET_HOST);
 			this.realReqUri = httpHost.getHostName() + realUriReq.getURI().toString();
-			if (httpResp.getStatusLine().getStatusCode() != 200)
+			if (httpResp.getStatusLine().getStatusCode() != OK)
 				logger.info("bad request:" + this.getUrl() + "\ncode:" + httpResp.getStatusLine().getStatusCode());
 			return EntityUtils.toString(httpResp.getEntity(),this.getCharset());
 		} catch (ClientProtocolException e) {
@@ -362,7 +379,7 @@ public class HttpReq extends AbsReq{
 	 * TODO 代理目前只支持http请求
 	 */
 	public CloseableHttpClient getHttpClient(){
-		if (this.httpHost!=null) {
+		if (this.getUrl().startsWith("http")) {
 			RequestConfig defaultRequestConfig = RequestConfig.custom()
 	                .setCookieSpec(CookieSpecs.DEFAULT)
 	                .setExpectContinueEnabled(true)
@@ -371,9 +388,9 @@ public class HttpReq extends AbsReq{
 	                .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.BASIC))
 	                .build();
 			RequestConfig requestConfig = RequestConfig.copy(defaultRequestConfig)
-	                .setSocketTimeout(5000)
-	                .setConnectTimeout(5000)
-	                .setConnectionRequestTimeout(5000)
+	                .setSocketTimeout(SOCKET_TIMEOUT)
+	                .setConnectTimeout(CONNECTION_TIMEOUT)
+	                .setConnectionRequestTimeout(CONNECTION_TIMEOUT)
 	                .setProxy(this.httpHost)
 	                .build();
 			return HttpClients.custom().setDefaultRequestConfig(requestConfig).build();

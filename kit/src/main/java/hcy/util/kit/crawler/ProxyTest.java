@@ -23,8 +23,18 @@ public class ProxyTest {
 //		new HttpReq("http://1212.ip138.com/ic.asp").execute();
 		// 设置代理
 //		new HttpReq("http://1212.ip138.com/ic.asp").setProxy().execute();
-		HttpReq req = new HttpReq("http://1212.ip138.com/ic.asp").setCookie("1", "1").setCookie("1", "2");
-		System.out.println(1);
+//		HttpReq req = new HttpReq("http://1212.ip138.com/ic.asp").setCookie("1", "1").setCookie("1", "2");
+//		System.out.println(1);
+		
+//		String html = new HttpReq("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm").put("tel","13575883421").execute();
+//		System.out.println(html);
+		
+		String html = new HttpReq("https://www.kuaidi100.com/query")
+				.put("type","yunda")
+				.put("postid","3900778482478").execute();
+		System.out.println(html);
+		
+		
 	}
 
 }
