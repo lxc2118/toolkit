@@ -63,7 +63,7 @@ public class HttpReq extends AbsReq{
     
 	private static Logger logger = Logger.getLogger(HttpReq.class);
 	
-	private Cookies cookies;
+//	private Cookies cookies;
 
 	/**
 	 * 过滤字段

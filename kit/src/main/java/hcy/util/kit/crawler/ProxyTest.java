@@ -13,7 +13,9 @@ public class ProxyTest {
 
 	
 	public static void main(String[] args) {
-
+//		new HttpReq("")
+		
+		
 //		System.setProperty("http.maxRedirects", "50");
 //		System.getProperties().setProperty("proxySet", "true");
 //		System.getProperties().setProperty("http.proxyHost", "93.91.200.146");  
