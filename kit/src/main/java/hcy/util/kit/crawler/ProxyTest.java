@@ -29,11 +29,13 @@ public class ProxyTest {
 //		String html = new HttpReq("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm").put("tel","13575883421").execute();
 //		System.out.println(html);
 		
-		String html = new HttpReq("https://www.kuaidi100.com/query")
-				.put("type","yunda")
-				.put("postid","3900778482478").execute();
-		System.out.println(html);
+//		String html = new HttpReq("https://www.kuaidi100.com/query")
+//				.put("type","yunda")
+//				.put("postid","3900778482478").execute();
 		
+		String html = new HttpReq("http://www.6pan.cc/down-152992.html").execute();
+		System.out.println(html);
+
 		
 	}
 

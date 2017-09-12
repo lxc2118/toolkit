@@ -12,9 +12,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -37,18 +35,32 @@ import util.ReqUtil;
  */
 public class HttpReq extends AbsReq{
 	
-    public static final int OK = 200;// 返回状态码正常  
+	/**
+	 * 返回状态码正常  
+	 */
+    public static final int OK = 200;
     
-    public static final int DEFAULT_HTTP_PORT = 80;// http端口  
+    /**
+     * http端口
+     */
+    public static final int DEFAULT_HTTP_PORT = 80;
   
-    public static final int DEFAULT_HTTPS_PORT = 443;// https端口  
+    /**
+     * https端口
+     */
+    public static final int DEFAULT_HTTPS_PORT = 443;
 	
-	// 连接超时  
+	/**
+	 * 连接超时  
+	 */
     public static final int CONNECTION_TIMEOUT = 5000;
     
-    // 数据读取等待超时  
+    /**
+     * 数据读取等待超时
+     */
     public static final int SOCKET_TIMEOUT = 10000;
 	
+    
 	private static Logger logger = Logger.getLogger(HttpReq.class);
 	
 	private Cookies cookies;
