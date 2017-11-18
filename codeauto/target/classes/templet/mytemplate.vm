@@ -1,3 +1,0 @@
-test, $name ,你好
-test.name,${obj.name};
-test.age,${obj.acqAge()}

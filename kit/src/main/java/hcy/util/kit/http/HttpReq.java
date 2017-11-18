@@ -84,7 +84,7 @@ public class HttpReq extends AbsReq{
 	/**
 	 * 访问参数
 	 */
-	protected HashMap<String, String> params = new HashMap<>();
+	protected HashMap<String, String> params = new HashMap<String, String>();
 
 	/**
 	 * 返回字符串格式

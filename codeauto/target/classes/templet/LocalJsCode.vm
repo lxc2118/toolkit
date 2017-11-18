@@ -1,8 +1,0 @@
-SWImportUtil.localCtx = "../js/";
-
-#foreach($table in $tables)
-SWImportUtil.modelMap["${nameUtil.firstUpperPasical($table.name)}View"]="local:${nameUtil.pasical($table.name)}/${nameUtil.firstUpperPasical($table.name)}View.js";
-SWImportUtil.modelMap["${nameUtil.firstUpperPasical($table.name)}Model"]="local:${nameUtil.pasical($table.name)}/${nameUtil.firstUpperPasical($table.name)}Model.js";
-
-#end	
-

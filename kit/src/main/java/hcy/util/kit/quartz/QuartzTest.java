@@ -12,7 +12,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import hcy.util.kit.quartz.job.MyJob;
 
 public class QuartzTest {
-
+	
 	public static void main(String[] args) {
 		SchedulerFactory schedulerfactory = new StdSchedulerFactory();
 		Scheduler scheduler = null;
@@ -25,7 +25,7 @@ public class QuartzTest {
 			// .withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(1).withRepeatCount(8))
 			// .startNow().build();
 			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("simpleTrigger", "triggerGroup")
-					.withSchedule(CronScheduleBuilder.cronSchedule("0/1 * * * * ?")).startNow().build();
+					.withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * * * ?")).startNow().build();
 			scheduler.scheduleJob(job, trigger);
 			scheduler.start();
 		} catch (Exception e) {

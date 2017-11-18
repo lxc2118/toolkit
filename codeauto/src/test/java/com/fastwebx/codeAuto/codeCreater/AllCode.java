@@ -8,6 +8,7 @@ import com.fastwebx.db.test.TestBase;
 public class AllCode extends TestBase{
 	public void testBuildAll(){
 		 $.get(IbatisCode.class).process();
+		 
 //		 $.get(WhereClause.class).process();
 //		 ((JavaCode)$.get("pojo")).process();
 //		 ((JavaCode)$.get("dao")).process();

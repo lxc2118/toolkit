@@ -10,7 +10,6 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
  * App端的json处理工具
  * 方便app端json传参
  *
- * 想app端和pc端同时使用这个，因为现在pc端的传0，传1根本不知道是什么
  */
 public class JSONHelper {
 
@@ -18,6 +17,14 @@ public class JSONHelper {
         ApiResponse resp = new ApiResponse();
         resp.setErrorMsg(msg);
         return JSON.toJSONString(resp);
+    }
+    
+    public static<T> ObjResponse toObj(T t) {
+    	return new ObjResponse(t);
+    }
+    
+    public static<T> ObjResponse toObjWithDateFormat(T t) {
+    	return new ObjResponse(t);
     }
 
     public static <T> String toJSONString(T t){

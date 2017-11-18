@@ -1,3 +1,0 @@
-#foreach($table in $tables)
-	${nameUtil.pasical($table.name)}
-#end

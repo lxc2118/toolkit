@@ -15,8 +15,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.junit.Test;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -32,7 +30,7 @@ public class ZxingUtil {
 	private static final int IMAGE_HALF_WIDTH = IMAGE_WIDTH / 2;
 	private static final int FRAME_WIDTH = 2;
 
-	@Test
+//	@Test
 	public void testEncode() throws WriterException, IOException {
 		String filePath = "D://";
 		String fileName = "zxing.png";

@@ -10,8 +10,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.junit.Test;
-
 import com.alibaba.fastjson.JSONObject;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Binarizer;
@@ -37,7 +35,7 @@ public class QRCodeTest {
      * @throws WriterException 
      * @throws IOException 
      */  
-    @Test
+//    @Test
     public void testEncode() throws WriterException, IOException {  
         String filePath = "D://";  
         String fileName = "zxing.png";  
@@ -62,7 +60,7 @@ public class QRCodeTest {
     /** 
      * 解析图像 
      */  
-    @Test  
+//    @Test  
     public void testDecode() {  
         String filePath = "D://zxing.png";  
         BufferedImage image;  

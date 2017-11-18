@@ -7,9 +7,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import com.aliyun.opensearch.CloudsearchClient;
-import com.aliyun.opensearch.CloudsearchSearch;
-import com.aliyun.opensearch.object.KeyTypeEnum;
+//import com.aliyun.opensearch.CloudsearchClient;
+//import com.aliyun.opensearch.CloudsearchSearch;
+//import com.aliyun.opensearch.object.KeyTypeEnum;
 
 public class OpenSearchTest {
 
